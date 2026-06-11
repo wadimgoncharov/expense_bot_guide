@@ -743,7 +743,7 @@
             <div class="step-num">1</div>
             <div class="step-content">
               <strong>Find your Telegram ID</strong>
-              <span>Open Telegram → search for <b>@userinfobot</b> → start it. It replies with your numeric ID.</span>
+              <span>Open <a href="https://t.me/userinfobot" style="color:var(--accent);text-decoration:none;font-weight:500;">@userinfobot</a> in Telegram → start it. It replies with your numeric ID.</span>
             </div>
           </div>
           <div class="step-item">
@@ -1055,8 +1055,8 @@
     progress.style.width = `${((cur + 1) / TOTAL) * 100}%`;
     curEl.textContent = cur + 1;
     prevBtn.disabled = cur === 0;
-    nextBtn.textContent = cur === TOTAL - 1 ? '✓ Done' : 'Next →';
-    nextBtn.disabled = cur === TOTAL - 1;
+    nextBtn.style.visibility = cur === TOTAL - 1 ? 'hidden' : 'visible';
+    nextBtn.textContent = 'Next →';
     document.querySelectorAll('.dot').forEach((d, i) => {
       d.classList.toggle('active', i === cur);
     });
