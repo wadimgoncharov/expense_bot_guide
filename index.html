@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Malakut Expense Bot — Onboarding</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234F8EF7'/><text y='.9em' x='10' font-size='78'>🧾</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0D1B2A;
+    --navy-light: #1A2D42;
+    --accent: #4F8EF7;
+    --accent-dim: rgba(79,142,247,0.15);
+    --accent-glow: rgba(79,142,247,0.3);
+    --white: #FFFFFF;
+    --off-white: #F7F9FC;
+    --muted: #8A9AB5;
+    --border: rgba(79,142,247,0.2);
+    --text: #1A2D42;
+    --text-light: #526275;
+    --slide-radius: 16px;
+    --font: 'DM Sans', sans-serif;
+    --mono: 'DM Mono', monospace;
+  }
+
+  html, body {
+    height: 100%;
+    font-family: var(--font);
+    background: #0A1220;
+    overflow: hidden;
+  }
+
+  .deck {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  /* ── Header ── */
+  .deck-header {
+    background: var(--navy);
+    padding: 14px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    border-bottom: 1px solid rgba(79,142,247,0.25);
+  }
+  .brand {
+    display: flex; align-items: center; gap: 10px;
+  }
+  .brand-icon {
+    width: 36px; height: 36px;
+    background: var(--accent);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; line-height: 1;
+  }
+  .brand-name {
+    color: var(--white);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+  .brand-sub {
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .slide-counter {
+    color: var(--muted);
+    font-size: 12px;
+    font-family: var(--mono);
+    letter-spacing: 0.05em;
+  }
+  .slide-counter span { color: var(--accent); font-weight: 500; }
+
+  /* ── Progress bar ── */
+  .progress-bar {
+    height: 3px;
+    background: rgba(255,255,255,0.08);
+    flex-shrink: 0;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  /* ── Slides viewport ── */
+  .slides-viewport {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+  }
+  .slides-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.45s cubic-bezier(0.4,0,0.2,1);
+    will-change: transform;
+  }
+  .slide {
+    min-width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    background: var(--off-white);
+    padding: 36px 44px 28px;
+    display: flex;
+    flex-direction: column;
+  }
+  .slide::-webkit-scrollbar { width: 4px; }
+  .slide::-webkit-scrollbar-track { background: transparent; }
+  .slide::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  /* ── Slide heading styles ── */
+  .slide-tag {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .slide h1 {
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+  .slide h2 {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+  .slide .subtitle {
+    font-size: 16px;
+    color: var(--text-light);
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 28px;
+  }
+  .divider {
+    width: 40px; height: 3px;
+    background: var(--accent);
+    border-radius: 2px;
+    margin-bottom: 24px;
+  }
+
+  /* ── Slide 1: Welcome ── */
+  .welcome-hero {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--accent-dim);
+    border: 1px solid var(--accent-glow);
+    border-radius: 100px;
+    padding: 5px 14px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent);
+    margin-bottom: 20px;
+    width: fit-content;
+  }
+  .hero-title {
+    font-size: 42px !important;
+    font-weight: 600 !important;
+    color: var(--navy) !important;
+    margin-bottom: 12px !important;
+    line-height: 1.1 !important;
+  }
+  .hero-title span { color: var(--accent); }
+  .hero-subtitle {
+    font-size: 18px;
+    color: var(--text-light);
+    max-width: 480px;
+    line-height: 1.6;
+    margin-bottom: 32px;
+  }
+  .key-message {
+    background: var(--navy);
+    color: var(--white);
+    border-radius: 12px;
+    padding: 18px 24px;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.5;
+    max-width: 440px;
+    border-left: 4px solid var(--accent);
+  }
+  .key-message em { color: var(--accent); font-style: normal; }
+
+  /* ── Flow diagram ── */
+  .flow-diagram {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-wrap: wrap;
+    margin: 20px 0;
+    justify-content: center;
+  }
+  .flow-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+    padding: 18px 16px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    min-width: 100px;
+    flex: 1;
+    max-width: 130px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .flow-step:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-dim);
+  }
+  .flow-step .icon { font-size: 28px; line-height: 1; }
+  .flow-step .label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.3;
+  }
+  .flow-arrow {
+    font-size: 20px;
+    color: var(--accent);
+    padding: 0 4px;
+    flex-shrink: 0;
+  }
+
+  /* ── Step cards ── */
+  .step-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 4px;
+  }
+  .step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.07);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .step-num {
+    width: 28px; height: 28px;
+    background: var(--accent-dim);
+    border: 1.5px solid var(--accent-glow);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .step-content { flex: 1; }
+  .step-content strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 3px;
+  }
+  .step-content span {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.5;
+  }
+  .step-item.highlight {
+    border-color: var(--accent);
+    background: var(--accent-dim);
+  }
+  .step-item.highlight .step-content strong { color: var(--navy); }
+
+  /* ── Code snippet ── */
+  .code-block {
+    background: var(--navy);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-family: var(--mono);
+    font-size: 14px;
+    color: #A8C8FF;
+    margin: 8px 0;
+    border-left: 3px solid var(--accent);
+  }
+  .code-block div {
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    line-height: 1.5;
+  }
+  .code-block .prompt { color: var(--muted); }
+  .code-block .cmd { color: var(--white); font-weight: 500; }
+  .code-block .resp { color: #5EDE8A; }
+  .code-block .comment { color: var(--muted); font-size: 12px; }
+
+  /* ── Info box ── */
+  .info-box {
+    background: var(--accent-dim);
+    border: 1px solid var(--accent-glow);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 13.5px;
+    color: var(--navy);
+    line-height: 1.5;
+    margin: 10px 0;
+  }
+  .info-box b { color: var(--accent); font-weight: 600; }
+
+  /* ── Category grid ── */
+  .cat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .cat-card {
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.07);
+    border-radius: 12px;
+    padding: 18px 16px;
+    transition: border-color 0.2s;
+  }
+  .cat-card:hover { border-color: var(--accent); }
+  .cat-card .cat-icon { font-size: 26px; margin-bottom: 8px; }
+  .cat-card .cat-name {
+    font-size: 14px; font-weight: 600;
+    color: var(--text); margin-bottom: 5px;
+  }
+  .cat-card .cat-examples {
+    font-size: 12px; color: var(--text-light); line-height: 1.5;
+  }
+
+  /* ── Receipt list ── */
+  .receipt-list {
+    background: var(--navy);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 12px 0;
+  }
+  .receipt-header {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .receipt-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .receipt-item:last-child { border-bottom: none; }
+  .receipt-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    min-width: 18px;
+  }
+  .receipt-type {
+    background: rgba(79,142,247,0.2);
+    border-radius: 5px;
+    padding: 2px 7px;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+  }
+  .receipt-vendor {
+    flex: 1;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--white);
+  }
+  .receipt-amount {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: #5EDE8A;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .receipt-date {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .receipt-desc { font-size: 11px; color: rgba(255,255,255,0.4); }
+  .receipt-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(79,142,247,0.3);
+  }
+  .receipt-total-label {
+    font-size: 12px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--muted);
+  }
+  .receipt-total-amt {
+    font-family: var(--mono);
+    font-size: 16px; font-weight: 600;
+    color: var(--white);
+  }
+
+  /* ── Command table ── */
+  .cmd-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+    font-size: 13.5px;
+  }
+  .cmd-table tr { border-bottom: 1px solid rgba(0,0,0,0.06); }
+  .cmd-table tr:last-child { border-bottom: none; }
+  .cmd-table td { padding: 10px 0; vertical-align: top; }
+  .cmd-table .cmd-cell {
+    font-family: var(--mono);
+    font-weight: 500;
+    color: var(--accent);
+    font-size: 13px;
+    width: 140px;
+    padding-right: 16px;
+    white-space: nowrap;
+  }
+  .cmd-table .desc-cell { color: var(--text-light); }
+
+  /* ── Tips ── */
+  .tips-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 8px;
+  }
+  .tip-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 10px;
+    padding: 13px 16px;
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.5;
+  }
+  .tip-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .contact-card {
+    background: var(--navy);
+    color: var(--white);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-top: 14px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .contact-icon { font-size: 24px; }
+  .contact-text { line-height: 1.6; }
+  .contact-text b { color: var(--accent); font-weight: 600; }
+
+  /* ── Navigation ── */
+  .nav-bar {
+    background: var(--navy);
+    padding: 14px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    border-top: 1px solid rgba(79,142,247,0.15);
+  }
+  .nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: 1px solid rgba(79,142,247,0.3);
+    color: var(--accent);
+    border-radius: 8px;
+    padding: 9px 18px;
+    font-family: var(--font);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, opacity 0.2s;
+  }
+  .nav-btn:hover:not(:disabled) {
+    background: var(--accent-dim);
+    border-color: var(--accent);
+  }
+  .nav-btn:disabled { opacity: 0.25; cursor: not-allowed; }
+  .nav-btn.primary {
+    background: var(--accent);
+    color: var(--white);
+    border-color: var(--accent);
+  }
+  .nav-btn.primary:hover:not(:disabled) { background: #3A7BE8; border-color: #3A7BE8; }
+
+  .dot-nav {
+    display: flex; gap: 6px; align-items: center;
+  }
+  .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .dot.active { background: var(--accent); transform: scale(1.3); }
+
+  /* ── Sub-steps for receipt types ── */
+  .receipt-type-row {
+    display: flex;
+    gap: 12px;
+    margin: 12px 0;
+  }
+  .rt-card {
+    flex: 1;
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.07);
+    border-radius: 10px;
+    padding: 14px;
+    text-align: center;
+  }
+  .rt-card .rt-icon { font-size: 28px; margin-bottom: 8px; }
+  .rt-card .rt-label { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 5px; }
+  .rt-card .rt-note { font-size: 11.5px; color: var(--text-light); line-height: 1.5; }
+
+  .os-row {
+    display: flex;
+    gap: 10px;
+    margin: 8px 0;
+  }
+  .os-chip {
+    flex: 1;
+    background: var(--navy);
+    color: var(--white);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .os-chip .os-name { font-weight: 600; color: var(--accent); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+
+  /* ── Fix mistakes cmds ── */
+  .fix-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .fix-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.07);
+    border-radius: 9px;
+    padding: 10px 14px;
+    overflow: hidden;
+  }
+  .fix-item code {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--accent);
+    background: var(--accent-dim);
+    padding: 3px 8px;
+    border-radius: 5px;
+    white-space: nowrap;
+  }
+  .fix-item span {
+    font-size: 13px;
+    color: var(--text-light);
+    flex: 1;
+  }
+
+  /* ── Generate report ── */
+  .gen-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+  }
+  .gen-card {
+    flex: 1;
+    background: var(--navy);
+    border-radius: 12px;
+    padding: 18px 16px;
+    text-align: center;
+  }
+  .gen-card .gen-icon { font-size: 28px; margin-bottom: 8px; }
+  .gen-card .gen-cmd {
+    font-family: var(--mono);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .gen-card .gen-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .slide { padding: 24px 20px 20px; }
+    .slide h1 { font-size: 26px; }
+    .hero-title { font-size: 28px !important; }
+    .flow-diagram { gap: 4px; }
+    .flow-step { min-width: 70px; max-width: 80px; padding: 12px 8px; }
+    .flow-step .icon { font-size: 20px; }
+    .flow-step .label { font-size: 10px; }
+    .cat-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .nav-bar { padding: 10px 16px; }
+    .nav-btn { padding: 12px 22px; font-size: 14px; }
+    .deck-header { padding: 10px 16px; }
+    .gen-row { flex-direction: column; }
+    .receipt-type-row { flex-direction: column; }
+    .os-row { flex-direction: column; }
+    .code-block { font-size: 12px; padding: 12px 14px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="deck">
+
+  <!-- Header -->
+  <header class="deck-header">
+    <div class="brand">
+      <div class="brand-icon">🧾</div>
+      <div>
+        <div class="brand-name">Malakut Expense Bot</div>
+        <div class="brand-sub">Employee Onboarding</div>
+      </div>
+    </div>
+    <div class="slide-counter">Slide <span id="cur">1</span> / <span id="total">10</span></div>
+  </header>
+
+  <!-- Progress -->
+  <div class="progress-bar">
+    <div class="progress-fill" id="progress" style="width:10%"></div>
+  </div>
+
+  <!-- Slides -->
+  <div class="slides-viewport">
+    <div class="slides-track" id="track">
+
+      <!-- SLIDE 1: Welcome -->
+      <div class="slide">
+        <div class="welcome-hero">
+          <div class="hero-badge">✈️ @malakut_expense_report_bot</div>
+          <h1 class="hero-title">Malakut<br><span>Expense Bot</span></h1>
+          <p class="hero-subtitle">Your digital expense report assistant in Telegram — fast, structured, and always ready.</p>
+          <div class="key-message">
+            💡 <em>No more paper receipts.</em> Everything tracked, categorized, and compiled — all in one chat.
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 2: How it works -->
+      <div class="slide">
+        <div class="slide-tag">Overview</div>
+        <h2>How it works</h2>
+        <p class="subtitle">Six steps from start to submitted report.</p>
+        <div class="divider"></div>
+        <div class="flow-diagram">
+          <div class="flow-step">
+            <div class="icon">📱</div>
+            <div class="label">Start bot</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="icon">📂</div>
+            <div class="label">Open pack</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="icon">🧾</div>
+            <div class="label">Add receipts</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="icon">👁</div>
+            <div class="label">Preview</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="icon">✅</div>
+            <div class="label">Compile</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="icon">📤</div>
+            <div class="label">Done</div>
+          </div>
+        </div>
+        <div class="info-box" style="margin-top:16px">
+          Each step is covered in detail on the following slides. Use the arrows below to navigate.
+        </div>
+      </div>
+
+      <!-- SLIDE 3: Step 0 — Get access -->
+      <div class="slide">
+        <div class="slide-tag">Step 0</div>
+        <h2>Get access</h2>
+        <p class="subtitle">Before you can use the bot, your Telegram ID needs to be registered.</p>
+        <div class="divider"></div>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <strong>Find your Telegram ID</strong>
+              <span>Open Telegram → search for <b>@userinfobot</b> → start it. It replies with your numeric ID.</span>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <strong>Example ID format</strong>
+              <span style="font-family:var(--mono); font-size:14px; color:var(--accent);">387654321</span>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <strong>Send it to your administrator</strong>
+              <span>Share your numeric ID with your manager or finance admin. Wait for confirmation.</span>
+            </div>
+          </div>
+          <div class="step-item highlight">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <strong>Open the bot</strong>
+              <span>Once confirmed, visit: <b style="color:var(--accent); font-family:var(--mono);">t.me/malakut_expense_report_bot</b></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 4: Step 1 — Open a pack -->
+      <div class="slide">
+        <div class="slide-tag">Step 1</div>
+        <h2>Open a pack</h2>
+        <p class="subtitle" style="margin-bottom:14px;">A "pack" = one expense report for one trip or period.</p>
+        <div class="divider" style="margin-bottom:14px;"></div>
+        <div class="info-box" style="margin:0 0 10px;">
+          <b>What is a pack?</b> Each pack groups all receipts for a single trip or period. One pack open at a time.
+        </div>
+        <p style="font-size:13px; color:var(--text-light); margin:10px 0 5px;">Type in the Telegram chat:</p>
+        <div class="code-block" style="margin:0 0 10px;">
+          <div><span class="prompt">You: </span><span class="cmd">open pack Zurich May 2026</span></div>
+          <div style="margin-top:6px"><span class="prompt">Bot: </span><span class="resp">✅ Pack "Zurich May 2026" opened</span></div>
+        </div>
+        <div class="step-list" style="margin-top:0; gap:8px;">
+          <div class="step-item" style="padding:10px 14px;">
+            <div class="step-num" style="font-size:16px; width:auto; height:auto; background:none; border:none; color:var(--navy);">📌</div>
+            <div class="step-content">
+              <strong>Naming tip</strong>
+              <span>City + month, project name, or any label that identifies the period.</span>
+            </div>
+          </div>
+          <div class="step-item" style="padding:10px 14px;">
+            <div class="step-num" style="font-size:16px; width:auto; height:auto; background:none; border:none; color:var(--navy);">🔒</div>
+            <div class="step-content">
+              <strong>One active pack at a time</strong>
+              <span>Stays open until you run <code style="font-family:var(--mono); color:var(--accent);">/compile</code>.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 5: Step 2 — Add receipts -->
+      <div class="slide">
+        <div class="slide-tag">Step 2</div>
+        <h2>Add receipts</h2>
+        <p class="subtitle" style="margin-bottom:14px;">Send documents in the chat. The bot reads them automatically.</p>
+        <div class="divider" style="margin-bottom:14px;"></div>
+        <div class="receipt-type-row" style="gap:8px; margin:0 0 8px;">
+          <div class="rt-card" style="padding:12px;">
+            <div class="rt-icon" style="font-size:22px; margin-bottom:5px;">📷</div>
+            <div class="rt-label">Single receipt</div>
+            <div class="rt-note">Send as a <b>Photo</b></div>
+          </div>
+          <div class="rt-card" style="border-color:var(--accent); padding:12px;">
+            <div class="rt-icon" style="font-size:22px; margin-bottom:5px;">📄</div>
+            <div class="rt-label">Multi-page doc</div>
+            <div class="rt-note">Send as a <b>PDF file</b></div>
+          </div>
+        </div>
+        <div class="os-row" style="gap:8px; margin:0 0 8px;">
+          <div class="os-chip" style="padding:9px 12px; font-size:12px;">
+            <div class="os-name">🍎 iOS</div>
+            Files → select pages → Share → <b>Create PDF</b>
+          </div>
+          <div class="os-chip" style="padding:9px 12px; font-size:12px;">
+            <div class="os-name">🤖 Android</div>
+            Google Drive → <b>+</b> → Scan → Save as PDF
+          </div>
+        </div>
+        <div class="code-block" style="margin:0; font-size:13px;">
+          <div><span class="prompt">Bot: </span><span class="cmd">Found: Marriott — 520.00 AED. Add this?</span></div>
+          <div style="margin-top:2px; padding-left:32px"><span class="comment">Reply yes to confirm, no to cancel</span></div>
+          <div style="margin-top:6px"><span class="prompt">You: </span><span class="resp">yes</span></div>
+          <div style="margin-top:4px"><span class="prompt">Bot: </span><span class="resp">✅ Receipt added to pack</span></div>
+        </div>
+      </div>
+
+      <!-- SLIDE 6: Expense types -->
+      <div class="slide">
+        <div class="slide-tag">Auto-detection</div>
+        <h2>Expense categories</h2>
+        <p class="subtitle">The bot reads each document and assigns a category automatically.</p>
+        <div class="divider"></div>
+        <div class="cat-grid">
+          <div class="cat-card">
+            <div class="cat-icon">🚕</div>
+            <div class="cat-name">Transportation</div>
+            <div class="cat-examples">Taxi, Uber, Careem, airline, train, metro, parking</div>
+          </div>
+          <div class="cat-card">
+            <div class="cat-icon">🏨</div>
+            <div class="cat-name">Hotel</div>
+            <div class="cat-examples">Hotel, Airbnb, any accommodation</div>
+          </div>
+          <div class="cat-card">
+            <div class="cat-icon">🍽</div>
+            <div class="cat-name">Business meetings</div>
+            <div class="cat-examples">Restaurant, café, conference, client lunch</div>
+          </div>
+          <div class="cat-card">
+            <div class="cat-icon">📦</div>
+            <div class="cat-name">Other</div>
+            <div class="cat-examples">Everything that doesn't fit the above categories</div>
+          </div>
+        </div>
+        <div class="info-box" style="margin-top:14px">
+          You can always <b>override</b> a category later — see Step 4 (Fix mistakes).
+        </div>
+      </div>
+
+      <!-- SLIDE 7: Step 3 — Review your pack -->
+      <div class="slide">
+        <div class="slide-tag">Step 3</div>
+        <h2>Review your pack</h2>
+        <p class="subtitle">See a full summary of everything you've added so far.</p>
+        <div class="divider"></div>
+        <div class="code-block" style="margin-bottom:12px">
+          <span class="prompt">You: </span><span class="cmd">/showpack</span>
+        </div>
+        <div class="receipt-list">
+          <div class="receipt-header">📂 Zurich May 2026 — 3 items</div>
+          <div class="receipt-item">
+            <span class="receipt-num">1.</span>
+            <span class="receipt-type">Transport</span>
+            <span class="receipt-vendor">Careem</span>
+            <span class="receipt-amount">45.00 AED</span>
+          </div>
+          <div style="padding-left:30px; padding-bottom:6px">
+            <span class="receipt-date">2026-05-12</span>
+            <span class="receipt-desc" style="margin-left:8px">taxi to airport</span>
+          </div>
+          <div class="receipt-item">
+            <span class="receipt-num">2.</span>
+            <span class="receipt-type">Hotel</span>
+            <span class="receipt-vendor">Marriott</span>
+            <span class="receipt-amount">520.00 AED</span>
+          </div>
+          <div style="padding-left:30px; padding-bottom:6px">
+            <span class="receipt-date">2026-05-11</span>
+            <span class="receipt-desc" style="margin-left:8px">1 night</span>
+          </div>
+          <div class="receipt-item">
+            <span class="receipt-num">3.</span>
+            <span class="receipt-type" style="background:rgba(94,222,138,0.15); color:#5EDE8A;">Meetings</span>
+            <span class="receipt-vendor">Zuma</span>
+            <span class="receipt-amount">122.50 AED</span>
+          </div>
+          <div style="padding-left:30px; padding-bottom:4px">
+            <span class="receipt-date">2026-05-12</span>
+            <span class="receipt-desc" style="margin-left:8px">business lunch</span>
+          </div>
+          <div class="receipt-total">
+            <span class="receipt-total-label">Total</span>
+            <span class="receipt-total-amt">687.50 AED</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 8: Step 4 — Fix mistakes -->
+      <div class="slide">
+        <div class="slide-tag">Step 4</div>
+        <h2>Fix mistakes</h2>
+        <p class="subtitle">First run <code style="font-family:var(--mono); color:var(--accent); font-size:13px;">/showpack</code> to see item numbers, then use these commands.</p>
+        <div class="divider"></div>
+        <div class="fix-list">
+          <div class="fix-item">
+            <code>change type for #3 to Hotel</code>
+            <span>Reclassify an item's expense category</span>
+          </div>
+          <div class="fix-item">
+            <code>fix vendor for #1 — Marriott</code>
+            <span>Correct a misread vendor name</span>
+          </div>
+          <div class="fix-item">
+            <code>fix amount for #2 — 150</code>
+            <span>Update a wrong amount</span>
+          </div>
+          <div class="fix-item">
+            <code>fix date for #1 — 2026-05-10</code>
+            <span>Correct a misread date</span>
+          </div>
+          <div class="fix-item" style="border-color:rgba(220,60,60,0.25);">
+            <code style="background:rgba(220,60,60,0.1); color:#e25555;">delete #2</code>
+            <span>Remove an item from the pack</span>
+          </div>
+        </div>
+        <div class="info-box" style="margin-top:14px">
+          ⚠️ The bot <b>always asks for confirmation</b> before applying any change. You must reply <b>yes</b> to proceed.
+        </div>
+      </div>
+
+      <!-- SLIDE 9: Step 5 — Generate report -->
+      <div class="slide">
+        <div class="slide-tag">Step 5</div>
+        <h2>Generate the report</h2>
+        <p class="subtitle">When all receipts are confirmed, produce your PDF expense report.</p>
+        <div class="divider"></div>
+        <div class="gen-row">
+          <div class="gen-card">
+            <div class="gen-icon">👁</div>
+            <div class="gen-cmd">/preview</div>
+            <div class="gen-desc">Get a PDF preview without closing the pack. Review before finalizing.</div>
+          </div>
+          <div class="gen-card" style="border: 2px solid var(--accent);">
+            <div class="gen-icon">✅</div>
+            <div class="gen-cmd">/compile</div>
+            <div class="gen-desc">Generate the <b style="color:var(--white)">final PDF</b> and close the pack. Cannot be undone.</div>
+          </div>
+        </div>
+        <div class="step-list" style="margin-top:14px">
+          <div class="step-item highlight">
+            <div class="step-num" style="font-size:16px; width:auto; height:auto; background:none; border:none; color:var(--navy);">📤</div>
+            <div class="step-content">
+              <strong>The bot sends the PDF directly in chat</strong>
+              <span>The report is also <b>automatically forwarded to accounting</b> — nothing to do on your end.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 10: Tips & reminders -->
+      <div class="slide">
+        <div class="slide-tag">Reference</div>
+        <h2>Tips &amp; reminders</h2>
+        <p class="subtitle">Keep these in mind for smooth expense reporting.</p>
+        <div class="divider"></div>
+        <div class="tips-list">
+          <div class="tip-item">
+            <div class="tip-icon">✅</div>
+            <div>Always <b>confirm or cancel</b> the bot's draft before sending the next receipt.</div>
+          </div>
+          <div class="tip-item">
+            <div class="tip-icon">📄</div>
+            <div>Send <b>multi-page documents as PDF</b>, not photos — better accuracy, cleaner parsing.</div>
+          </div>
+          <div class="tip-item">
+            <div class="tip-icon">📅</div>
+            <div>All dates are shown in <b style="font-family:var(--mono); font-size:13px;">YYYY-MM-DD</b> format.</div>
+          </div>
+          <div class="tip-item">
+            <div class="tip-icon">💬</div>
+            <div>Stuck? Type <code style="font-family:var(--mono); color:var(--accent); background:var(--accent-dim); padding:2px 6px; border-radius:4px;">help</code> in the chat anytime for a command list.</div>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">📞</div>
+          <div class="contact-text">
+            <b>Need access or ran into an issue?</b><br>
+            Contact your administrator — they can register your Telegram ID and troubleshoot problems.
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /slides-track -->
+  </div><!-- /slides-viewport -->
+
+  <!-- Navigation -->
+  <nav class="nav-bar">
+    <button class="nav-btn" id="prevBtn" onclick="navigate(-1)" disabled>
+      ← Back
+    </button>
+    <div class="dot-nav" id="dots"></div>
+    <button class="nav-btn primary" id="nextBtn" onclick="navigate(1)">
+      Next →
+    </button>
+  </nav>
+
+</div><!-- /deck -->
+
+<script>
+  const TOTAL = 10;
+  let cur = 0;
+
+  const track = document.getElementById('track');
+  const progress = document.getElementById('progress');
+  const curEl = document.getElementById('cur');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const dotsEl = document.getElementById('dots');
+
+  // Build dots
+  for (let i = 0; i < TOTAL; i++) {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => goTo(i);
+    dotsEl.appendChild(d);
+  }
+
+  function goTo(idx) {
+    cur = idx;
+    track.style.transform = `translateX(-${cur * 100}%)`;
+    progress.style.width = `${((cur + 1) / TOTAL) * 100}%`;
+    curEl.textContent = cur + 1;
+    prevBtn.disabled = cur === 0;
+    nextBtn.textContent = cur === TOTAL - 1 ? '✓ Done' : 'Next →';
+    nextBtn.disabled = cur === TOTAL - 1;
+    document.querySelectorAll('.dot').forEach((d, i) => {
+      d.classList.toggle('active', i === cur);
+    });
+  }
+
+  function navigate(dir) {
+    const next = cur + dir;
+    if (next >= 0 && next < TOTAL) goTo(next);
+  }
+
+  // Keyboard navigation
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') navigate(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   navigate(-1);
+  });
+
+  // Touch/swipe — listen on document so inner scrollable slides don't swallow events
+  let touchX = 0, touchY = 0;
+  document.addEventListener('touchstart', e => {
+    touchX = e.touches[0].clientX;
+    touchY = e.touches[0].clientY;
+  }, { passive: true });
+  document.addEventListener('touchend', e => {
+    const dx = touchX - e.changedTouches[0].clientX;
+    const dy = touchY - e.changedTouches[0].clientY;
+    // Only navigate on clearly horizontal swipes (not vertical scrolls)
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.5) navigate(dx > 0 ? 1 : -1);
+  }, { passive: true });
+</script>
+
+</body>
+</html>
