@@ -666,7 +666,7 @@
         <div class="brand-sub">Employee Onboarding</div>
       </div>
     </div>
-    <div class="slide-counter">Slide <span id="cur">1</span> / <span id="total">10</span></div>
+    <div class="slide-counter">Slide <span id="cur">1</span> / <span id="total">13</span></div>
   </header>
 
   <!-- Progress -->
@@ -694,7 +694,7 @@
       <div class="slide">
         <div class="slide-tag">Overview</div>
         <h2>How it works</h2>
-        <p class="subtitle">Six steps from start to submitted report.</p>
+        <p class="subtitle">Seven steps from start to approved report.</p>
         <div class="divider"></div>
         <div class="flow-diagram">
           <div class="flow-step">
@@ -718,13 +718,18 @@
           </div>
           <div class="flow-arrow">→</div>
           <div class="flow-step">
-            <div class="icon">✅</div>
-            <div class="label">Compile</div>
+            <div class="icon">📤</div>
+            <div class="label">Submit</div>
           </div>
           <div class="flow-arrow">→</div>
           <div class="flow-step">
-            <div class="icon">📤</div>
-            <div class="label">Done</div>
+            <div class="icon">🔍</div>
+            <div class="label">Review</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="icon">💰</div>
+            <div class="label">Approved</div>
           </div>
         </div>
         <div class="info-box" style="margin-top:16px">
@@ -838,7 +843,41 @@
         </div>
       </div>
 
-      <!-- SLIDE 6: Expense types -->
+      <!-- SLIDE 6: Supporting documents -->
+      <div class="slide">
+        <div class="slide-tag">Bonus</div>
+        <h2>Supporting documents</h2>
+        <p class="subtitle">Proof files with no monetary amount — boarding passes, bookings, invitations.</p>
+        <div class="divider"></div>
+        <div class="receipt-type-row" style="gap:8px; margin:0 0 12px;">
+          <div class="rt-card" style="padding:12px;">
+            <div class="rt-icon" style="font-size:22px; margin-bottom:5px;">✈️</div>
+            <div class="rt-label">Boarding pass</div>
+            <div class="rt-note">photo or PDF</div>
+          </div>
+          <div class="rt-card" style="padding:12px;">
+            <div class="rt-icon" style="font-size:22px; margin-bottom:5px;">🏨</div>
+            <div class="rt-label">Hotel / flight booking</div>
+            <div class="rt-note">confirmation, not the paid invoice</div>
+          </div>
+          <div class="rt-card" style="padding:12px;">
+            <div class="rt-icon" style="font-size:22px; margin-bottom:5px;">🛂</div>
+            <div class="rt-label">Visa stamp / invitation</div>
+            <div class="rt-note">scan or photo</div>
+          </div>
+        </div>
+        <div class="code-block" style="margin:0 0 10px; font-size:13px;">
+          <div><span class="prompt">You: </span><span class="resp">(sends boarding pass photo)</span></div>
+          <div style="margin-top:4px"><span class="prompt">Bot: </span><span class="cmd">Looks like a boarding pass with no amount. Attach as a supporting document?</span></div>
+          <div style="margin-top:6px"><span class="prompt">You: </span><span class="resp">yes</span></div>
+          <div style="margin-top:4px"><span class="prompt">Bot: </span><span class="resp">✅ Supporting document attached</span></div>
+        </div>
+        <div class="info-box">
+          Supporting docs have <b>no amount</b> — they don't affect the total. They appear in their own section of the final PDF as evidence for accounting.
+        </div>
+      </div>
+
+      <!-- SLIDE 7: Expense categories -->
       <div class="slide">
         <div class="slide-tag">Auto-detection</div>
         <h2>Expense categories</h2>
@@ -871,7 +910,7 @@
         </div>
       </div>
 
-      <!-- SLIDE 7: Step 3 — Review your pack -->
+      <!-- SLIDE 8: Step 3 — Review your pack -->
       <div class="slide">
         <div class="slide-tag">Step 3</div>
         <h2>Review your pack</h2>
@@ -919,7 +958,7 @@
         </div>
       </div>
 
-      <!-- SLIDE 8: Step 4 — Fix mistakes -->
+      <!-- SLIDE 9: Step 4 — Fix mistakes -->
       <div class="slide">
         <div class="slide-tag">Step 4</div>
         <h2>Fix mistakes</h2>
@@ -952,7 +991,38 @@
         </div>
       </div>
 
-      <!-- SLIDE 9: Step 5 — Generate report -->
+      <!-- SLIDE 10: Business trip & per-diem -->
+      <div class="slide">
+        <div class="slide-tag">Business trip</div>
+        <h2>Per-diem allowance</h2>
+        <p class="subtitle">For business trips, send your WebHR Travel Request PDF — the bot computes per-diem automatically.</p>
+        <div class="divider"></div>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <strong>Send the Travel Request PDF</strong>
+              <span>The WebHR form with <b>Travel Start Date</b> and <b>Travel End Date</b>.</span>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <strong>The bot extracts dates and computes the allowance</strong>
+              <span>Rate: <b>300 AED</b> for each of the first 2 days · <b>200 AED</b> for each remaining day.</span>
+            </div>
+          </div>
+          <div class="step-item highlight">
+            <div class="step-num" style="font-size:16px; width:auto; height:auto; background:none; border:none; color:var(--navy);">💰</div>
+            <div class="step-content">
+              <strong>Per-diem appears on the cover of the final report</strong>
+              <span>Added to your total — and the original Travel Request is attached as a supporting document for accounting.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 11: Step 5 — Generate report -->
       <div class="slide">
         <div class="slide-tag">Step 5</div>
         <h2>Generate the report</h2>
@@ -967,21 +1037,47 @@
           <div class="gen-card" style="border: 2px solid var(--accent);">
             <div class="gen-icon">✅</div>
             <div class="gen-cmd">/compile</div>
-            <div class="gen-desc">Generate the <b style="color:var(--white)">final PDF</b> and close the pack. Cannot be undone.</div>
+            <div class="gen-desc">Generate the <b style="color:var(--white)">final PDF</b> and submit it for accountant review.</div>
           </div>
         </div>
         <div class="step-list" style="margin-top:14px">
           <div class="step-item highlight">
             <div class="step-num" style="font-size:16px; width:auto; height:auto; background:none; border:none; color:var(--navy);">📤</div>
             <div class="step-content">
-              <strong>The bot sends the PDF directly in chat</strong>
-              <span>The report is also <b>automatically forwarded to accounting</b> — nothing to do on your end.</span>
+              <strong>You get the PDF in chat</strong>
+              <span>The report is <b>submitted for accountant review</b> — see the next slide for what happens then.</span>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- SLIDE 10: Tips & reminders -->
+      <!-- SLIDE 12: Accountant review -->
+      <div class="slide">
+        <div class="slide-tag">After submit</div>
+        <h2>Accountant review</h2>
+        <p class="subtitle">What happens after the report is submitted.</p>
+        <div class="divider"></div>
+        <div class="receipt-type-row" style="gap:8px; margin:0 0 14px;">
+          <div class="rt-card" style="border-color:var(--accent); padding:12px;">
+            <div class="rt-icon" style="font-size:22px; margin-bottom:5px;">✅</div>
+            <div class="rt-label">Approved</div>
+            <div class="rt-note">You receive the <b>approved AED amount</b> in chat.</div>
+          </div>
+          <div class="rt-card" style="padding:12px;">
+            <div class="rt-icon" style="font-size:22px; margin-bottom:5px;">↩️</div>
+            <div class="rt-label">Returned</div>
+            <div class="rt-note">Pack reopens with a note — fix what was asked, submit again.</div>
+          </div>
+        </div>
+        <div class="code-block" style="margin:0 0 10px; font-size:13px;">
+          <div><span class="prompt">Bot: </span><span class="resp">✅ Your report #42 is approved. Amount approved for reimbursement: 1,240.00 AED.</span></div>
+        </div>
+        <div class="info-box">
+          Type <code style="font-family:var(--mono); color:var(--accent); background:var(--accent-dim); padding:2px 6px; border-radius:4px;">/myreports</code> to see the status of your reports from the last 12 months.
+        </div>
+      </div>
+
+      <!-- SLIDE 13: Tips & reminders -->
       <div class="slide">
         <div class="slide-tag">Reference</div>
         <h2>Tips &amp; reminders</h2>
@@ -1031,7 +1127,7 @@
 </div><!-- /deck -->
 
 <script>
-  const TOTAL = 10;
+  const TOTAL = 13;
   let cur = 0;
 
   const track = document.getElementById('track');
