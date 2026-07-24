@@ -666,7 +666,7 @@
         <div class="brand-sub">Employee Onboarding</div>
       </div>
     </div>
-    <div class="slide-counter">Slide <span id="cur">1</span> / <span id="total">13</span></div>
+    <div class="slide-counter">Slide <span id="cur">1</span> / <span id="total">14</span></div>
   </header>
 
   <!-- Progress -->
@@ -1116,6 +1116,25 @@
         </div>
       </div>
 
+      <!-- SLIDE 14: For accountants -->
+      <div class="slide">
+        <div class="slide-tag">For accountants</div>
+        <h2>Reviewing reports</h2>
+        <p class="subtitle">If you're an accountant, each submitted report arrives here as a PDF. Process it with these commands.</p>
+        <div class="divider"></div>
+        <table class="cmd-table">
+          <tr><td class="cmd-cell">/pending</td><td class="desc-cell">List all reports awaiting review</td></tr>
+          <tr><td class="cmd-cell">/report 54</td><td class="desc-cell">See report #54 — status + PDF</td></tr>
+          <tr><td class="cmd-cell">/approve 54</td><td class="desc-cell">Approve at the <b>full submitted total</b></td></tr>
+          <tr><td class="cmd-cell">/approve 54 1200</td><td class="desc-cell">Approve a <b>custom</b> AED amount (e.g. after cutting items)</td></tr>
+          <tr><td class="cmd-cell">/return 54 …</td><td class="desc-cell">Send back for fixes with a note</td></tr>
+          <tr><td class="cmd-cell">/reply 54 …</td><td class="desc-cell">Message the employee</td></tr>
+        </table>
+        <div class="info-box" style="margin-top:14px">
+          💡 The number is the report id from <code style="font-family:var(--mono); color:var(--accent);">/pending</code>. <code style="font-family:var(--mono); color:var(--accent);">#54</code>, <code style="font-family:var(--mono); color:var(--accent);">54</code> or <code style="font-family:var(--mono); color:var(--accent);">report 54</code> all work. The employee is notified automatically on approve/return. Type <code style="font-family:var(--mono); color:var(--accent);">/review</code> in the bot for this list anytime.
+        </div>
+      </div>
+
     </div><!-- /slides-track -->
   </div><!-- /slides-viewport -->
 
@@ -1133,7 +1152,7 @@
 </div><!-- /deck -->
 
 <script>
-  const TOTAL = 13;
+  const TOTAL = 14;
   let cur = 0;
 
   const track = document.getElementById('track');
