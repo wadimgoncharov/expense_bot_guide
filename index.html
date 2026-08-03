@@ -837,6 +837,9 @@
           <div style="margin-top:6px"><span class="prompt">You: </span><span class="resp">yes</span></div>
           <div style="margin-top:4px"><span class="prompt">Bot: </span><span class="resp">✅ Receipt added to pack</span></div>
         </div>
+        <div class="info-box" style="margin-top:12px">
+          🧾 <b>Attach the real document, not just the payment slip.</b> For a hotel send the <b>invoice/folio</b> (guest + check-in/out dates); for a flight send the <b>ticket or boarding pass</b> (route + date). A bank/card payment confirmation alone doesn't show who stayed or flew when — the bot flags it before you submit.
+        </div>
       </div>
 
       <!-- SLIDE 6: Supporting documents -->
@@ -1055,6 +1058,9 @@
             </div>
           </div>
         </div>
+        <div class="info-box" style="margin-top:14px">
+          ✅ <b>Completeness check.</b> On <code style="font-family:var(--mono); color:var(--accent);">/compile</code> the bot flags any line backed only by a payment slip (missing hotel invoice / flight ticket). Add the missing file and <code style="font-family:var(--mono); color:var(--accent);">/compile</code> again — or reply <code style="font-family:var(--mono); color:var(--accent);">submit anyway</code> to send it as-is.
+        </div>
       </div>
 
       <!-- SLIDE 12: Accountant review -->
@@ -1131,6 +1137,9 @@
           <tr><td class="cmd-cell">/reply 54 …</td><td class="desc-cell">Message the employee</td></tr>
         </table>
         <div class="info-box" style="margin-top:14px">
+          ⚠ <b>Gap flags.</b> <code style="font-family:var(--mono); color:var(--accent);">/pending</code> and <code style="font-family:var(--mono); color:var(--accent);">/report</code> mark lines backed only by a payment slip (e.g. a hotel charge with no invoice, a flight with no ticket) — so you can ask for the missing document before approving.
+        </div>
+        <div class="info-box" style="margin-top:10px">
           💡 The number is the report id from <code style="font-family:var(--mono); color:var(--accent);">/pending</code>. <code style="font-family:var(--mono); color:var(--accent);">#54</code>, <code style="font-family:var(--mono); color:var(--accent);">54</code> or <code style="font-family:var(--mono); color:var(--accent);">report 54</code> all work. The employee is notified automatically on approve/return. Type <code style="font-family:var(--mono); color:var(--accent);">/review</code> in the bot for this list anytime.
         </div>
       </div>
