@@ -704,7 +704,7 @@
           <div class="flow-arrow">→</div>
           <div class="flow-step">
             <div class="icon">📂</div>
-            <div class="label">Open pack</div>
+            <div class="label">New pack</div>
           </div>
           <div class="flow-arrow">→</div>
           <div class="flow-step">
@@ -719,7 +719,7 @@
           <div class="flow-arrow">→</div>
           <div class="flow-step">
             <div class="icon">📤</div>
-            <div class="label">Submit</div>
+            <div class="label">Becomes report</div>
           </div>
           <div class="flow-arrow">→</div>
           <div class="flow-step">
@@ -778,12 +778,12 @@
         <p class="subtitle" style="margin-bottom:14px;">A "pack" = one expense report for one trip or period.</p>
         <div class="divider" style="margin-bottom:14px;"></div>
         <div class="info-box" style="margin:0 0 10px;">
-          <b>What is a pack?</b> Each pack groups all receipts for a single trip or period. One pack open at a time.
+          <b>Pack → Report.</b> A <b>pack</b> is what you're putting together — receipts, documents, per-diem. When you submit it, the pack becomes a <b>report</b> and accounting takes over: they approve an amount or send it back. One pack open at a time.
         </div>
         <p style="font-size:13px; color:var(--text-light); margin:10px 0 5px;">Type in the Telegram chat:</p>
         <div class="code-block" style="margin:0 0 10px;">
-          <div><span class="prompt">You: </span><span class="cmd">open pack Zurich May 2026</span></div>
-          <div style="margin-top:6px"><span class="prompt">Bot: </span><span class="resp">✅ Pack "Zurich May 2026" opened</span></div>
+          <div><span class="prompt">You: </span><span class="cmd">/newpack Zurich May 2026</span></div>
+          <div style="margin-top:6px"><span class="prompt">Bot: </span><span class="resp">✅ Pack #68 «Zurich May 2026» opened</span></div>
         </div>
         <div class="step-list" style="margin-top:0; gap:8px;">
           <div class="step-item" style="padding:10px 14px;">
@@ -797,7 +797,7 @@
             <div class="step-num" style="font-size:16px; width:auto; height:auto; background:none; border:none; color:var(--navy);">🔒</div>
             <div class="step-content">
               <strong>One active pack at a time</strong>
-              <span>Stays open until you run <code style="font-family:var(--mono); color:var(--accent);">/compile</code>.</span>
+              <span>Stays open until <code style="font-family:var(--mono); color:var(--accent);">/compile</code> — that's when it becomes a report.</span>
             </div>
           </div>
         </div>
@@ -833,9 +833,9 @@
         </div>
         <div class="code-block" style="margin:0; font-size:13px;">
           <div><span class="prompt">Bot: </span><span class="cmd">Found: Marriott — 520.00 AED. Add this?</span></div>
-          <div style="margin-top:2px; padding-left:32px"><span class="comment">Reply yes to confirm, no to cancel</span></div>
-          <div style="margin-top:6px"><span class="prompt">You: </span><span class="resp">yes</span></div>
-          <div style="margin-top:4px"><span class="prompt">Bot: </span><span class="resp">✅ Receipt added to pack</span></div>
+          <div style="margin-top:2px; padding-left:32px"><span class="comment">Tap ✅ Add · ✏️ Change · 🚫 Cancel</span></div>
+          <div style="margin-top:6px"><span class="prompt">You: </span><span class="resp">(taps ✅ Add)</span></div>
+          <div style="margin-top:4px"><span class="prompt">Bot: </span><span class="resp">✅ Added to the pack</span></div>
         </div>
         <div class="info-box" style="margin-top:12px">
           🧾 <b>Attach the real document, not just the payment slip.</b> For a hotel send the <b>invoice/folio</b> (guest + check-in/out dates); for a flight send the <b>ticket or boarding pass</b> (route + date). A bank/card payment confirmation alone doesn't show who stayed or flew when — the bot flags it before you submit.
@@ -964,7 +964,7 @@
       <div class="slide">
         <div class="slide-tag">Step 4</div>
         <h2>Fix mistakes</h2>
-        <p class="subtitle">First run <code style="font-family:var(--mono); color:var(--accent); font-size:13px;">/showpack</code> to see item numbers, then use these commands.</p>
+        <p class="subtitle">Easiest way: tap <b>✏️ Change</b> on the draft before adding. Already added? Run <code style="font-family:var(--mono); color:var(--accent); font-size:13px;">/showpack</code> for item numbers, then:</p>
         <div class="divider"></div>
         <div class="fix-list">
           <div class="fix-item">
@@ -1041,12 +1041,12 @@
           <div class="gen-card">
             <div class="gen-icon">👁</div>
             <div class="gen-cmd">/preview</div>
-            <div class="gen-desc">Get a PDF preview without closing the pack. Review before finalizing.</div>
+            <div class="gen-desc">See the <b style="color:var(--white)">PDF</b> without submitting. The pack stays yours.</div>
           </div>
           <div class="gen-card" style="border: 2px solid var(--accent);">
             <div class="gen-icon">✅</div>
             <div class="gen-cmd">/compile</div>
-            <div class="gen-desc">Generate the <b style="color:var(--white)">final PDF</b> and submit it for accountant review.</div>
+            <div class="gen-desc">Submit it — the pack <b style="color:var(--white)">becomes a report</b> and goes to accounting.</div>
           </div>
         </div>
         <div class="step-list" style="margin-top:14px">
