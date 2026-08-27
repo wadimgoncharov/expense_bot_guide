@@ -330,6 +330,43 @@
     line-height: 1.5;
     margin: 10px 0;
   }
+
+  /* ── Telegram inline buttons ──
+     The bot is driven by taps now, so the guide has to show the buttons
+     themselves rather than describe them in prose. */
+  .tg-keys {
+    display: flex; flex-direction: column; gap: 5px;
+    margin: 8px 0 10px;
+  }
+  .tg-row { display: flex; gap: 5px; }
+  .tg-btn {
+    flex: 1;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-size: 12.5px;
+    color: var(--navy);
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .tg-btn.primary {
+    border-color: var(--accent);
+    background: var(--accent-dim);
+    font-weight: 500;
+  }
+  .tg-btn.danger { color: #C0424A; border-color: rgba(192,66,74,0.3); }
+  .tg-say {
+    font-size: 13px; color: var(--navy); line-height: 1.5;
+    background: var(--off-white);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 9px 12px;
+    margin: 8px 0 0;
+  }
+  .tg-say b { color: var(--navy); }
   .info-box b { color: var(--accent); font-weight: 600; }
 
   /* ── Category grid ── */
@@ -780,26 +817,22 @@
         <div class="info-box" style="margin:0 0 10px;">
           <b>Pack → Report.</b> A <b>pack</b> is what you're putting together — receipts, documents, per-diem. When you submit it, the pack becomes a <b>report</b> and accounting takes over: they approve an amount or send it back. One pack open at a time.
         </div>
-        <p style="font-size:13px; color:var(--text-light); margin:10px 0 5px;">Type in the Telegram chat:</p>
-        <div class="code-block" style="margin:0 0 10px;">
+        <div class="code-block" style="margin:0 0 8px;">
           <div><span class="prompt">You: </span><span class="cmd">/newpack Zurich May 2026</span></div>
           <div style="margin-top:6px"><span class="prompt">Bot: </span><span class="resp">✅ Pack #68 «Zurich May 2026» opened</span></div>
         </div>
-        <div class="step-list" style="margin-top:0; gap:8px;">
-          <div class="step-item" style="padding:10px 14px;">
-            <div class="step-num" style="font-size:16px; width:auto; height:auto; background:none; border:none; color:var(--navy);">📌</div>
-            <div class="step-content">
-              <strong>Naming tip</strong>
-              <span>City + month, project name, or any label that identifies the period.</span>
-            </div>
+        <p style="font-size:12.5px; color:var(--text-light); margin:0 0 4px;">Every screen from here on carries the same buttons:</p>
+        <div class="tg-keys">
+          <div class="tg-row"><div class="tg-btn">📚 Multi-page document</div></div>
+          <div class="tg-row">
+            <div class="tg-btn">👁 Preview PDF</div>
+            <div class="tg-btn">📋 Items so far</div>
           </div>
-          <div class="step-item" style="padding:10px 14px;">
-            <div class="step-num" style="font-size:16px; width:auto; height:auto; background:none; border:none; color:var(--navy);">🔒</div>
-            <div class="step-content">
-              <strong>One active pack at a time</strong>
-              <span>Stays open until <code style="font-family:var(--mono); color:var(--accent);">/compile</code> — that's when it becomes a report.</span>
-            </div>
-          </div>
+          <div class="tg-row"><div class="tg-btn primary">📤 Submit for review</div></div>
+          <div class="tg-row"><div class="tg-btn danger">🗑 Delete pack</div></div>
+        </div>
+        <div class="info-box" style="margin:0;">
+          <b>One pack open at a time.</b> Ask for a new one while another is open and the bot names the one in the way, offering to carry on with it — or to submit it and start fresh. Name it after a city and month, a project, anything that identifies the period.
         </div>
       </div>
 
@@ -809,36 +842,69 @@
         <h2>Add receipts</h2>
         <p class="subtitle" style="margin-bottom:14px;">Send documents in the chat. The bot reads them automatically.</p>
         <div class="divider" style="margin-bottom:14px;"></div>
-        <div class="receipt-type-row" style="gap:8px; margin:0 0 8px;">
-          <div class="rt-card" style="padding:12px;">
-            <div class="rt-icon" style="font-size:22px; margin-bottom:5px;">📷</div>
-            <div class="rt-label">Single receipt</div>
-            <div class="rt-note">Send as a <b>Photo</b></div>
-          </div>
-          <div class="rt-card" style="border-color:var(--accent); padding:12px;">
-            <div class="rt-icon" style="font-size:22px; margin-bottom:5px;">📄</div>
-            <div class="rt-label">Multi-page doc</div>
-            <div class="rt-note">Send as a <b>PDF file</b></div>
-          </div>
-        </div>
-        <div class="os-row" style="gap:8px; margin:0 0 8px;">
-          <div class="os-chip" style="padding:9px 12px; font-size:12px;">
-            <div class="os-name">🍎 iOS</div>
-            Files → select pages → Share → <b>Create PDF</b>
-          </div>
-          <div class="os-chip" style="padding:9px 12px; font-size:12px;">
-            <div class="os-name">🤖 Android</div>
-            Google Drive → <b>+</b> → Scan → Save as PDF
-          </div>
-        </div>
-        <div class="code-block" style="margin:0; font-size:13px;">
+        <div class="code-block" style="margin:0 0 6px; font-size:13px;">
           <div><span class="prompt">You: </span><span class="resp">(sends a photo of the receipt)</span></div>
-          <div style="margin-top:2px; padding-left:32px"><span class="comment">No confirmation needed — just keep sending photos</span></div>
-          <div style="margin-top:4px"><span class="prompt">Bot: </span><span class="resp">✅ Added — Marriott, 520.00 AED, Hotel, 2026-05-11</span></div>
-          <div style="margin-top:2px; padding-left:32px"><span class="comment">Wrong? ✏️ Fix any field · 🗑 Remove</span></div>
+          <div style="margin-top:4px"><span class="prompt">Bot: </span><span class="resp">✅ Added:</span></div>
+          <div style="padding-left:32px"><span class="resp">Vendor: Marriott Hotel Dubai</span></div>
+          <div style="padding-left:32px"><span class="resp">Amount: 520.00 AED</span></div>
+          <div style="padding-left:32px"><span class="resp">Type:&nbsp;&nbsp; Hotel</span></div>
+          <div style="padding-left:32px"><span class="resp">Date:&nbsp;&nbsp; 2026-05-11</span></div>
         </div>
-        <div class="info-box" style="margin-top:12px">
-          📚 <b>A document with several pages?</b> Tap <b>Multi-page document</b>, send the pages one by one, then <b>Document complete</b> — they become one receipt and the bot reads the final total across all of them. Already a PDF? Just send it.<br><br>🧾 <b>Attach the real document, not just the payment slip.</b> For a hotel send the <b>invoice/folio</b> (guest + check-in/out dates); for a flight send the <b>ticket or boarding pass</b> (route + date). A bank slip alone doesn't show who stayed or flew when — the bot flags it before you submit.
+        <div class="tg-keys" style="margin-top:4px;">
+          <div class="tg-row">
+            <div class="tg-btn">✏️ Fix</div>
+            <div class="tg-btn danger">🗑 Remove</div>
+          </div>
+        </div>
+        <p class="tg-say" style="margin:0 0 8px;">
+          <b>No confirmation needed.</b> A single photo is read and saved straight away, and you see every field it recognised — so a wrong one is obvious immediately. Keep sending photos; each becomes its own line.
+        </p>
+        <div class="info-box" style="margin:0;">
+          🧾 <b>Send the real document, not just the payment slip.</b> For a hotel that's the <b>invoice or folio</b> (guest name, check-in and check-out); for a flight the <b>ticket or boarding pass</b> (route and date). A bank confirmation proves money moved but not who stayed or flew when — the bot points this out before you submit, and you can still send it as it is.
+        </div>
+      </div>
+
+      <!-- SLIDE: Documents with several pages -->
+      <div class="slide">
+        <div class="slide-tag">Step 2 · continued</div>
+        <h2>Several pages, one document</h2>
+        <p class="subtitle" style="margin-bottom:12px;">A hotel folio or a garage invoice often runs over pages — and the total is on the last one.</p>
+        <div class="divider" style="margin-bottom:12px;"></div>
+        <p style="font-size:12.5px; color:var(--text-light); margin:0 0 6px;">Three ways in. Whichever you use, the pages become <b>one</b> receipt:</p>
+        <div class="step-list" style="margin-top:0; gap:7px;">
+          <div class="step-item" style="padding:9px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">📚</div>
+            <div class="step-content">
+              <strong>Tap “Multi-page document”</strong>
+              <span>Then send the pages one by one and tap <b>✅ Document complete</b>.</span>
+            </div>
+          </div>
+          <div class="step-item" style="padding:9px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">🤖</div>
+            <div class="step-content">
+              <strong>Let the bot notice</strong>
+              <span>Send page 1 and it says “this looks like page 1 of 3”, then offers the choice.</span>
+            </div>
+          </div>
+          <div class="step-item" style="padding:9px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">📷</div>
+            <div class="step-content">
+              <strong>Just send the next page</strong>
+              <span>Answering that question with a photo works too — the pages join up by themselves.</span>
+            </div>
+          </div>
+        </div>
+        <p style="font-size:12.5px; color:var(--text-light); margin:10px 0 4px;">When it's read, check the total before it's stored:</p>
+        <div class="tg-keys" style="margin:0;">
+          <div class="tg-row">
+            <div class="tg-btn primary">✅ Confirm</div>
+            <div class="tg-btn">✏️ Change</div>
+            <div class="tg-btn danger">🚫 Cancel</div>
+          </div>
+          <div class="tg-row"><div class="tg-btn">➕ Add another page</div></div>
+        </div>
+        <div class="info-box" style="margin:8px 0 0;">
+          This is the one place the bot asks before saving: the total is assembled across pages, so it shows what it read — including the page count — and waits. Remembered a page you missed? <b>Add another page</b> keeps everything already photographed. Already have a PDF? Just send the file.
         </div>
       </div>
 
@@ -865,14 +931,21 @@
             <div class="rt-note">scan or photo</div>
           </div>
         </div>
-        <div class="code-block" style="margin:0 0 10px; font-size:13px;">
+        <div class="code-block" style="margin:0 0 6px; font-size:13px;">
           <div><span class="prompt">You: </span><span class="resp">(sends boarding pass photo)</span></div>
-          <div style="margin-top:4px"><span class="prompt">Bot: </span><span class="cmd">Looks like a boarding pass with no amount. Attach as a supporting document?</span></div>
-          <div style="margin-top:6px"><span class="prompt">You: </span><span class="resp">yes</span></div>
-          <div style="margin-top:4px"><span class="prompt">Bot: </span><span class="resp">✅ Supporting document attached</span></div>
+          <div style="margin-top:4px"><span class="prompt">Bot: </span><span class="resp">📎 Supporting document — proof only, no amount claimed:</span></div>
+          <div style="padding-left:32px"><span class="resp">What: Emirates boarding pass DXB → ZRH</span></div>
+          <div style="padding-left:32px"><span class="resp">Date: 2026-05-11</span></div>
         </div>
-        <div class="info-box">
-          Supporting docs have <b>no amount</b> — they don't affect the total. They appear in their own section of the final PDF as evidence for accounting.
+        <div class="tg-keys" style="margin-top:4px;">
+          <div class="tg-row">
+            <div class="tg-btn primary">✅ Confirm</div>
+            <div class="tg-btn">✏️ Change</div>
+            <div class="tg-btn danger">🚫 Cancel</div>
+          </div>
+        </div>
+        <div class="info-box" style="margin:8px 0 0;">
+          Supporting documents carry <b>no amount</b>, so they never move the total. They get their own section in the final PDF as evidence for accounting.
         </div>
       </div>
 
@@ -958,6 +1031,9 @@
             <span class="receipt-total-amt">687.50 AED</span>
           </div>
         </div>
+        <p class="tg-say" style="margin-top:10px;">
+          📸 <b>Send the next receipt to add it to this same pack.</b> The same buttons sit under every screen — preview it, send it off, or throw the pack away — so you're never left wondering what to do next.
+        </p>
       </div>
 
       <!-- SLIDE 9: Step 4 — Fix mistakes -->
@@ -1161,7 +1237,10 @@
 </div><!-- /deck -->
 
 <script>
-  const TOTAL = 14;
+  // Counted from the deck itself — a hardcoded number goes stale the moment
+  // a slide is added, and the last one becomes unreachable.
+  const TOTAL = document.querySelectorAll('.slide').length;
+  document.getElementById('total').textContent = TOTAL;
   let cur = 0;
 
   const track = document.getElementById('track');
