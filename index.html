@@ -1034,6 +1034,9 @@
         <div class="info-box" style="margin-top:12px;">
           🗂 <b>Left a pack half-finished?</b> <code style="font-family:var(--mono); color:var(--accent);">/myreports</code> lists it under <b>Unfinished</b> with a <b>📂 Continue</b> button. Tapping it puts you back in that pack with its receipts; whatever you were on is set aside and can be picked up the same way. Only one pack is open at a time, but nothing is ever lost.
         </div>
+        <div class="info-box" style="margin-top:12px;">
+          💬 <b>Say something about the report — and for whom it is.</b> Two buttons sit on the pack screen. <b>💬 Comment</b> takes anything the accountant should read before the numbers (up to 1000 characters); it is printed at the top of the report, above the summary. <b>🧑 On behalf</b> takes a name when the expense is not your own (up to 120 characters); it appears under <b>Employee</b> on the report, in the accountant's notification and in the approval email. Tap, type, done — a <b>✓</b> on the button shows it is filled. Change either one while the pack is still open, or send a single <code style="font-family:var(--mono); color:var(--accent);">-</code> to clear it. Changed your mind after tapping? Just send the receipt — the photo or document goes into the pack as usual, the bot stops waiting for text and says so, and the button is still there when you want to come back to it. The same goes for <b>✏️ Rename pack</b>.
+        </div>
         <p class="tg-say" style="margin-top:10px;">
           📸 <b>Send the next receipt — photo or document — to add it to this pack.</b> The same buttons sit under every screen — preview it, send it off, or throw the pack away — so you're never left wondering what to do next.
         </p>
@@ -1072,6 +1075,7 @@
         </p>
         <div class="info-box" style="margin:0;">
           ⌨️ <b>Typing still works</b> if you prefer it — <code style="font-family:var(--mono); color:var(--accent);">fix amount for #2 — 150</code>, <code style="font-family:var(--mono); color:var(--accent);">change type for #3 to Hotel</code>, <code style="font-family:var(--mono); color:var(--accent);">delete #2</code>.<br><br>
+          📸 <b>Changed your mind mid-correction?</b> Tapped <b>Amount</b> and then sent the next receipt instead of typing a number? The photo or PDF is read as a new receipt, the bot stops waiting, tells you that <b>nothing on the old one changed</b>, and leaves the field one tap away. Whatever you type after that is read as a normal message — not filed into the receipt.<br><br>
           🔗 One case still needs words: if <b>/preview</b> says <i>“Scan not saved”</i>, re-send the photo or PDF and say <code style="font-family:var(--mono); color:var(--accent);">attach it to receipt #3</code>.
         </div>
       </div>
@@ -1139,6 +1143,9 @@
         </div>
         <div class="info-box" style="margin-top:14px">
           ✅ <b>Completeness check.</b> On <code style="font-family:var(--mono); color:var(--accent);">/compile</code> the bot flags any line backed only by a payment slip (missing hotel invoice / flight ticket). Add the missing file and <code style="font-family:var(--mono); color:var(--accent);">/compile</code> again — or reply <code style="font-family:var(--mono); color:var(--accent);">submit anyway</code> to send it as-is.
+        </div>
+        <div class="info-box" style="margin-top:14px">
+          🗂 <b>Subtotals by category.</b> Under the summary table the cover page lists what the money went on — <b>Transportation</b>, <b>Hotel</b>, <b>Business meetings</b>, <b>Other</b> — with the number of receipts on each line. It adds up to the <b>receipts subtotal</b>; per-diem is not a receipt and stays on its own line above.
         </div>
       </div>
 
@@ -1217,6 +1224,9 @@
         </table>
         <div class="info-box" style="margin-top:14px">
           ⚠ <b>Gap flags.</b> <code style="font-family:var(--mono); color:var(--accent);">/pending</code> and <code style="font-family:var(--mono); color:var(--accent);">/report</code> mark lines backed only by a payment slip (e.g. a hotel charge with no invoice, a flight with no ticket) — so you can ask for the missing document before approving.
+        </div>
+        <div class="info-box" style="margin-top:10px">
+          🔘 <b>Buttons, not only commands.</b> Every report arrives with <b>✅ Approve</b>, <b>✏️ Other amount</b> and <b>↩️ Return</b> under it. The last two wait for you to type — an amount, or the note the employee receives. Send a photo or a PDF instead (your own receipt, say) and the bot stops waiting and tells you what did <b>not</b> happen: the report was not returned, nothing was sent to the employee, the approved amount is unchanged. Whatever you type next is read normally, and the buttons are still there.
         </div>
         <div class="info-box" style="margin-top:10px">
           💡 The number is the report id from <code style="font-family:var(--mono); color:var(--accent);">/pending</code>. <code style="font-family:var(--mono); color:var(--accent);">#54</code>, <code style="font-family:var(--mono); color:var(--accent);">54</code> or <code style="font-family:var(--mono); color:var(--accent);">report 54</code> all work. The employee is notified automatically on approve/return. Type <code style="font-family:var(--mono); color:var(--accent);">/review</code> in the bot for this list anytime.
