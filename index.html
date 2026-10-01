@@ -945,7 +945,7 @@
           </div>
         </div>
         <div class="info-box" style="margin:8px 0 0;">
-          Supporting documents carry <b>no amount</b>, so they never move the total. They get their own section in the final PDF as evidence for accounting.
+          Supporting documents carry <b>no amount</b>, so they never move the total. One sent for the whole report — the Travel Request, general paperwork — gets its own section at the end of the PDF. One sent <b>for a particular line</b> is printed right under that line instead, marked <b>payment confirmation</b>, so the document and the slip that paid for it are read together.
         </div>
       </div>
 
@@ -1076,7 +1076,9 @@
         <div class="info-box" style="margin:0;">
           ⌨️ <b>Typing still works</b> if you prefer it — <code style="font-family:var(--mono); color:var(--accent);">fix amount for #2 — 150</code>, <code style="font-family:var(--mono); color:var(--accent);">change type for #3 to Hotel</code>, <code style="font-family:var(--mono); color:var(--accent);">delete #2</code>.<br><br>
           📸 <b>Changed your mind mid-correction?</b> Tapped <b>Amount</b> and then sent the next receipt instead of typing a number? The photo or PDF is read as a new receipt, the bot stops waiting, tells you that <b>nothing on the old one changed</b>, and leaves the field one tap away. Whatever you type after that is read as a normal message — not filed into the receipt.<br><br>
-          🔗 One case still needs words: if <b>/preview</b> says <i>“Scan not saved”</i>, re-send the photo or PDF and say <code style="font-family:var(--mono); color:var(--accent);">attach it to receipt #3</code>.
+          🔗 One case still needs words: if <b>/preview</b> says <i>“Scan not saved”</i>, re-send the photo or PDF and say <code style="font-family:var(--mono); color:var(--accent);">attach it to receipt #3</code>.<br><br>
+          📎 <b>Two documents for one line?</b> A payment slip and the ticket it paid for, for instance — send the second one the same way. The first scan is <b>never replaced</b>: the line keeps it, and the new file is printed in the report <b>directly under that line</b>, marked <b>payment confirmation</b> — no leafing to the end of the report and back. If a line was backed only by a payment slip, that also answers the missing-document warning on it.<br><br>
+          🔎 <b>Two different warnings, two different answers.</b> <i>“Scan not saved”</i> means that line never got its document — send it and the line is complete. <i>“Scan … cannot be found”</i> means the line's record points at a file that is no longer there: send the document and it is printed under that line as a further document, but the line keeps its record, so that warning stays until an admin repairs the line. Either way nothing you send is lost.
         </div>
       </div>
 
@@ -1142,7 +1144,10 @@
           </div>
         </div>
         <div class="info-box" style="margin-top:14px">
-          ✅ <b>Completeness check.</b> On <code style="font-family:var(--mono); color:var(--accent);">/compile</code> the bot flags any line backed only by a payment slip (missing hotel invoice / flight ticket). Add the missing file and <code style="font-family:var(--mono); color:var(--accent);">/compile</code> again — or reply <code style="font-family:var(--mono); color:var(--accent);">submit anyway</code> to send it as-is.
+          ✅ <b>Completeness check.</b> On <code style="font-family:var(--mono); color:var(--accent);">/compile</code> the bot flags any line backed only by a payment slip (missing hotel invoice / flight ticket). Send the missing file and say which line it is for — the warning on that line goes out, and the slip you already sent stays in the report. Then <code style="font-family:var(--mono); color:var(--accent);">/compile</code> again — or reply <code style="font-family:var(--mono); color:var(--accent);">submit anyway</code> to send it as-is.
+        </div>
+        <div class="info-box" style="margin-top:14px">
+          🧾 <b>Every file counted.</b> <code style="font-family:var(--mono); color:var(--accent);">/compile</code> also compares what you sent to this pack with what is actually in the report — “<i>29 files were sent to this pack, 18 are in the report</i>” — and names the ones that are not. Nothing is deleted; a file left over from a line you removed is not counted as missing.
         </div>
         <div class="info-box" style="margin-top:14px">
           🗂 <b>Subtotals by category.</b> Under the summary table the cover page lists what the money went on — <b>Transportation</b>, <b>Hotel</b>, <b>Business meetings</b>, <b>Other</b> — with the number of receipts on each line. It adds up to the <b>receipts subtotal</b>; per-diem is not a receipt and stays on its own line above.
@@ -1172,6 +1177,12 @@
         </div>
         <div class="info-box">
           Type <code style="font-family:var(--mono); color:var(--accent); background:var(--accent-dim); padding:2px 6px; border-radius:4px;">/myreports</code> to see the status of your reports from the last 12 months.
+        </div>
+        <div class="info-box">
+          ↩️ <b>Found a mistake in a report you already sent?</b> <code style="font-family:var(--mono); color:var(--accent);">/myreports</code> has an <b>↩️ Reopen</b> button next to every submitted and approved report. It asks you to confirm — because it takes the report back out of the accountant's hands — and then the pack is editable again. <b>The accountant is told</b> that you reopened it, with the amount and date they had approved, and nothing reaches them again until you submit it.
+        </div>
+        <div class="info-box">
+          🔒 <b>While a report is with the accountant it stops changing.</b> Amounts, lines, documents, the per-diem, the name — none of them can be edited on a submitted or approved report, by you or by anyone else, because that is the version accounting is working from. The bot says so and points at <b>↩️ Reopen</b>. Reports belong to one person: nobody else can read, rebuild or edit yours.
         </div>
       </div>
 
