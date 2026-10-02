@@ -681,7 +681,10 @@
     .flow-step .label { font-size: 10px; }
     .cat-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
     .nav-bar { padding: 10px 16px; }
-    .nav-btn { padding: 12px 22px; font-size: 14px; }
+    .nav-btn { padding: 12px 22px; font-size: 14px; white-space: nowrap; flex-shrink: 0; }
+    /* 19 dots push "Next" off a 360–390 px screen. The header counter
+       ("Slide 8 / 19") and the progress bar already say where you are. */
+    .dot-nav { display: none; }
     .deck-header { padding: 10px 16px; }
     .gen-row { flex-direction: column; }
     .receipt-type-row { flex-direction: column; }
@@ -703,7 +706,7 @@
         <div class="brand-sub">Employee Onboarding</div>
       </div>
     </div>
-    <div class="slide-counter">Slide <span id="cur">1</span> / <span id="total">14</span></div>
+    <div class="slide-counter">Slide <span id="cur">1</span> / <span id="total">19</span></div>
   </header>
 
   <!-- Progress -->
@@ -819,9 +822,15 @@
         </div>
         <div class="code-block" style="margin:0 0 8px;">
           <div><span class="prompt">You: </span><span class="cmd">/newpack Zurich May 2026</span></div>
-          <div style="margin-top:6px"><span class="prompt">Bot: </span><span class="resp">✅ Pack #68 «Zurich May 2026» opened</span></div>
+          <div style="margin-top:6px"><span class="prompt">Bot: </span><span class="resp">Pack opened.</span></div>
+          <div style="padding-left:32px"><span class="resp">Pack #68: «Zurich May 2026» [open]</span></div>
+          <div style="padding-left:32px"><span class="resp">&nbsp;&nbsp;Created:&nbsp;&nbsp;2026-05-10T09:12</span></div>
+          <div style="padding-left:32px"><span class="resp">&nbsp;&nbsp;Currency: AED</span></div>
+          <div style="padding-left:32px"><span class="resp">Now send photos of receipts or PDF documents — I'll add them to this pack.</span></div>
+          <div style="margin-top:6px"><span class="prompt">Bot: </span><span class="resp">📸 Send your first receipt — photo or document — to add it to this pack.</span></div>
+          <div style="padding-left:32px"><span class="resp">Each photo or file is added separately. Several pages of one document? Use the button «📚 Multi-page document».</span></div>
         </div>
-        <p style="font-size:12.5px; color:var(--text-light); margin:0 0 4px;">Every screen from here on carries the same buttons:</p>
+        <p style="font-size:12.5px; color:var(--text-light); margin:0 0 4px;">Under that second message: <b>📚 Multi-page document</b>, <b>💬 Comment</b> · <b>🧑 On behalf</b>, <b>✏️ Rename pack</b> · <b>🗑 Delete pack</b>. Once receipts are in, the message after each one carries this bar:</p>
         <div class="tg-keys">
           <div class="tg-row"><div class="tg-btn">📚 Multi-page document</div></div>
           <div class="tg-row">
@@ -829,9 +838,14 @@
             <div class="tg-btn">📋 Items so far</div>
           </div>
           <div class="tg-row"><div class="tg-btn primary">📤 Submit for review</div></div>
+          <div class="tg-row">
+            <div class="tg-btn">💬 Comment</div>
+            <div class="tg-btn">🧑 On behalf</div>
+          </div>
           <div class="tg-row"><div class="tg-btn danger">🗑 Delete pack</div></div>
         </div>
         <div class="info-box" style="margin:0;">
+          <code style="font-family:var(--mono); color:var(--accent);">/showpack</code> shows a slightly different set: no <b>📋 Items so far</b> (that is what you are looking at), and <b>✏️ Rename pack</b> next to <b>🗑 Delete pack</b>.<br><br>
           <b>One pack open at a time.</b> Ask for a new one while another is open and the bot names the one in the way, offering to carry on with it — or to submit it and start fresh. Name it after a city and month, a project, anything that identifies the period.
         </div>
       </div>
@@ -862,9 +876,13 @@
         <div class="info-box" style="margin:0;">
           🧾 <b>Send the real document, not just the payment slip.</b> For a hotel that's the <b>invoice or folio</b> (guest name, check-in and check-out); for a flight the <b>ticket or boarding pass</b> (route and date). A bank confirmation proves money moved but not who stayed or flew when — the bot points this out before you submit, and you can still send it as it is.
         </div>
+        <div class="info-box" style="margin:8px 0 0;">
+          ⚠️ <b>If a save ever fails, the bot says so.</b> For a receipt you just sent: <i>“⚠️ That receipt wasn't saved, and nothing half-saved was left behind. Send the photo or PDF again and I'll read it from scratch. If the second try fails the same way, /feedback puts it in front of a person instead of another retry.”</i> Under it are the pack buttons and <b>💬 Leave feedback</b> — the second step is one tap, not a command to remember.<br><br>
+          When you asked the bot to attach a document to a line, or to file a Travel Request, and writing that file fails, the bot answers in its own words — and under that answer, always, comes <i>“Still holding your photo.”</i> with <b>🚫 Discard it</b> (it says “photo” for a PDF too). The file is kept: tell the bot again what it is, or discard it. What you never get is a silent card with the receipt missing from the report.
+        </div>
       </div>
 
-      <!-- SLIDE: Documents with several pages -->
+      <!-- SLIDE 6: Documents with several pages -->
       <div class="slide">
         <div class="slide-tag">Step 2 · continued</div>
         <h2>Several pages, one document</h2>
@@ -883,14 +901,14 @@
             <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">🤖</div>
             <div class="step-content">
               <strong>Let the bot notice</strong>
-              <span>Send page 1 and it says “this looks like page 1 of 3”, then offers the choice.</span>
+              <span>Send page 1; when the bot sees it continues, it says so and asks <i>“How should I treat it?”</i> — <b>📚 Multi-page — I'll send the rest</b>, <b>✅ Just this page</b> or <b>🚫 Discard it</b>.</span>
             </div>
           </div>
           <div class="step-item" style="padding:9px 14px;">
             <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">📷</div>
             <div class="step-content">
               <strong>Just send the next page</strong>
-              <span>Answering that question with a photo works too — the pages join up by themselves.</span>
+              <span>If page 1 was a <b>photo</b>, answering that question with the next photo works too — the pages join up by themselves. A PDF does not join this way: send the whole document as one PDF.</span>
             </div>
           </div>
         </div>
@@ -904,11 +922,11 @@
           <div class="tg-row"><div class="tg-btn">➕ Add another page</div></div>
         </div>
         <div class="info-box" style="margin:8px 0 0;">
-          This is the one place the bot asks before saving: the total is assembled across pages, so it shows what it read — including the page count — and waits. Remembered a page you missed? <b>Add another page</b> keeps everything already photographed. Already have a PDF? Just send the file.
+          This is the one card that waits for <b>✅ Confirm</b> before saving: the total is assembled across pages, so it shows what it read — including the page count — and waits. Remembered a page you missed? <b>Add another page</b> keeps everything already photographed. Already have a PDF? Just send the file.
         </div>
       </div>
 
-      <!-- SLIDE 6: Supporting documents -->
+      <!-- SLIDE 7: Supporting documents -->
       <div class="slide">
         <div class="slide-tag">Bonus</div>
         <h2>Supporting documents</h2>
@@ -933,23 +951,118 @@
         </div>
         <div class="code-block" style="margin:0 0 6px; font-size:13px;">
           <div><span class="prompt">You: </span><span class="resp">(sends boarding pass photo)</span></div>
-          <div style="margin-top:4px"><span class="prompt">Bot: </span><span class="resp">📎 Supporting document — proof only, no amount claimed:</span></div>
+          <div style="margin-top:4px"><span class="prompt">Bot: </span><span class="resp">📎 Filed as supporting evidence — it proves the expense but adds nothing to the total.</span></div>
           <div style="padding-left:32px"><span class="resp">What: Emirates boarding pass DXB → ZRH</span></div>
-          <div style="padding-left:32px"><span class="resp">Date: 2026-05-11</span></div>
         </div>
         <div class="tg-keys" style="margin-top:4px;">
           <div class="tg-row">
-            <div class="tg-btn primary">✅ Confirm</div>
-            <div class="tg-btn">✏️ Change</div>
-            <div class="tg-btn danger">🚫 Cancel</div>
+            <div class="tg-btn danger">🗑 Remove</div>
           </div>
         </div>
+        <p class="tg-say" style="margin:0 0 8px;">
+          Like a receipt, a proof document is <b>filed and shown</b> — you see what went in. Filed the wrong thing? <b>🗑 Remove</b> takes it back out.
+        </p>
         <div class="info-box" style="margin:8px 0 0;">
           Supporting documents carry <b>no amount</b>, so they never move the total. One sent for the whole report — the Travel Request, general paperwork — gets its own section at the end of the PDF. One sent <b>for a particular line</b> is printed right under that line instead, marked <b>payment confirmation</b>, so the document and the slip that paid for it are read together.
         </div>
       </div>
 
-      <!-- SLIDE 7: Expense categories -->
+      <!-- SLIDE 8: A file the bot is holding — the question (O-28) -->
+      <div class="slide">
+        <div class="slide-tag">Step 2 · a file on hold</div>
+        <h2>“Is it the document for this line?”</h2>
+        <p class="subtitle" style="margin-bottom:12px;">Sometimes the bot keeps a file back — a save failed and it kept the copy, or it asked you something about it first. It never quietly pins that file onto a different line.</p>
+        <div class="divider" style="margin-bottom:12px;"></div>
+        <p style="font-size:12.5px; color:var(--text-light); margin:0 0 6px;">Say it is holding a hotel invoice, and you now describe a taxi ride in words. The file was not read for the taxi, so the bot <b>asks</b>:</p>
+        <div class="code-block" style="margin:0 0 6px; font-size:13px;">
+          <div><span class="prompt">Bot: </span><span class="resp">📎 I'm still holding the PDF I read as Motel One Zurich · 1136.00 CHF.</span></div>
+          <div style="padding-left:32px; margin-top:4px;"><span class="resp">Is it the document for Careem · 50.00 AED?</span></div>
+        </div>
+        <div class="tg-keys" style="margin:4px 0 8px;">
+          <div class="tg-row"><div class="tg-btn primary">📎 Yes — attach it to this line</div></div>
+          <div class="tg-row"><div class="tg-btn">➕ No — different expense, save without it</div></div>
+        </div>
+        <p style="font-size:12.5px; color:var(--text-light); margin:0 0 6px;">For a <b>proof document</b> the second button is <b>➕ No — a different document</b>, and then nothing is filed: <i>“Nothing filed for … — send that document itself and I'll file it.”</i></p>
+        <p style="font-size:12.5px; color:var(--text-light); margin:0 0 6px;">If more than one line wants the file and it matches none of them:</p>
+        <div class="code-block" style="margin:0 0 6px; font-size:13px;">
+          <div><span class="prompt">Bot: </span><span class="resp">📎 I'm still holding the PDF I read as Motel One Zurich · 1136.00 CHF.</span></div>
+          <div style="padding-left:32px; margin-top:4px;"><span class="resp">It was asked for by more than one line, and it matches none of them. Which one is it the document for?</span></div>
+        </div>
+        <div class="tg-keys" style="margin:4px 0 8px;">
+          <div class="tg-row"><div class="tg-btn">📎 Attach it to Careem · 50.00 AED</div></div>
+          <div class="tg-row"><div class="tg-btn">📎 Attach it to Talabat · 85.00 AED</div></div>
+          <div class="tg-row"><div class="tg-btn">✋ None of these — keep it</div></div>
+        </div>
+        <p class="tg-say" style="margin:0 0 8px;">
+          After your tap the question is rewritten to say what happened: <b>→ attached to Careem · 50.00 AED</b> or <b>→ kept</b>. If the save after <b>Yes</b> was refused or failed, it reads <b>→ not attached</b>, the next message says why — for a failed write, <i>“⚠ That one wasn't saved — writing the file did not work. I still have what you sent, so nothing was lost. Send it again, or tell me what it is and I'll try with the copy I'm holding.”</i> — and <b>the same question is shown again</b>. The line and the file are both kept: <b>Yes</b> tries again, <b>No</b> saves the line without the file. Answer <b>No</b> in the first place and the line is saved without the document; the file stays with the bot, named, with a <b>🚫 Discard it</b> button.
+        </p>
+        <div class="info-box" style="margin:0 0 8px;">
+          🕓 <b>An attach button never sends the file to a different line.</b> <b>Yes</b> and <b>Attach it to …</b> each name one line. A button on an older copy of the question either attaches the file to exactly the line it names, or leaves the file where it is — never to another line. Tap the newest copy to be sure what you are answering. When an older button is turned down, its message changes to <i>— this question was answered or replaced —</i> and the current question is shown again. If the line that button named can no longer take a file, it reads <i>— not attached: that line can no longer take a file —</i>; and when nothing is left to ask about, the bot says <i>“Not attached — that line can no longer take a file.”</i> followed by <i>“📎 Still holding … — tell me what it is and I'll file it.”</i> with <b>🚫 Discard it</b>.
+        </div>
+        <div class="info-box" style="margin:0 0 8px;">
+          👆 <b>Only a tap answers this question.</b> Typing <code style="font-family:var(--mono); color:var(--accent);">yes</code> or <code style="font-family:var(--mono); color:var(--accent);">no</code> while it is on screen attaches nothing and settles nothing — the bot reads it as an ordinary message. The one exception is a value the bot itself asked you for: tap <b>✏️ Change → Amount</b> and type the number, and the number is taken.
+        </div>
+        <div class="info-box" style="margin:0;">
+          🔗 The same goes when you ask in words — <i>“attach it to my Careem line”</i> — and the held file was read as something else: <i>“That doesn't match Careem · 50.00 AED. Use it for Careem · 50.00 AED anyway?”</i> with <b>📎 Yes — use it there</b> and <b>✋ No — keep it for now</b>.
+        </div>
+      </div>
+
+      <!-- SLIDE 9: A file the bot is holding — where it asks, where it can still go (O-28) -->
+      <div class="slide">
+        <div class="slide-tag">Step 2 · a file on hold</div>
+        <h2>What happens to a file the bot is holding</h2>
+        <p class="subtitle" style="margin-bottom:12px;">Where it stops and asks you — and, for now, where the file can still go without a word.</p>
+        <div class="divider" style="margin-bottom:12px;"></div>
+        <p style="font-size:12.5px; color:var(--text-light); margin:0 0 6px;">These stop, name the file, and let you decide:</p>
+        <div class="step-list" style="margin-top:0; gap:7px;">
+          <div class="step-item" style="padding:9px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">📚</div>
+            <div class="step-content">
+              <strong>Tap “Multi-page document”</strong>
+              <span><i>“📎 I'm still holding the PDF I read as Motel One Zurich · 1136.00 CHF. A multi-page document would replace it. Tell me what it is so I can file it first — or discard it and start the document.”</i> Buttons: <b>🗑 Discard it and start</b>, and — only when the held file is a photo the bot has not read yet — <b>📚 Use it as page 1</b>.</span>
+            </div>
+          </div>
+          <div class="step-item" style="padding:9px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">📄</div>
+            <div class="step-content">
+              <strong>“📚 Multi-page — I'll send the rest” on a PDF</strong>
+              <span>If the bot took a PDF for page 1 of a longer document, this button refuses and says why: <i>“📎 I'm still holding the PDF … — it's a PDF, so it can't be page 1, and a multi-page document would replace it.”</i> with <b>🗑 Discard it and start</b>. The PDF stays; send the whole document as one PDF instead.</span>
+            </div>
+          </div>
+          <div class="step-item" style="padding:9px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">✅</div>
+            <div class="step-content">
+              <strong>Tap “Document complete”</strong>
+              <span><i>“📎 I'm still holding the PDF I read as Motel One Zurich · 1136.00 CHF. Finishing the document would replace it — tell me what it is first, or discard it. Your 3 page(s) are kept either way; then tap Document complete again.”</i> Buttons: <b>🗑 Discard it, keep my pages</b> · <b>✅ Document complete</b>. Discarding answers <i>“🗑 Discarded the PDF I read as Motel One Zurich · 1136.00 CHF. Your 3 page(s) are still here.”</i> with <b>✅ Document complete</b> · <b>🚫 Cancel</b> — the pages are not touched.</span>
+            </div>
+          </div>
+          <div class="step-item" style="padding:9px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">📂</div>
+            <div class="step-content">
+              <strong>Switch to another pack</strong>
+              <span><b>📂 Continue</b> in <code style="font-family:var(--mono); color:var(--accent);">/myreports</code> moves you, and the file comes along: <i>“📎 Still holding … — tell me what it is and I'll file it here, or discard it.”</i> with <b>🚫 Discard it</b>.</span>
+            </div>
+          </div>
+          <div class="step-item" style="padding:9px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">🚫</div>
+            <div class="step-content">
+              <strong>Type /cancel</strong>
+              <span>With a card on screen, it drops the card, not the held file: <i>“📎 Still holding … — tell me what it is and I'll file it, or tap Discard.”</i> with <b>🚫 Discard the held file</b>. With nothing else pending, <code style="font-family:var(--mono); color:var(--accent);">/cancel</code> <b>is</b> the discard — and names what went: <i>“🚫 Dropped the PDF I read as Motel One Zurich · 1136.00 CHF. Nothing was saved.”</i></span>
+            </div>
+          </div>
+        </div>
+        <div class="info-box" style="margin:10px 0 0;">
+          ⚠️ <b>Where a held file can still disappear — being fixed.</b>
+          <br>• <b>Sending the next photo or file</b> while one is held and no card is on screen replaces the held one: <i>“↻ Replaced your previous photo with this … — I only hold one at a time.”</i> It does not say which file went, and calls it a photo even when it was a PDF.
+          <br>• <b>Submitting the pack</b> — <code style="font-family:var(--mono); color:var(--accent);">/compile</code>, <b>📤 Submit for review</b>, <i>submit anyway</i> — lets go of the held file without a word.
+          <br>• <b>Deleting the pack</b> does the same.
+          <br>• <b>An old discard button</b> — <b>🚫 Discard it</b>, <b>🚫 Discard the held file</b> — is not tied to the file it was shown under; tapped on an older message, it acts on whatever is current. If a card is waiting, or a line is waiting in the question <i>“Is it the document for …?”</i>, it cancels that card or line instead — a multi-page card loses its collected pages with it. When nothing is waiting, it deletes the file the bot is holding <b>now</b>, without naming it: <i>“🚫 Discarded — send the next photo whenever you're ready.”</i>
+          <br>• <b>An old 🗑 Discard it and start</b> always deletes the file the bot is holding now and starts a new document: <i>“📚 Multi-page document. Send the pages one by one…”</i>. A waiting card stays on screen but can no longer be saved — its <b>✅ Confirm</b> says <i>“⚠️ That receipt wasn't saved…”</i> and also drops the new document's pages. A line waiting in the question is lost once the new document is read.
+          <br>Until this is fixed: when the bot says it is still holding a document you need, tell it what the document is <b>before</b> you send the next one, submit, or delete the pack — and use a discard button only on the newest message.
+        </div>
+      </div>
+
+      <!-- SLIDE 10: Expense categories -->
       <div class="slide">
         <div class="slide-tag">Auto-detection</div>
         <h2>Expense categories</h2>
@@ -985,7 +1098,7 @@
         </div>
       </div>
 
-      <!-- SLIDE 8: Step 3 — Review your pack -->
+      <!-- SLIDE 11: Step 3 — Review your pack -->
       <div class="slide">
         <div class="slide-tag">Step 3</div>
         <h2>Review your pack</h2>
@@ -994,41 +1107,19 @@
         <div class="code-block" style="margin-bottom:12px">
           <span class="prompt">You: </span><span class="cmd">/showpack</span>
         </div>
-        <div class="receipt-list">
-          <div class="receipt-header">📂 Zurich May 2026 — 3 items</div>
-          <div class="receipt-item">
-            <span class="receipt-num">1.</span>
-            <span class="receipt-type">Transport</span>
-            <span class="receipt-vendor">Careem</span>
-            <span class="receipt-amount">45.00 AED</span>
-          </div>
-          <div style="padding-left:30px; padding-bottom:6px">
-            <span class="receipt-date">2026-05-12</span>
-            <span class="receipt-desc" style="margin-left:8px">taxi to airport</span>
-          </div>
-          <div class="receipt-item">
-            <span class="receipt-num">2.</span>
-            <span class="receipt-type">Hotel</span>
-            <span class="receipt-vendor">Marriott</span>
-            <span class="receipt-amount">520.00 AED</span>
-          </div>
-          <div style="padding-left:30px; padding-bottom:6px">
-            <span class="receipt-date">2026-05-11</span>
-            <span class="receipt-desc" style="margin-left:8px">1 night</span>
-          </div>
-          <div class="receipt-item">
-            <span class="receipt-num">3.</span>
-            <span class="receipt-type" style="background:rgba(94,222,138,0.15); color:#5EDE8A;">Meetings</span>
-            <span class="receipt-vendor">Zuma</span>
-            <span class="receipt-amount">122.50 AED</span>
-          </div>
-          <div style="padding-left:30px; padding-bottom:4px">
-            <span class="receipt-date">2026-05-12</span>
-            <span class="receipt-desc" style="margin-left:8px">business lunch</span>
-          </div>
-          <div class="receipt-total">
-            <span class="receipt-total-label">Total</span>
-            <span class="receipt-total-amt">687.50 AED</span>
+        <div class="code-block" style="margin:0 0 6px; font-size:12.5px;">
+          <div><span class="prompt">Bot: </span><span class="resp">Pack #68: «Zurich May 2026» [open]</span></div>
+          <div style="padding-left:32px"><span class="resp">&nbsp;&nbsp;Created:&nbsp;&nbsp;2026-05-10T09:12</span></div>
+          <div style="padding-left:32px"><span class="resp">&nbsp;&nbsp;Currency: AED</span></div>
+          <div style="padding-left:32px"><span class="resp">&nbsp;&nbsp;Receipts: 3&nbsp;&nbsp;Total: 687.50 AED</span></div>
+          <div style="padding-left:32px; margin-top:6px;"><span class="resp">1. (id=412) [Transportation] Careem — 45.0 AED = 45.00 AED&nbsp;&nbsp;[2026-05-12]&nbsp;&nbsp;taxi to airport</span></div>
+          <div style="padding-left:32px"><span class="resp">2. (id=413) [Hotel] Marriott — 520.0 AED = 520.00 AED&nbsp;&nbsp;[2026-05-11]&nbsp;&nbsp;1 night</span></div>
+          <div style="padding-left:32px"><span class="resp">3. (id=414) [Business meetings] Zuma — 122.5 AED = 122.50 AED&nbsp;&nbsp;[2026-05-12]&nbsp;&nbsp;business lunch</span></div>
+          <div style="margin-top:6px"><span class="prompt">Bot: </span><span class="resp">Tap an item's number to fix or remove it:</span></div>
+        </div>
+        <div class="tg-keys" style="margin:4px 0 8px;">
+          <div class="tg-row">
+            <div class="tg-btn">1</div><div class="tg-btn">2</div><div class="tg-btn">3</div>
           </div>
         </div>
         <div class="info-box" style="margin-top:12px;">
@@ -1038,11 +1129,11 @@
           💬 <b>Say something about the report — and for whom it is.</b> Two buttons sit on the pack screen. <b>💬 Comment</b> takes anything the accountant should read before the numbers (up to 1000 characters); it is printed at the top of the report, above the summary. <b>🧑 On behalf</b> takes a name when the expense is not your own (up to 120 characters); it appears under <b>Employee</b> on the report, in the accountant's notification and in the approval email. Tap, type, done — a <b>✓</b> on the button shows it is filled. Change either one while the pack is still open, or send a single <code style="font-family:var(--mono); color:var(--accent);">-</code> to clear it. Changed your mind after tapping? Just send the receipt — the photo or document goes into the pack as usual, the bot stops waiting for text and says so, and the button is still there when you want to come back to it. The same goes for <b>✏️ Rename pack</b>.
         </div>
         <p class="tg-say" style="margin-top:10px;">
-          📸 <b>Send the next receipt — photo or document — to add it to this pack.</b> The same buttons sit under every screen — preview it, send it off, or throw the pack away — so you're never left wondering what to do next.
+          📸 <b>Send the next receipt — photo or document — to add it to this pack.</b> Under it are the pack's buttons — preview it, send it off, or throw the pack away — so you're never left wondering what to do next.
         </p>
       </div>
 
-      <!-- SLIDE 9: Step 4 — Fix mistakes -->
+      <!-- SLIDE 12: Step 4 — Fix mistakes -->
       <div class="slide">
         <div class="slide-tag">Step 4</div>
         <h2>Fix mistakes</h2>
@@ -1063,7 +1154,9 @@
           </div>
           <div class="tg-row">
             <div class="tg-btn">Type</div><div class="tg-btn">Vendor</div>
-            <div class="tg-btn">Amount</div><div class="tg-btn">Date</div>
+          </div>
+          <div class="tg-row">
+            <div class="tg-btn">Amount</div><div class="tg-btn">Currency</div><div class="tg-btn">Date</div>
           </div>
           <div class="tg-row">
             <div class="tg-btn danger">🗑 Remove it</div>
@@ -1082,7 +1175,40 @@
         </div>
       </div>
 
-      <!-- SLIDE 10: Business trip & per-diem -->
+      <!-- SLIDE 13: Step 4 continued — amount and currency (G1) -->
+      <div class="slide">
+        <div class="slide-tag">Step 4 · continued</div>
+        <h2>Wrong amount or currency</h2>
+        <p class="subtitle" style="margin-bottom:12px;">A dirham receipt read as another currency, or a figure with a comma in it — both are one tap and one message.</p>
+        <div class="divider" style="margin-bottom:12px;"></div>
+        <p style="font-size:12.5px; color:var(--text-light); margin:0 0 5px;">On a saved line, tap <b>✏️ Fix</b> (or its number in <code style="font-family:var(--mono); color:var(--accent); font-size:13px;">/showpack</code>), then <b>Currency</b>:</p>
+        <div class="code-block" style="margin:0 0 6px; font-size:13px;">
+          <div><span class="prompt">Bot: </span><span class="resp">Send the new currency — a code like USD, or a sign like € or Ð.</span></div>
+          <div style="margin-top:4px"><span class="prompt">You: </span><span class="cmd">Ð</span></div>
+          <div style="margin-top:4px"><span class="prompt">Bot: </span><span class="resp">✅ Added:</span></div>
+          <div style="padding-left:32px"><span class="resp">Vendor: Careem</span></div>
+          <div style="padding-left:32px"><span class="resp">Amount: 125.00 AED</span></div>
+          <div style="padding-left:32px"><span class="resp">Type:&nbsp;&nbsp; Transportation</span></div>
+          <div style="padding-left:32px"><span class="resp">Date:&nbsp;&nbsp; 2026-05-12</span></div>
+          <div style="padding-left:32px; margin-top:4px;"><span class="resp">Anything else wrong?</span></div>
+        </div>
+        <p class="tg-say" style="margin:0 0 8px;">
+          <b>Currency</b> takes a code (<code style="font-family:var(--mono); color:var(--accent);">USD</code>, <code style="font-family:var(--mono); color:var(--accent);">eur</code>), a sign (<code style="font-family:var(--mono); color:var(--accent);">€</code>, <code style="font-family:var(--mono); color:var(--accent);">$</code>, <code style="font-family:var(--mono); color:var(--accent);">£</code>, <code style="font-family:var(--mono); color:var(--accent);">Ð</code>) or a word (<code style="font-family:var(--mono); color:var(--accent);">dirhams</code>, <code style="font-family:var(--mono); color:var(--accent);">UAE dirhams</code>, <code style="font-family:var(--mono); color:var(--accent);">euros</code>). A word it does not know gets <i>I don't know “…” as a currency. Send a code like USD or EUR, or a sign like € or Ð.</i> An amount sent with it — <code style="font-family:var(--mono); color:var(--accent);">125 USD</code> — gets <i>Send only the currency, without an amount — e.g. USD, € or Ð.</i> Either way nothing changes and the bot keeps waiting for the currency. The figure itself stays as it is — only the currency changes.
+        </p>
+        <div class="info-box" style="margin:0 0 8px;">
+          🔢 <b>How a typed amount is read</b> — in <b>Amount</b> here, in <b>✏️ Change → Amount</b> on a multi-page card, and in the accountant's <code style="font-family:var(--mono); color:var(--accent);">/approve</code> and <b>✏️ Other amount</b>:
+          <br>• <code style="font-family:var(--mono); color:var(--accent);">6117,37</code> is <b>6117.37</b> — a comma before one or two digits is the decimal point;
+          <br>• <code style="font-family:var(--mono); color:var(--accent);">6,117.37</code>, <code style="font-family:var(--mono); color:var(--accent);">6.117,37</code> and <code style="font-family:var(--mono); color:var(--accent);">6 117,37</code> are all <b>6117.37</b> — with both marks, the last one is the decimal point;
+          <br>• <code style="font-family:var(--mono); color:var(--accent);">1,200</code> or <code style="font-family:var(--mono); color:var(--accent);">1.200</code> could be either (some currencies use three decimals), so the bot asks instead of guessing: <i>“1,200” could be 1200 or 1.2 — I didn't guess. Send it again as 1200 or 1.2.</i>
+          <br>• not a number at all: <i>That doesn't look like a number. Send the amount again, e.g. 1250.50.</i> (<code style="font-family:var(--mono); color:var(--accent);">/approve</code> answers differently: <i>I couldn't read the amount “…”.</i> and shows how to write the command.)
+          <br>• <b>a different currency next to the number is not converted, and nothing is changed.</b> On an AED line, <b>Amount</b> → <code style="font-family:var(--mono); color:var(--accent);">150 USD</code>: <i>“150 USD” is in USD, but this line is in AED. I didn't convert it, and nothing was changed. Send the amount in AED. If AED itself is wrong, tap ← Leave it above, then Currency.</i> The line's own currency is fine — <code style="font-family:var(--mono); color:var(--accent);">150 AED</code>, <code style="font-family:var(--mono); color:var(--accent);">150 dirhams</code>. The currency is checked first, so <code style="font-family:var(--mono); color:var(--accent);">1,200 eur</code> is refused for the currency, not asked about. On a multi-page card the words are <i>“… but this receipt is in …”</i>; for the accountant <i>“… but the approved amount is in AED …”</i> — after <i>Report #54 was not approved.</i> on <code style="font-family:var(--mono); color:var(--accent);">/approve</code>, and followed by <i>Or 'cancel'.</i> on <b>Other amount</b>.
+        </div>
+        <div class="info-box" style="margin:0;">
+          💱 <b>The AED total follows.</b> Change the amount or the currency and the line's AED value is worked out again at <b>today's rate</b> — the report total moves with it. If the rate cannot be fetched and the line is switching to a currency other than AED, the bot changes <b>nothing</b>: <i>“I couldn't get today's exchange rate, so nothing was changed. Try again in a minute.”</i> A new amount in the line's own currency does not wait for it — the rate the line was booked at is used.
+        </div>
+      </div>
+
+      <!-- SLIDE 14: Business trip & per-diem -->
       <div class="slide">
         <div class="slide-tag">Business trip</div>
         <h2>Per-diem allowance</h2>
@@ -1116,7 +1242,7 @@
         </div>
       </div>
 
-      <!-- SLIDE 11: Step 5 — Generate report -->
+      <!-- SLIDE 15: Step 5 — Generate report -->
       <div class="slide">
         <div class="slide-tag">Step 5</div>
         <h2>Generate the report</h2>
@@ -1154,7 +1280,7 @@
         </div>
       </div>
 
-      <!-- SLIDE 12: Accountant review -->
+      <!-- SLIDE 16: Accountant review -->
       <div class="slide">
         <div class="slide-tag">After submit</div>
         <h2>Accountant review</h2>
@@ -1173,20 +1299,67 @@
           </div>
         </div>
         <div class="code-block" style="margin:0 0 10px; font-size:13px;">
-          <div><span class="prompt">Bot: </span><span class="resp">✅ Your report #42 is approved. Amount approved for reimbursement: 1,240.00 AED.</span></div>
+          <div><span class="prompt">Bot: </span><span class="resp">Your report #42 is approved.</span></div>
+          <div style="padding-left:32px"><span class="resp">Amount approved for reimbursement: 1240.00 AED.</span></div>
         </div>
         <div class="info-box">
           Type <code style="font-family:var(--mono); color:var(--accent); background:var(--accent-dim); padding:2px 6px; border-radius:4px;">/myreports</code> to see the status of your reports from the last 12 months.
         </div>
         <div class="info-box">
-          ↩️ <b>Found a mistake in a report you already sent?</b> <code style="font-family:var(--mono); color:var(--accent);">/myreports</code> has an <b>↩️ Reopen</b> button next to every submitted and approved report. It asks you to confirm — because it takes the report back out of the accountant's hands — and then the pack is editable again. <b>The accountant is told</b> that you reopened it, with the amount and date they had approved, and nothing reaches them again until you submit it.
-        </div>
-        <div class="info-box">
-          🔒 <b>While a report is with the accountant it stops changing.</b> Amounts, lines, documents, the per-diem, the name — none of them can be edited on a submitted or approved report, by you or by anyone else, because that is the version accounting is working from. The bot says so and points at <b>↩️ Reopen</b>. Reports belong to one person: nobody else can read, rebuild or edit yours.
+          🔒 <b>While a report is with the accountant it stops changing.</b> Amounts, lines, documents, the per-diem, the name — none of them can be edited on a submitted or approved report, by you or by anyone else, because that is the version accounting is working from. The bot says so and points at <b>↩️ Reopen</b> — next slide. Reports belong to one person: no other employee can read, rebuild or edit yours. Accountants can read and rebuild any report (<code style="font-family:var(--mono); color:var(--accent);">/report 54</code>), but not edit it.
         </div>
       </div>
 
-      <!-- SLIDE 13: Tips & reminders -->
+      <!-- SLIDE 17: After approval (O-5) -->
+      <div class="slide">
+        <div class="slide-tag">After approval</div>
+        <h2>What approval sends — and how to take a report back</h2>
+        <p class="subtitle" style="margin-bottom:12px;">Approving is one tap for the accountant. Here is everything it sets off.</p>
+        <div class="divider" style="margin-bottom:12px;"></div>
+        <div class="step-list" style="margin-top:0; gap:8px;">
+          <div class="step-item" style="padding:10px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">💬</div>
+            <div class="step-content">
+              <strong>You — a message in Telegram</strong>
+              <span><i>“Your report #42 is approved. Amount approved for reimbursement: 1240.00 AED.”</i> That is the figure the accountant approved — lower than your claim if they cut something. The other accountants get a line saying who approved it and for how much. The employee gets no email.</span>
+            </div>
+          </div>
+          <div class="step-item highlight" style="padding:10px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">📧</div>
+            <div class="step-content">
+              <strong>The accountant who approved it — an email with the PDF</strong>
+              <span>Sent to the address that accountant set with <code style="font-family:var(--mono); color:var(--accent);">/myemail</code>. Subject: <i>“Expense report #42 approved — 1,240.00 AED — Anna Smith”</i>. The body lists the report and its name, <b>Employee</b>, <b>On behalf</b> (only when filled in), <b>Submitted total</b>, <b>Approved amount</b>, a <b>Difference</b> line when the two are not the same, <b>Approved by</b> and <b>Approved at</b>. Attached: <b>expense_report_42.pdf</b> — the report rebuilt at that moment, with a green <b>APPROVED FOR REIMBURSEMENT: 1,240.00 AED</b> box on its cover. A report too big for mail goes without the PDF, and the mail says so and asks for it in Telegram.</span>
+            </div>
+          </div>
+          <div class="step-item" style="padding:10px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">🔁</div>
+            <div class="step-content">
+              <strong>/resend 42 — when the mail did not go</strong>
+              <span>The approver sees the outcome under the approval: <i>“📧 Emailed to …”</i>, or <i>“📧 Could not email it to …”</i> ending in <i>“Retry with /resend 42.”</i>, or <i>“📧 Not emailed — you have no address on file. Send /myemail you@company.com and then /resend 42.”</i> <code style="font-family:var(--mono); color:var(--accent);">/resend 42</code> mails the approved report again — to the address of whoever types it — and changes nothing about the report. On a report that is not approved it answers that there is nothing to email yet.</span>
+            </div>
+          </div>
+        </div>
+        <div class="info-box" style="margin:10px 0 0;">
+          🔒 <b>An approved report is frozen.</b> Nothing in it can be edited — not by you, not by the accountant. To change it, it has to be taken back. <b>↩️ Reopen</b> in <code style="font-family:var(--mono); color:var(--accent);">/myreports</code> does that — the buttons sit under the <b>six most recent</b> finished reports in the list, and a returned report takes one of those six places without getting a button. It asks first:
+        </div>
+        <div class="code-block" style="margin:6px 0 4px; font-size:13px;">
+          <div><span class="prompt">Bot: </span><span class="resp">↩️ Reopen report #42 «Zurich May 2026»?</span></div>
+          <div style="padding-left:32px; margin-top:4px;"><span class="resp">The accountant approved it at 1240.00 AED on 2026-05-20T10:03.</span></div>
+          <div style="padding-left:32px"><span class="resp">Reopening takes it back so you can edit it. The accountant is told that you did, and nothing reaches them again until you submit it.</span></div>
+        </div>
+        <div class="tg-keys" style="margin:4px 0 8px;">
+          <div class="tg-row">
+            <div class="tg-btn primary">↩️ Yes, reopen it</div>
+            <div class="tg-btn">← Leave it</div>
+          </div>
+        </div>
+        <div class="info-box" style="margin:0;">
+          After <b>Yes</b> the pack is open again and is the one you are working on. An older report without a button can be reopened in words — <i>“reopen report 42”</i> — and then there is no confirmation button; accounting is told all the same. For an <b>approved</b> report, Reopen — the button or the words — is the only way back: the accountant cannot return an approved report. An accountant's <b>return</b> is for a report that is submitted and not yet approved.<br><br>
+          Who is told: everyone on the bot's accountant list, whether or not they approved this report — <i>“♻️ Report #42 «Zurich May 2026» — Anna Smith has reopened it for editing.”</i> and <i>“You approved it on 2026-05-20T10:03 at 1240.00 AED. That version is no longer the current one.”</i> An admin who approves reports but is not on that list is <b>not</b> told. Submit it again when it is right; it is reviewed again, and a new approval sends a new email.
+        </div>
+      </div>
+
+      <!-- SLIDE 18: Tips & reminders -->
       <div class="slide">
         <div class="slide-tag">Reference</div>
         <h2>Tips &amp; reminders</h2>
@@ -1195,7 +1368,7 @@
         <div class="tips-list">
           <div class="tip-item">
             <div class="tip-icon">✅</div>
-            <div>Always <b>confirm or cancel</b> the bot's draft before sending the next receipt.</div>
+            <div>Single receipts save on their own. A <b>multi-page document</b> waits for <b>✅ Confirm</b> or <b>🚫 Cancel</b> — answer it before sending the next receipt.</div>
           </div>
           <div class="tip-item">
             <div class="tip-icon">📄</div>
@@ -1214,12 +1387,12 @@
           <div class="contact-icon">📞</div>
           <div class="contact-text">
             <b>Need access or ran into an issue?</b><br>
-            Contact your administrator — they can register your Telegram ID and troubleshoot problems.
+            Contact your administrator — they approve access requests (yours goes to them when you tap Start) and troubleshoot problems.
           </div>
         </div>
       </div>
 
-      <!-- SLIDE 14: For accountants -->
+      <!-- SLIDE 19: For accountants -->
       <div class="slide">
         <div class="slide-tag">For accountants</div>
         <h2>Reviewing reports</h2>
@@ -1229,15 +1402,18 @@
           <tr><td class="cmd-cell">/pending</td><td class="desc-cell">List all reports awaiting review</td></tr>
           <tr><td class="cmd-cell">/report 54</td><td class="desc-cell">See report #54 — status + PDF</td></tr>
           <tr><td class="cmd-cell">/approve 54</td><td class="desc-cell">Approve at the <b>full submitted total</b></td></tr>
-          <tr><td class="cmd-cell">/approve 54 1200</td><td class="desc-cell">Approve a <b>custom</b> AED amount (e.g. after cutting items)</td></tr>
+          <tr><td class="cmd-cell">/approve 54 1200</td><td class="desc-cell">Approve a <b>custom</b> AED amount (e.g. after cutting items). <code style="font-family:var(--mono); color:var(--accent);">6117,37</code> is read as 6117.37. <code style="font-family:var(--mono); color:var(--accent);">1,200</code> is not guessed: the report is <b>not approved</b>, the bot names both readings, and you send the command again — <code style="font-family:var(--mono); color:var(--accent);">/approve 54 1200</code>. A number typed on its own is not taken as the answer; only <b>✏️ Other amount</b> waits for one. Another currency — <code style="font-family:var(--mono); color:var(--accent);">/approve 54 2563.20 eur</code> — is refused, not converted: the approved amount is in AED</td></tr>
           <tr><td class="cmd-cell">/return 54 …</td><td class="desc-cell">Send back for fixes with a note</td></tr>
           <tr><td class="cmd-cell">/reply 54 …</td><td class="desc-cell">Message the employee</td></tr>
+          <tr><td class="cmd-cell">/status 54</td><td class="desc-cell">Quick status — who reviewed it, the note</td></tr>
+          <tr><td class="cmd-cell">/myemail you@…</td><td class="desc-cell">Where your approvals are emailed, as a PDF stamped with the approved amount. <code style="font-family:var(--mono); color:var(--accent);">/myemail</code> shows it, <code style="font-family:var(--mono); color:var(--accent);">/myemail none</code> stops it</td></tr>
+          <tr><td class="cmd-cell">/resend 54</td><td class="desc-cell">Email approved report #54 again, if the mail failed</td></tr>
         </table>
         <div class="info-box" style="margin-top:14px">
           ⚠ <b>Gap flags.</b> <code style="font-family:var(--mono); color:var(--accent);">/pending</code> and <code style="font-family:var(--mono); color:var(--accent);">/report</code> mark lines backed only by a payment slip (e.g. a hotel charge with no invoice, a flight with no ticket) — so you can ask for the missing document before approving.
         </div>
         <div class="info-box" style="margin-top:10px">
-          🔘 <b>Buttons, not only commands.</b> Every report arrives with <b>✅ Approve</b>, <b>✏️ Other amount</b> and <b>↩️ Return</b> under it. The last two wait for you to type — an amount, or the note the employee receives. Send a photo or a PDF instead (your own receipt, say) and the bot stops waiting and tells you what did <b>not</b> happen: the report was not returned, nothing was sent to the employee, the approved amount is unchanged. Whatever you type next is read normally, and the buttons are still there.
+          🔘 <b>Buttons, not only commands.</b> Every report arrives with <b>✅ Approve</b> (showing the total, e.g. <b>✅ Approve 1,240.00</b>), <b>✏️ Other amount</b> and <b>↩️ Return</b> under it. The last two wait for you to type — an amount, or the note the employee receives. Send a photo or a PDF instead (your own receipt, say) and the bot stops waiting and tells you what did <b>not</b> happen: the report was not returned, nothing was sent to the employee, the approved amount is unchanged. Whatever you type next is read normally, and the buttons are still there.
         </div>
         <div class="info-box" style="margin-top:10px">
           💡 The number is the report id from <code style="font-family:var(--mono); color:var(--accent);">/pending</code>. <code style="font-family:var(--mono); color:var(--accent);">#54</code>, <code style="font-family:var(--mono); color:var(--accent);">54</code> or <code style="font-family:var(--mono); color:var(--accent);">report 54</code> all work. The employee is notified automatically on approve/return. Type <code style="font-family:var(--mono); color:var(--accent);">/review</code> in the bot for this list anytime.
