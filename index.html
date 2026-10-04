@@ -971,7 +971,7 @@
             <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">⌨️</div>
             <div class="step-content">
               <strong>Commands</strong>
-              <span><code style="font-family:var(--mono); color:var(--accent);">/myreports</code>, <code style="font-family:var(--mono); color:var(--accent);">/showpack</code>, <code style="font-family:var(--mono); color:var(--accent);">/help</code> and the rest answer as usual, and under the answer: <i>“📚 3 page(s) are still being collected — send the next page, or tap Document complete / Cancel.”</i> with both buttons. Only <code style="font-family:var(--mono); color:var(--accent);">/cancel</code> throws the pages away: <i>“📚 Dropped the 3 page(s) you had started — they were never added. Tap 📚 Multi-page document to begin again.”</i></span>
+              <span><code style="font-family:var(--mono); color:var(--accent);">/myreports</code>, <code style="font-family:var(--mono); color:var(--accent);">/showpack</code>, <code style="font-family:var(--mono); color:var(--accent);">/help</code> and the rest answer as usual, and under the answer: <i>“📚 3 page(s) are still being collected — send the next page, or tap Document complete / Cancel.”</i> with both buttons. Only <code style="font-family:var(--mono); color:var(--accent);">/cancel</code> throws the pages away: <i>“📚 Dropped the 3 page(s) you had started — they were never added. Tap 📚 Multi-page document to begin again.”</i> It is one message for everything it did — a held file it dropped (<i>“🚫 Dropped …”</i>) is in the same message. With no page sent yet: <i>“📚 Stopped the multi-page document — no pages had been sent, so nothing was added.”</i> <i>“🚫 Nothing was pending — you're clear either way.”</i> comes only when there was nothing at all to drop.</span>
             </div>
           </div>
         </div>
@@ -988,7 +988,7 @@
           <div class="tg-row"><div class="tg-btn">🗑 Discard the photo you sent</div></div>
         </div>
         <div class="info-box" style="margin:0;">
-          <b>➕ Add it as page 4</b> appears only for a photo. If the bot answered the document with a question instead of a card: <i>“📚 Your 3-page document is still waiting — it isn't saved yet. Tell me about it, or discard it.”</i> with <b>🗑 Discard the 3-page document</b>. Once the document is settled, the waiting file is read: <i>“📎 Now the photo you sent while your document was waiting — reading it…”</i> With a document's card on screen, <code style="font-family:var(--mono); color:var(--accent);">/cancel</code> drops the card and keeps the waiting file, named: <i>“📎 Still holding the photo you sent — tell me what it is and I'll file it, or tap Discard.”</i> with <b>🚫 Discard the held file</b>.<br><br>
+          <b>➕ Add it as page 4</b> appears only for a photo. If the bot answered the document with a question instead of a card: <i>“📚 Your 3-page document is still waiting — it isn't saved yet. Tell me about it, or discard it.”</i> with <b>🗑 Discard the 3-page document</b>. Once the document is settled, the waiting file is read: <i>“📎 Now the photo you sent while your document was waiting — reading it…”</i> With a document's card on screen, <code style="font-family:var(--mono); color:var(--accent);">/cancel</code> drops the card and keeps the waiting file, named in the same message: <i>“📎 Still holding the photo you sent — tell me what it is and I'll file it, or tap Discard.”</i> with <b>🚫 Discard the held file</b>.<br><br>
           The collection's own buttons — <b>✅ Document complete</b>, <b>🚫 Cancel</b> — belong to it: on an older message from an earlier document they answer <i>— that document is no longer being collected —</i> and touch nothing.
         </div>
       </div>
@@ -1122,7 +1122,7 @@
             <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">🚫</div>
             <div class="step-content">
               <strong>Type /cancel</strong>
-              <span>With a card on screen, it drops the card, not the held file: <i>“📎 Still holding … — tell me what it is and I'll file it, or tap Discard.”</i> with <b>🚫 Discard the held file</b>. With nothing else pending, <code style="font-family:var(--mono); color:var(--accent);">/cancel</code> <b>is</b> the discard — and names what went: <i>“🚫 Dropped the PDF I read as Motel One Zurich · 1136.00 CHF. Nothing was saved.”</i></span>
+              <span>With a card on screen, it drops the card, not the held file: <i>“📎 Still holding … — tell me what it is and I'll file it, or tap Discard.”</i> with <b>🚫 Discard the held file</b>. With nothing else pending, <code style="font-family:var(--mono); color:var(--accent);">/cancel</code> <b>is</b> the discard — and names what went: <i>“🚫 Dropped the PDF I read as Motel One Zurich · 1136.00 CHF. Nothing was saved.”</i> Whatever it dropped is said in one message; <i>“🚫 Nothing was pending — you're clear either way.”</i> only when there was nothing to drop.</span>
             </div>
           </div>
         </div>
@@ -1222,7 +1222,7 @@
             <div class="tg-btn danger">🗑 Remove</div>
           </div>
         </div>
-        <p style="font-size:12.5px; color:var(--text-light); margin:0 0 5px;">For anything added earlier, run <code style="font-family:var(--mono); color:var(--accent); font-size:13px;">/showpack</code> and tap the item's number:</p>
+        <p style="font-size:12.5px; color:var(--text-light); margin:0 0 5px;">For anything added earlier, run <code style="font-family:var(--mono); color:var(--accent); font-size:13px;">/showpack</code> and tap the item's number: the line's correction menu opens below the list, and the list keeps all its numbers — tap the next number for the next line.</p>
         <div class="tg-keys" style="margin:0 0 10px;">
           <div class="tg-row">
             <div class="tg-btn">1</div><div class="tg-btn primary">2</div><div class="tg-btn">3</div>
