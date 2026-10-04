@@ -348,9 +348,10 @@
     font-size: 12.5px;
     color: var(--navy);
     text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    /* Captions are quoted from the bot and must be readable whole: they wrap
+       on a narrow screen rather than end in "…". */
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
   .tg-btn.primary {
     border-color: var(--accent);
@@ -706,7 +707,7 @@
         <div class="brand-sub">Employee Onboarding</div>
       </div>
     </div>
-    <div class="slide-counter">Slide <span id="cur">1</span> / <span id="total">19</span></div>
+    <div class="slide-counter">Slide <span id="cur">1</span> / <span id="total">21</span></div>
   </header>
 
   <!-- Progress -->
@@ -934,11 +935,65 @@
           <br><br><b>It waits for your tap, and nothing else saves it.</b> Write about something else in the meantime and the card stays as it is; under the bot's answer one line reminds you: <i>“⏳ The card for Hotel Adria · 1136.00 EUR is still waiting — tap ✅ Confirm or 🚫 Cancel on it.”</i>
           <br><br><b>✏️ Change</b> fixes <b>Type</b>, <b>Vendor</b>, <b>Amount</b>, <b>Currency</b> or <b>Date</b> before you confirm. A new currency is shown on the card with its AED value at today's rate — <i>“Amount: 367.25 USD = 1348.70 AED”</i>; if the rate can't be fetched, nothing changes: <i>“I couldn't get today's exchange rate, so nothing was changed. Try again in a minute.”</i> Corrected it in words instead (<i>“the date is 30 September”</i>)? The same card comes back updated — <i>“✏️ Updated — check it again.”</i> — still waiting for Confirm.
           <br><br>A document can make <b>two cards</b> — a hotel folio and a separate restaurant bill on it, say. Each card's buttons act on that card only, but the <b>document goes to one line</b>: confirm first the card whose document it is. Confirm the restaurant first and the bot asks <i>“📎 I'm still holding the PDF I read as Hotel Adria · 1136.00 EUR. Is it the document for Adria Restaurant · 85.00 EUR?”</i> — <b>Yes</b> gives the document to the restaurant and withdraws the hotel card <b>together with its expense</b>: <i>“🚫 The card for Hotel Adria · 1136.00 EUR is withdrawn — its document is now on Adria Restaurant · 85.00 EUR.”</i> The 1136 EUR is not saved, and that card's Confirm then answers <i>“This draft is no longer active.”</i> <b>No</b> saves the restaurant without a document, and the hotel keeps the PDF when you confirm it. Typed <code style="font-family:var(--mono); color:var(--accent);">yes</code> with two cards waiting? The bot asks <i>“2 cards are waiting — which one should I add?”</i> with a <b>✅ Confirm …</b> button per card; typed <code style="font-family:var(--mono); color:var(--accent);">no</code> — <i>“2 cards are waiting — which one should I cancel?”</i> with a <b>🚫 Cancel …</b> button per card. Corrected the total in words and the bot made a new line from it? It asks whether the document belongs to the new line; answer <b>Yes</b> and the old card is withdrawn: <i>“🚫 The card for Hotel Adria · 130.98 EUR is withdrawn — its document is now on Hotel Adria · 350.00 EUR.”</i>
-          <br><br><b>The bot never deletes, on its own, a document you sent that is not saved yet.</b> If it drops a card it made — it can, when it misreads what you said — or you tell it <i>“actually, never mind”</i> about a photo it was asking about, the document stays with the bot and is named under its answer: <i>“📎 Still holding the photo you sent — tell me what it is and I'll file it.”</i> with <b>🚫 Discard it</b>. That button, <b>🚫 Cancel</b> on a card, your own typed <i>no</i> to a card, or <code style="font-family:var(--mono); color:var(--accent);">/cancel</code> are what delete such a document — and the slide <b>“What happens to a file the bot is holding”</b> lists where one can still go without a word: the next upload replacing it, submitting or deleting the pack. A line that is <b>already saved</b> is different: <b>🗑 Remove</b>, or asking in words — <code style="font-family:var(--mono); color:var(--accent);">delete #2</code>, “delete this pack” — removes the line or the whole open pack, with their documents, and asked in words, the bot can do it without a button to confirm.
+          <br><br><b>The bot never deletes, on its own, a document you sent that is not saved yet.</b> If it drops a card it made — it can, when it misreads what you said — or you tell it <i>“actually, never mind”</i> about a photo it was asking about, the document stays with the bot and is named under its answer: <i>“📎 Still holding the photo you sent — tell me what it is and I'll file it.”</i> with <b>🚫 Discard it</b>. That button, <b>🚫 Cancel</b> on a card, your own typed <i>no</i> to a card, or <code style="font-family:var(--mono); color:var(--accent);">/cancel</code> are what delete such a document — and the slide <b>“What happens to a file the bot is holding”</b> lists where one can still go: the next upload replacing it, and <code style="font-family:var(--mono); color:var(--accent);">/cancel</code> while pages are being collected. A line that is <b>already saved</b> is different: <b>🗑 Remove</b>, or asking in words — <code style="font-family:var(--mono); color:var(--accent);">delete #2</code>, “delete this pack” — removes the line or the whole open pack, with their documents, and asked in words, the bot can do it without a button to confirm.
         </div>
       </div>
 
-      <!-- SLIDE 7: Supporting documents -->
+      <!-- SLIDE 7: While a document is being collected (W5) -->
+      <div class="slide">
+        <div class="slide-tag">Step 2 · several pages</div>
+        <h2>While a document is being collected</h2>
+        <p class="subtitle" style="margin-bottom:12px;">The pages you've sent stay until you tap <b>✅ Document complete</b> or <b>🚫 Cancel</b>. Other things you do in between don't throw them away.</p>
+        <div class="divider" style="margin-bottom:12px;"></div>
+        <div class="step-list" style="margin-top:0; gap:7px;">
+          <div class="step-item" style="padding:9px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">📄</div>
+            <div class="step-content">
+              <strong>A PDF in the middle</strong>
+              <span><i>“📄 A PDF can't be a page of the document you're collecting, so I'm holding it separately.”</i> — then the <b>Document complete</b> screen for a held file (slide “What happens to a file the bot is holding”). A PDF sent right after tapping <b>📚 Multi-page document</b>, before any page, is simply read as a document of its own.</span>
+            </div>
+          </div>
+          <div class="step-item" style="padding:9px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">🖼</div>
+            <div class="step-content">
+              <strong>An album</strong>
+              <span>Several photos sent at once can't be pages: <i>“📚 Those came as an album, and an album can't be pages of a document — send the pages one by one. None of the album was added; your 3 page(s) sent before it are kept.”</i> If the bot took the album's first photo for page 1 of a longer document, the rest of the album become its pages. Outside a document, each photo of an album is its own receipt, with one note: <i>“📸 Those came as an album — I'm reading each one as its own receipt, one by one. Pages of one document? Tap 📚 Multi-page document and send them one at a time.”</i></span>
+            </div>
+          </div>
+          <div class="step-item" style="padding:9px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">📚</div>
+            <div class="step-content">
+              <strong>“Multi-page document” again</strong>
+              <span>It does not start over: <i>“📚 A document is already being collected — 3 page(s). Send the next page, or tap Document complete / Cancel.”</i></span>
+            </div>
+          </div>
+          <div class="step-item" style="padding:9px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">⌨️</div>
+            <div class="step-content">
+              <strong>Commands</strong>
+              <span><code style="font-family:var(--mono); color:var(--accent);">/myreports</code>, <code style="font-family:var(--mono); color:var(--accent);">/showpack</code>, <code style="font-family:var(--mono); color:var(--accent);">/help</code> and the rest answer as usual, and under the answer: <i>“📚 3 page(s) are still being collected — send the next page, or tap Document complete / Cancel.”</i> with both buttons. Only <code style="font-family:var(--mono); color:var(--accent);">/cancel</code> throws the pages away: <i>“📚 Dropped the 3 page(s) you had started — they were never added. Tap 📚 Multi-page document to begin again.”</i></span>
+            </div>
+          </div>
+        </div>
+        <div class="info-box" style="margin:10px 0 0;">
+          📚 <b>A finished document waits for its card — and holds the line.</b> Send another file before you confirm or cancel it and the new one waits behind it:
+        </div>
+        <div class="code-block" style="margin:6px 0 4px; font-size:13px;">
+          <div><span class="prompt">Bot: </span><span class="resp">📚 Your 3-page document is waiting — Hotel Adria · 1136.00 EUR. Confirm or cancel its card first.</span></div>
+          <div style="padding-left:32px; margin-top:4px;"><span class="resp">📎 I'm holding the photo you just sent — nothing is lost. It's next once the document is settled.</span></div>
+        </div>
+        <div class="tg-keys" style="margin:4px 0 8px;">
+          <div class="tg-row"><div class="tg-btn primary">✅ Confirm the document</div><div class="tg-btn danger">🚫 Cancel the document</div></div>
+          <div class="tg-row"><div class="tg-btn">➕ Add it as page 4</div></div>
+          <div class="tg-row"><div class="tg-btn">🗑 Discard the photo you sent</div></div>
+        </div>
+        <div class="info-box" style="margin:0;">
+          <b>➕ Add it as page 4</b> appears only for a photo. If the bot answered the document with a question instead of a card: <i>“📚 Your 3-page document is still waiting — it isn't saved yet. Tell me about it, or discard it.”</i> with <b>🗑 Discard the 3-page document</b>. Once the document is settled, the waiting file is read: <i>“📎 Now the photo you sent while your document was waiting — reading it…”</i> With a document's card on screen, <code style="font-family:var(--mono); color:var(--accent);">/cancel</code> drops the card and keeps the waiting file, named: <i>“📎 Still holding the photo you sent — tell me what it is and I'll file it, or tap Discard.”</i> with <b>🚫 Discard the held file</b>.<br><br>
+          The collection's own buttons — <b>✅ Document complete</b>, <b>🚫 Cancel</b> — belong to it: on an older message from an earlier document they answer <i>— that document is no longer being collected —</i> and touch nothing.
+        </div>
+      </div>
+
+      <!-- SLIDE 8: Supporting documents -->
       <div class="slide">
         <div class="slide-tag">Bonus</div>
         <h2>Supporting documents</h2>
@@ -979,7 +1034,7 @@
         </div>
       </div>
 
-      <!-- SLIDE 8: A file the bot is holding — the question (O-28) -->
+      <!-- SLIDE 9: A file the bot is holding — the question (O-28) -->
       <div class="slide">
         <div class="slide-tag">Step 2 · a file on hold</div>
         <h2>“Is it the document for this line?”</h2>
@@ -1024,7 +1079,7 @@
         </div>
       </div>
 
-      <!-- SLIDE 9: A file the bot is holding — where it asks, where it can still go (O-28) -->
+      <!-- SLIDE 10: A file the bot is holding — where it asks, where it can still go (O-28) -->
       <div class="slide">
         <div class="slide-tag">Step 2 · a file on hold</div>
         <h2>What happens to a file the bot is holding</h2>
@@ -1072,20 +1127,18 @@
           </div>
         </div>
         <div class="info-box" style="margin:10px 0 0;">
-          🔑 <b>Discard buttons are tied to what they discard.</b> <b>🚫 Discard it</b>, <b>🚫 Discard the held file</b>, <b>🚫 Cancel</b> on a receipt card, <b>🗑 Discard it and start</b> and <b>🗑 Discard it, keep my pages</b> each carry their own file or card. Tapped on an older message after that file or card has changed, the button touches nothing and says so in a pop-up — <i>— that card is no longer active —</i>, <i>— that file is no longer held —</i> or <i>— nothing is held —</i>. Sometimes the bot also puts what is current at the bottom of the chat; tap there. <b>Not tied:</b> the <b>🚫 Cancel</b> under <i>“📄 Page N received…”</i> and the other screens of a document being collected — it cancels whichever collection is running now.
+          🔑 <b>Discard buttons are tied to what they discard.</b> <b>🚫 Discard it</b>, <b>🚫 Discard the held file</b>, <b>🚫 Cancel</b> on a receipt card, <b>🗑 Discard it and start</b> and <b>🗑 Discard it, keep my pages</b> each carry their own file or card. Tapped on an older message after that file or card has changed, the button touches nothing and says so in a pop-up — <i>— that card is no longer active —</i>, <i>— that file is no longer held —</i> or <i>— nothing is held —</i>. Sometimes the bot also puts what is current at the bottom of the chat; tap there. The buttons of a document being collected are tied the same way: <i>— that document is no longer being collected —</i>.
         </div>
         <div class="info-box" style="margin:8px 0 0;">
-          ⚠️ <b>Where a held file can still disappear — being fixed.</b>
-          <br>• <b>Sending the next photo or file</b> while one is held and no card is on screen replaces the held one: <i>“↻ Replaced your previous photo with this … — I only hold one at a time.”</i> It does not say which file went, and calls it a photo even when it was a PDF.
-          <br>• <b>Submitting the pack</b> — <code style="font-family:var(--mono); color:var(--accent);">/compile</code>, <b>📤 Submit for review</b>, <i>submit anyway</i> — lets go of the held file without a word.
-          <br>• <b>Deleting the pack</b> does the same.
-          <br>• <b>Tapping 📚 Multi-page document while a document is being collected</b> — or an old <b>📚 Multi-page — I'll send the rest</b> — starts the collection over without a word; the pages collected so far drop out.
-          <br>• <b>An old 🚫 Cancel from an earlier document</b>, tapped while a new one is being collected, cancels the new one and throws its pages away: <i>“🚫 Document cancelled — nothing was added.”</i>
-          <br>Until this is fixed: when the bot says it is still holding a document you need, tell it what the document is <b>before</b> you send the next one, submit, or delete the pack; and while collecting pages, finish with <b>✅ Document complete</b> rather than starting again.
+          ⚠️ <b>Where a held file can still disappear.</b>
+          <br>• <b>Sending the next photo or file</b> while one file is held, with no card or document waiting, replaces the held one: <i>“↻ Replaced your previous photo with this … — I only hold one at a time.”</i> It does not say which file went, and calls it a photo even when it was a PDF. (A finished multi-page document is never replaced this way — see the slide on documents being collected.)
+          <br>• <code style="font-family:var(--mono); color:var(--accent);">/cancel</code> while pages are being collected throws those pages away — it says so: <i>“📚 Dropped the 3 page(s) you had started — they were never added.”</i>
+          <br>Submitting or deleting the pack no longer lets a held file go quietly — see the slide on submitting.
+          <br>So: when the bot says it is still holding a document you need, tell it what the document is <b>before</b> you send the next one.
         </div>
       </div>
 
-      <!-- SLIDE 10: Expense categories -->
+      <!-- SLIDE 11: Expense categories -->
       <div class="slide">
         <div class="slide-tag">Auto-detection</div>
         <h2>Expense categories</h2>
@@ -1121,7 +1174,7 @@
         </div>
       </div>
 
-      <!-- SLIDE 11: Step 3 — Review your pack -->
+      <!-- SLIDE 12: Step 3 — Review your pack -->
       <div class="slide">
         <div class="slide-tag">Step 3</div>
         <h2>Review your pack</h2>
@@ -1156,7 +1209,7 @@
         </p>
       </div>
 
-      <!-- SLIDE 12: Step 4 — Fix mistakes -->
+      <!-- SLIDE 13: Step 4 — Fix mistakes -->
       <div class="slide">
         <div class="slide-tag">Step 4</div>
         <h2>Fix mistakes</h2>
@@ -1187,7 +1240,7 @@
           </div>
         </div>
         <p class="tg-say" style="margin:0 0 10px;">
-          Wrong in <b>two</b> places? Correct one and the menu comes straight back, so the second is one more tap. <b>Done</b> when you're finished.
+          Wrong in <b>two</b> places? Correct one and the menu comes straight back, so the second is one more tap. <b>Done</b> when you're finished. Each corrected card comes as a <b>new message at the bottom</b>; the one before it reads <i>↓ see the updated card below</i> and has no buttons. If Telegram would not let the bot edit the older message, that one keeps its buttons; tap there and the newer card below is the one that turns into <i>↑ see the card above</i>.
         </p>
         <div class="info-box" style="margin:0;">
           ⌨️ <b>Typing still works</b> if you prefer it — <code style="font-family:var(--mono); color:var(--accent);">fix amount for #2 — 150</code>, <code style="font-family:var(--mono); color:var(--accent);">change type for #3 to Hotel</code>, <code style="font-family:var(--mono); color:var(--accent);">delete #2</code>.<br><br>
@@ -1198,7 +1251,7 @@
         </div>
       </div>
 
-      <!-- SLIDE 13: Step 4 continued — amount and currency (G1) -->
+      <!-- SLIDE 14: Step 4 continued — amount and currency (G1) -->
       <div class="slide">
         <div class="slide-tag">Step 4 · continued</div>
         <h2>Wrong amount or currency</h2>
@@ -1231,7 +1284,7 @@
         </div>
       </div>
 
-      <!-- SLIDE 14: Business trip & per-diem -->
+      <!-- SLIDE 15: Business trip & per-diem -->
       <div class="slide">
         <div class="slide-tag">Business trip</div>
         <h2>Per-diem allowance</h2>
@@ -1265,7 +1318,7 @@
         </div>
       </div>
 
-      <!-- SLIDE 15: Step 5 — Generate report -->
+      <!-- SLIDE 16: Step 5 — Generate report -->
       <div class="slide">
         <div class="slide-tag">Step 5</div>
         <h2>Generate the report</h2>
@@ -1303,7 +1356,38 @@
         </div>
       </div>
 
-      <!-- SLIDE 16: Accountant review -->
+      <!-- SLIDE 17: Submitting or deleting with a file on hold (W3) -->
+      <div class="slide">
+        <div class="slide-tag">Step 5 · continued</div>
+        <h2>Submitting with a file still on hold</h2>
+        <p class="subtitle" style="margin-bottom:12px;">The bot does not send the report while it holds something of yours that isn't in it — it asks first.</p>
+        <div class="divider" style="margin-bottom:12px;"></div>
+        <p style="font-size:12.5px; color:var(--text-light); margin:0 0 6px;"><code style="font-family:var(--mono); color:var(--accent);">/submit</code>, <i>submit anyway</i> or <b>📤 Submit for review</b>, with a file held:</p>
+        <div class="code-block" style="margin:0 0 6px; font-size:13px;">
+          <div><span class="prompt">Bot: </span><span class="resp">📎 Before I submit pack #68 «Zurich May 2026»: I'm still holding the PDF I read as Motel One Zurich · 1136.00 CHF. It is not in the report. What should I do with it?</span></div>
+        </div>
+        <div class="tg-keys" style="margin:4px 0 8px;">
+          <div class="tg-row"><div class="tg-btn">📎 Attach it to Motel One Zurich · 1136.00 CHF</div></div>
+          <div class="tg-row"><div class="tg-btn">➕ File it as its own expense</div></div>
+          <div class="tg-row"><div class="tg-btn danger">🗑 Discard it</div></div>
+          <div class="tg-row"><div class="tg-btn primary">📤 Submit without it</div></div>
+        </div>
+        <p class="tg-say" style="margin:0 0 8px;">
+          <b>📎 Attach it to …</b> is there only when the file fits a line of the pack. After Attach, File or Discard the report is <b>not</b> sent by itself: <i>“Submit pack #68 «Zurich May 2026» now?”</i> with <b>📤 Submit now</b>. <b>📤 Submit without it</b> sends the report and keeps the file: <i>“📎 Still holding … — it is not in report #68. To file it, start your next pack and tell me what it is; sending another photo or file first replaces it. Or discard it.”</i> with <b>🗑 Discard it</b>.
+        </p>
+        <div class="info-box" style="margin:0 0 8px;">
+          🧾 <b>A card still waiting.</b> Its document is named by the card as it reads now — <i>“… I'm still holding the PDF of the card Hilton · 350.00 USD, still waiting for ✅ Confirm. …”</i>. <b>File it</b> works like that card's ✅ Confirm, with your corrections; <b>Discard</b> answers <i>“🗑 Discarded the PDF and its card Hilton · 350.00 USD.”</i> A card of <b>another</b> open pack: <i>“Its card is waiting in pack #61 «Berlin», not this one.”</i> with <b>➕ File it in this pack instead</b>, which puts the line into this pack and takes the card down there, saying so; <b>Submit without it</b> leaves that card alone — <i>“The card is still waiting in pack #61 «Berlin» — confirm it there.”</i>
+        </div>
+        <div class="info-box" style="margin:0 0 8px;">
+          📚 <b>A file waiting behind a document</b>: <i>“📎 Before I submit pack #68 «…»: I'm also holding the photo you sent — it waits behind your 3-page document. It is not in the report. What should I do with it?”</i> — only <b>🗑 Discard it</b> or <b>📤 Submit without it</b>. With several files kept after the submit, each is named, with its own <b>🗑 Discard …</b>.
+          <br><b>Pages still being collected</b>: <i>“📚 Before I submit pack #68 «…»: 3 page(s) of a document are still being collected. They are not in the report. What should I do with them?”</i> — <b>✅ Document complete</b>, <b>🚫 Cancel the document</b> or <b>📤 Submit without it (the pages stay held)</b>; then <i>“📚 Your 3 page(s) are still here, not in report #68 — send the next page, or tap Document complete / Cancel.”</i>
+        </div>
+        <div class="info-box" style="margin:0;">
+          🗑 <b>Deleting a pack</b> names, before you confirm, a held file that would go with it: <i>“It also deletes the PDF I read as …, which I'm holding for this pack — that file cannot be recovered.”</i> Afterwards: <i>“🗑 Deleted with it: … — it was this pack's document.”</i> — or, for a file held for something else, <i>“📎 Still holding … — it is not this pack's document, so I kept it. Tell me what it is, or discard it.”</i> with <b>🗑 Discard it</b>. Deleting another pack does not touch the file. Asked in words to delete the pack, the bot says the same about the file afterwards.
+        </div>
+      </div>
+
+      <!-- SLIDE 18: Accountant review -->
       <div class="slide">
         <div class="slide-tag">After submit</div>
         <h2>Accountant review</h2>
@@ -1326,6 +1410,9 @@
           <div style="padding-left:32px"><span class="resp">Amount approved for reimbursement: 1240.00 AED.</span></div>
         </div>
         <div class="info-box">
+          ↩️ <b>A returned report doesn't take over your open pack.</b> Working in another one when it comes back? <i>“Report #42 returned for clarification: … You're working in #45 «Berlin October» — it stays open. Tap below to switch to #42.”</i> with <b>↩️ Open report #42</b>. With no pack open, the returned report opens by itself.
+        </div>
+        <div class="info-box">
           Type <code style="font-family:var(--mono); color:var(--accent); background:var(--accent-dim); padding:2px 6px; border-radius:4px;">/myreports</code> to see the status of your reports from the last 12 months.
         </div>
         <div class="info-box">
@@ -1333,7 +1420,7 @@
         </div>
       </div>
 
-      <!-- SLIDE 17: After approval (O-5) -->
+      <!-- SLIDE 19: After approval (O-5) -->
       <div class="slide">
         <div class="slide-tag">After approval</div>
         <h2>What approval sends — and how to take a report back</h2>
@@ -1382,7 +1469,7 @@
         </div>
       </div>
 
-      <!-- SLIDE 18: Tips & reminders -->
+      <!-- SLIDE 20: Tips & reminders -->
       <div class="slide">
         <div class="slide-tag">Reference</div>
         <h2>Tips &amp; reminders</h2>
@@ -1419,7 +1506,7 @@
         </div>
       </div>
 
-      <!-- SLIDE 19: For accountants -->
+      <!-- SLIDE 21: For accountants -->
       <div class="slide">
         <div class="slide-tag">For accountants</div>
         <h2>Reviewing reports</h2>
