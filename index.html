@@ -1542,7 +1542,7 @@
           ↩️ <b>A returned report doesn't take over your open pack.</b> Working in another one when it comes back? <i>“Report #42 returned for clarification: … You're working in #45 «Berlin October» — it stays open. Tap below to switch to #42.”</i> with <b>↩️ Open report #42</b>. With no pack open, the returned report opens by itself.
         </div>
         <div class="info-box">
-          ⚠️ <b>Lines with the same amount are named to the accountant.</b> The notification that your report has arrived carries a line for each such group: <i>“⚠️ Same amounts: lines 3 and 6 — 45.00 AED (confirmed by the employee)”</i>. Those are the line numbers of the PDF, which lists the lines in its own order — they can differ from the numbers you saw in the pack.
+          ⚠️ <b>Lines with the same amount are named to the accountant.</b> The notification that your report has arrived carries a line for each such group: <i>“⚠️ Same amounts: lines 3 and 6 — 45.00 AED (confirmed by the employee)”</i>. They are the same numbers you saw in the pack and in the question: the pack, the bot's questions and the PDF all list the lines in one order — by receipt date, and lines of the same date in the order they were added.
         </div>
         <div class="info-box">
           Type <code style="font-family:var(--mono); color:var(--accent); background:var(--accent-dim); padding:2px 6px; border-radius:4px;">/myreports</code> to see the status of your reports from the last 12 months.
@@ -1673,7 +1673,7 @@
           ⚠ <b>Gap flags.</b> <code style="font-family:var(--mono); color:var(--accent);">/pending</code> and <code style="font-family:var(--mono); color:var(--accent);">/report</code> mark lines backed only by a payment slip (e.g. a hotel charge with no invoice, a flight with no ticket) — so you can ask for the missing document before approving.
         </div>
         <div class="info-box" style="margin-top:10px">
-          ⚠️ <b>Same amounts.</b> The notification of a submitted report names lines with the same amount and currency: <i>“⚠️ Same amounts: lines 3 and 6 — 45.00 AED (confirmed by the employee)”</i>. The numbers are the PDF's; the employee's list in the bot may number the same lines differently.
+          ⚠️ <b>Same amounts.</b> The notification of a submitted report names lines with the same amount and currency: <i>“⚠️ Same amounts: lines 3 and 6 — 45.00 AED (confirmed by the employee)”</i>. The numbers are the PDF's, and they are the same numbers the employee sees in the bot: lines go by receipt date, and lines of the same date in the order they were added.
         </div>
         <div class="info-box" style="margin-top:10px">
           👔 <b>Asked when someone is added.</b> After <code style="font-family:var(--mono); color:var(--accent);">/adduser</code>, or <b>Approve</b> on an access request, the admin who did it is asked: <i>“👔 Who is Lena's manager? They will get a copy of every approved report. Send Name &lt;email&gt; (or just the email), or tap No manager.”</i> Type <code style="font-family:var(--mono); color:var(--accent);">Ivan Petrov &lt;ivan@company.com&gt;</code> or just the address, or tap <b>🚫 No manager</b>. A command typed meanwhile is a command, not an answer. Someone who already has a manager is not asked — <i>“👔 Lena's manager stays …”</i>.
