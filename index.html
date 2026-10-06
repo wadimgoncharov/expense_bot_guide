@@ -707,7 +707,7 @@
         <div class="brand-sub">Employee Onboarding</div>
       </div>
     </div>
-    <div class="slide-counter">Slide <span id="cur">1</span> / <span id="total">23</span></div>
+    <div class="slide-counter">Slide <span id="cur">1</span> / <span id="total">24</span></div>
   </header>
 
   <!-- Progress -->
@@ -829,7 +829,7 @@
           <div style="padding-left:32px"><span class="resp">&nbsp;&nbsp;Currency: AED</span></div>
           <div style="padding-left:32px"><span class="resp">Now send photos of receipts or PDF documents — I'll add them to this pack.</span></div>
           <div style="margin-top:6px"><span class="prompt">Bot: </span><span class="resp">📸 Send your first receipt — photo or document — to add it to this pack.</span></div>
-          <div style="padding-left:32px"><span class="resp">Each photo or file is added separately. Several pages of one document? Use the button «📚 Multi-page document».</span></div>
+          <div style="padding-left:32px"><span class="resp">Each photo or file you send is read on its own; several sent together as an album are read together, as one list. Several pages of one document? Use the button «📚 Multi-page document».</span></div>
         </div>
         <p style="font-size:12.5px; color:var(--text-light); margin:0 0 8px;">Typed several expenses in one message — <i>“a taxi 50 AED and a hotel 300 AED”</i>? Each one becomes its own line, with its own read-out and its own <b>✏️ Fix</b> · <b>🗑 Remove</b>. The same expense named twice — same vendor, amount and currency — is added once.</p>
         <p style="font-size:12.5px; color:var(--text-light); margin:0 0 4px;">Under that second message: <b>📚 Multi-page document</b>, <b>💬 Comment</b> · <b>🧑 On behalf</b>, <b>✏️ Rename pack</b> · <b>🗑 Delete pack</b>. Once receipts are in, the message after each one carries this bar:</p>
@@ -873,7 +873,7 @@
           </div>
         </div>
         <p class="tg-say" style="margin:0 0 8px;">
-          <b>No confirmation needed.</b> A single receipt — photo or file — is read and saved straight away, and you see every field it recognised — so a wrong one is obvious immediately. Keep sending photos; each becomes its own line. Two exceptions wait for you: a business meeting with nobody named (its card asks who was there — slide “Expense categories”) and a document that looks like a line already in the pack (next slide). While one of them waits on a photo or file you sent, the next photo or file is turned away — <i>“⚠️ One at a time — decide on the receipt above first, then send this photo again.”</i> (<i>“…this document again.”</i> for a file), with <b>🚫 Cancel that one</b>, which cancels the card above, not the new file. Answer the card, then send the rest again. One PDF that holds <b>several separate documents</b> — ten invoices saved into one file — is not saved at once either: it comes back as one list, each document with its pages (slide “Several documents in one PDF”).
+          <b>No confirmation needed.</b> A single receipt — photo or file — is read and saved straight away, and you see every field it recognised — so a wrong one is obvious immediately. Keep sending photos; each becomes its own line. Two exceptions wait for you: a business meeting with nobody named (its card asks who was there — slide “Expense categories”) and a document that looks like a line already in the pack (next slide). While one of them waits, the next photo or file is not turned away: it is held behind it, with its own <b>🗑 Discard the photo you sent</b> — <i>“📎 I'm holding the photo you just sent — it's next once you've answered above.”</i> — and read on its own as soon as you have answered; a second one waits behind the first (<i>“…it's number 2 in line, read once you've answered above.”</i>). Nothing has to be sent again. Two or more receipts on one photo are not guessed at: <i>“⚠️ I can see 2 or more receipts on this photo. I can't guarantee reading them correctly — please send them one at a time. I didn't keep this photo.”</i> Several photos sent together as an album are read together, as one list (slide “Several photos at once”). One PDF that holds <b>several separate documents</b> — ten invoices saved into one file — is not saved at once either: it comes back as one list, each document with its pages (slide “Several documents in one PDF”).
         </p>
         <p style="font-size:12.5px; color:var(--text-light); margin:0 0 8px;">An expense you only <b>describe in words</b> is saved straight away too. If the bot took it for one with a document behind it and no file was there, it says so under the read-out: <i>“ℹ️ No document is attached to this line — send it if you have one.”</i></p>
         <div class="info-box" style="margin:0;">
@@ -981,8 +981,58 @@
         </div>
         <div class="info-box" style="margin:10px 0 0;">
           🔁 <b>Already in the pack — only on the same date.</b> A document is marked when a line of this pack has the same amount, the same currency, a vendor that looks the same <b>and the same date</b>: <i>“→ another page of line 2 (already in the pack)”</i>, or <i>“→ the document of line 2 …”</i> when that line has no document yet. Two invoices of one amount on different days are not mixed up: the one of another day is a new line.<br><br>
-          👆 <b>Only its buttons settle the list.</b> Typing <code style="font-family:var(--mono); color:var(--accent);">yes</code> or <code style="font-family:var(--mono); color:var(--accent);">no</code> adds nothing and drops nothing; the answer ends with <i>“⏳ The PDF with 3 separate documents is still waiting — tap ✅ Add all or 🚫 Discard on its list.”</i> The next photo or file is not kept: <i>“⚠️ One at a time — decide on this PDF first, then send this photo again.”</i>, and the list comes back at the bottom with its buttons. <code style="font-family:var(--mono); color:var(--accent);">/submit</code> stops at it — <i>“… I'm still holding the PDF you sent with 3 separate documents, still waiting for your answer on its list above: ✅ Add all or 🚫 Discard.”</i> — with <b>✅ Add all 3</b> (and <b>➕ Add all as new lines</b> when a document is marked), <b>🗑 Discard it</b> and <b>📤 Submit without it</b>; after Add all the submit is offered again. <code style="font-family:var(--mono); color:var(--accent);">/cancel</code> drops the list with its PDF: <i>“🚫 Dropped the PDF with 3 separate documents. Nothing was saved.”</i><br><br>
+          👆 <b>Only its buttons settle the list.</b> Typing <code style="font-family:var(--mono); color:var(--accent);">yes</code> or <code style="font-family:var(--mono); color:var(--accent);">no</code> adds nothing and drops nothing; the answer ends with <i>“⏳ The PDF with 3 separate documents is still waiting — tap ✅ Add all or 🚫 Discard on its list.”</i> A photo or file sent meanwhile is held behind the list — <i>“📎 I'm holding the photo you just sent — it's next once you've answered above.”</i> — and read once the list is settled. A business meeting on the list is marked <i>“— business meeting: who was there? I'll ask after Add all”</i>: after <b>✅ Add all</b> the bot asks for the names, one line at a time (slide “Several photos at once”). <code style="font-family:var(--mono); color:var(--accent);">/submit</code> stops at it — <i>“… I'm still holding the PDF you sent with 3 separate documents, still waiting for your answer on its list above: ✅ Add all or 🚫 Discard.”</i> — with <b>✅ Add all 3</b> (and <b>➕ Add all as new lines</b> when a document is marked), <b>🗑 Discard it</b> and <b>📤 Submit without it</b>; after Add all the submit is offered again. <code style="font-family:var(--mono); color:var(--accent);">/cancel</code> drops the list with its PDF: <i>“🚫 Dropped the PDF with 3 separate documents. Nothing was saved.”</i><br><br>
           📄 <b>Pages and long lists.</b> Pages in none of the documents are named: <i>“Not in any of them: p. 7 — those pages are not kept.”</i> A long list shows its first documents — at most 30 — and then <i>“… and 60 more documents”</i>; <b>✅ Add all</b> still adds every one, and its summary is cut the same way: the first 30 lines, then <i>“… and 60 more — /showpack lists every line.”</i>, with number buttons for 24 lines at most. A PDF that is <b>one</b> document, however many pages, stays one line with the whole PDF as its document. And an expense that comes in alongside the PDF but not as its pages — a taxi you describe in words, say — is asked about the PDF like any held file (<i>“Is it the document for …?”</i>): <b>Yes</b> puts the whole PDF on that line and withdraws the list, saying so; <b>No</b> saves the line without it, and the list comes back.
+        </div>
+      </div>
+
+      <!-- SLIDE: Several photos at once — an album read together (O-88) -->
+      <div class="slide">
+        <div class="slide-tag">Step 2 · an album</div>
+        <h2>Several photos at once</h2>
+        <p class="subtitle" style="margin-bottom:12px;">Send the photos together, as an album: the bot reads them together and shows one list of the documents in them. Nothing has to be sent again.</p>
+        <div class="divider" style="margin-bottom:12px;"></div>
+        <div class="code-block" style="margin:0 0 6px; font-size:12.5px;">
+          <div><span class="prompt">Bot: </span><span class="resp">📥 Got 4 photos — reading them together…</span></div>
+          <div style="margin-top:6px;"><span class="prompt">Bot: </span><span class="resp">📄 These 4 photos hold 3 documents — total 1136.00 EUR + 45.00 AED:</span></div>
+          <div style="padding-left:32px; margin-top:4px;"><span class="resp">1. Hotel Adria · 1136.00 EUR · 2026-09-20 — photos 1–2</span></div>
+          <div style="padding-left:32px"><span class="resp">2. Careem · 45.00 AED · 2026-09-21 — photo 3</span></div>
+          <div style="padding-left:32px"><span class="resp">3. Boarding pass DXB→ZRH — photo 4 (supporting, no amount)</span></div>
+          <div style="padding-left:32px; margin-top:4px;"><span class="resp">Each becomes its own line with its own photos as its document — a document on several photos becomes one PDF.</span></div>
+        </div>
+        <div class="tg-keys" style="margin:4px 0 8px;">
+          <div class="tg-row"><div class="tg-btn primary">✅ Add all 3</div></div>
+          <div class="tg-row"><div class="tg-btn">🖼 Each photo separately</div></div>
+          <div class="tg-row"><div class="tg-btn danger">🚫 Discard</div></div>
+        </div>
+        <div class="step-list" style="margin-top:0; gap:7px;">
+          <div class="step-item" style="padding:9px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">✅</div>
+            <div class="step-content">
+              <strong>Add all</strong>
+              <span>Each document becomes its own line: the hotel bill on two photos gets one PDF of both, the taxi keeps its photo, the boarding pass is filed as supporting evidence. One summary follows — <i>“✅ Added 2 lines and 1 supporting document from the photos to pack «Zurich trip»:”</i> — with a number button per line. A document of a line already in the pack is marked and filed to that line, as for a PDF (and <b>➕ Add all as new lines</b> is offered too).</span>
+            </div>
+          </div>
+          <div class="step-item" style="padding:9px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">🖼</div>
+            <div class="step-content">
+              <strong>Each photo separately</strong>
+              <span>The list goes, and the photos are read one at a time, in order, as if sent one by one: <i>“🖼 Photo 2 of 4 — reading it…”</i>. If one of them raises a question — a business lunch asking who was there — the rest wait behind it and come next.</span>
+            </div>
+          </div>
+          <div class="step-item" style="padding:9px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">🚫</div>
+            <div class="step-content">
+              <strong>Discard</strong>
+              <span>All the photos are deleted and nothing is added: <i>“🚫 Discarded the 3 photos you sent — nothing from them was added.”</i></span>
+            </div>
+          </div>
+        </div>
+        <div class="info-box" style="margin:10px 0 0;">
+          🍽 <b>Business meetings.</b> On the list a lunch nobody named is marked <i>“— business meeting: who was there? I'll ask after Add all”</i>. After <b>✅ Add all</b> the bot asks, one line at a time: <i>“Line 2 — Ristorante Valentino · 140.00 CHF — who were you meeting with? Type the names and company, or keep it without.”</i> with <b>➕ Keep without names</b>; what you type goes into that line's note, then the next one is asked. While it asks, a new photo waits behind the question, <code style="font-family:var(--mono); color:var(--accent);">/submit</code> stops at it, and <code style="font-family:var(--mono); color:var(--accent);">/cancel</code> closes it — the lines stay.<br><br>
+          📸 <b>Several receipts on one photo.</b> That photo is not read into lines: the list says <i>“⚠️ photo 3 — I can see 2 or more receipts on it; I can't read them reliably, please send them one at a time”</i>, and it is not in <b>✅ Add all</b>. Photos in none of the documents are named: <i>“Not in any of them: photo 4 — not kept.”</i><br><br>
+          ⏳ <b>Sent while something waits.</b> An album sent while a card or a question waits is held behind it as one — <i>“📎 I'm holding the 2 photos you just sent — they're next once you've answered above. I'll read them together.”</i> — with one <b>🗑 Discard the 2 photos you sent</b>. If reading an album fails, nothing is lost: <i>“⚠️ Something went wrong while reading the 4 photos you sent — nothing from them was read or added. I'm keeping them.”</i> with <b>🔁 Read them again</b> and <b>🗑 Discard the 4 photos</b>.<br><br>
+          📚 <b>Pages of one document?</b> If nothing was read from the album, tap <b>📚 Multi-page document</b>: <b>📚 Use them as pages 1–2</b> makes the album's photos the document's first pages, in order — send the rest, then <b>✅ Document complete</b>.
         </div>
       </div>
 
@@ -1052,7 +1102,7 @@
             <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">🖼</div>
             <div class="step-content">
               <strong>An album</strong>
-              <span>Several photos sent at once can't be pages: <i>“📚 Those came as an album, and an album can't be pages of a document — send the pages one by one. None of the album was added; your 3 page(s) sent before it are kept.”</i> If the bot took the album's first photo for page 1 of a longer document, the rest of the album become its pages. Outside a document, each photo of an album is its own receipt, with one note: <i>“📸 Those came as an album — I'm reading each one as its own receipt, one by one. Pages of one document? Tap 📚 Multi-page document and send them one at a time.”</i> The exception: if the album's first photo opens a business-meeting card or the “Already in the pack?” question, each of the other photos is turned away with its own <i>“⚠️ One at a time — …”</i> and nothing is added from them — answer the card, then send them again. (A file sent while a document is being collected is held, as below.)</span>
+              <span>Several photos sent at once can't be pages of a document being collected: <i>“📚 Those came as an album, and an album can't be pages of a document — send the pages one by one. None of the album was added; your 3 page(s) sent before it are kept.”</i> Outside a document an album is read together, as one list — and the pages of one document photographed on several photos become one PDF there (slide “Several photos at once”). (A file sent while a document is being collected is held, as below.)</span>
             </div>
           </div>
           <div class="step-item" style="padding:9px 14px;">
