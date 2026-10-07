@@ -691,6 +691,11 @@
     .receipt-type-row { flex-direction: column; }
     .os-row { flex-direction: column; }
     .code-block { font-size: 12px; padding: 12px 14px; }
+    /* A command over its description, not beside it: side by side the
+       description column was a few words wide and the slide ran 4+ screens. */
+    .cmd-table td { display: block; }
+    .cmd-table .cmd-cell { width: auto; padding: 10px 0 0; white-space: normal; }
+    .cmd-table .desc-cell { padding: 2px 0 10px; }
   }
 </style>
 </head>
@@ -707,12 +712,12 @@
         <div class="brand-sub">Employee Onboarding</div>
       </div>
     </div>
-    <div class="slide-counter">Slide <span id="cur">1</span> / <span id="total">24</span></div>
+    <div class="slide-counter">Slide <span id="cur">1</span> / <span id="total">32</span></div>
   </header>
 
   <!-- Progress -->
   <div class="progress-bar">
-    <div class="progress-fill" id="progress" style="width:10%"></div>
+    <div class="progress-fill" id="progress" style="width:0"></div>
   </div>
 
   <!-- Slides -->
@@ -873,22 +878,15 @@
           </div>
         </div>
         <p class="tg-say" style="margin:0 0 8px;">
-          <b>No confirmation needed.</b> A single receipt — photo or file — is read and saved straight away, and you see every field it recognised — so a wrong one is obvious immediately. Keep sending photos; each becomes its own line. Two exceptions wait for you: a business meeting with nobody named (its card asks who was there — slide “Expense categories”) and a document that looks like a line already in the pack (next slide). While one of them waits, the next photo or file is not turned away: it is held behind it, with its own <b>🗑 Discard the photo you sent</b> — <i>“📎 I'm holding the photo you just sent — it's next once you've answered above.”</i> — and read on its own as soon as you have answered; a second one waits behind the first (<i>“…it's number 2 in line, read once you've answered above.”</i>). Nothing has to be sent again. Two or more receipts on one photo are not guessed at: <i>“⚠️ I can see 2 or more receipts on this photo. I can't guarantee reading them correctly — please send them one at a time. I didn't keep this photo.”</i> Several photos sent together as an album are read together, as one list (slide “Several photos at once”). One PDF that holds <b>several separate documents</b> — ten invoices saved into one file — is not saved at once either: it comes back as one list, each document with its pages (slide “Several documents in one PDF”).
+          <b>No confirmation needed.</b> A single receipt — photo or file — is read and saved straight away, and you see every field it recognised — so a wrong one is obvious immediately. Keep sending photos; each becomes its own line. Two exceptions wait for you: a business meeting with nobody named (its card asks who was there — slide “Expense categories”) and a document that looks like a line already in the pack (next slide) — or like the invoice a line is still waiting for (slide “Only the payment slip? The line waits”). While one of them waits, the next photo or file is not turned away: it is held behind it, with its own <b>🗑 Discard the photo you sent</b> — <i>“📎 I'm holding the photo you just sent — it's next once you've answered above.”</i> — and read on its own as soon as you have answered; a second one waits behind the first (<i>“…it's number 2 in line, read once you've answered above.”</i>). Nothing has to be sent again. Two or more receipts on one photo are not guessed at: <i>“⚠️ I can see 2 or more receipts on this photo. I can't guarantee reading them correctly — please send them one at a time. I didn't keep this photo.”</i> Several photos sent together as an album are read together, as one list (slide “Several photos at once”). One PDF that holds <b>several separate documents</b> — ten invoices saved into one file — is not saved at once either: it comes back as one list, each document with its pages (slide “Several documents in one PDF”).
         </p>
-        <p style="font-size:12.5px; color:var(--text-light); margin:0 0 8px;">An expense you only <b>describe in words</b> is saved straight away too. If the bot took it for one with a document behind it and no file was there, it says so under the read-out: <i>“ℹ️ No document is attached to this line — send it if you have one.”</i></p>
+        <div class="info-box" style="margin:0 0 8px;">
+          ✍️ <b>Described in words? Then it has no document — and the submit will ask why.</b> A taxi you only describe is saved straight away, marked <i>“Doc: ⏳ no document yet — awaiting the ticket or receipt”</i>, with <i>“📄 Accounting will need the ticket or receipt for this line — send it when you have it, and I'll file it here. Without it, I'll ask you for the reason when you submit.”</i> Send the document later: when it reads like that line (same amount and vendor, or a close amount), the bot asks which line it is for and files it there. If it does not match — a far amount, or a different amount under about 80 AED — it becomes its own line: tidy up with <b>✏️ Fix</b> / <b>🗑 Remove</b>, or tap <b>“📎 Line N — … is its document”</b> at submission when it is offered. If no document comes, the submit stops at that line and asks for the reason (slide “A line without its document”). If the bot took it for one with a document and no file was there, the read-out says instead <i>“ℹ️ No document is attached to this line — send it if you have one.”</i>
+        </div>
         <div class="info-box" style="margin:0;">
-          🧾 <b>Send the real document, not just the payment slip.</b> For a hotel that's the <b>invoice or folio</b> (guest name, check-in and check-out); for a flight the <b>ticket or boarding pass</b> (route and date). A bank confirmation proves money moved but not who stayed or flew when — the bot points this out before you submit, and you can still send it as it is.
+          🧾 <b>Send the real document, not just the payment slip.</b> For a hotel that's the <b>invoice or folio</b> (guest name, check-in and check-out); for a flight the <b>ticket or boarding pass</b> (route and date). A bank confirmation proves money moved but not who stayed or flew when — a line with only the slip is saved, but marked <i>“Doc: ⏳ awaiting the invoice”</i> and waits for it (slide “Only the payment slip? The line waits”).
         </div>
-        <div class="info-box" style="margin:8px 0 0;">
-          ⚠️ <b>If a save ever fails, the bot says so — which line, and why.</b> <i>“⚠️ That receipt wasn't saved, and nothing half-saved was left behind. What: Hotel Adria · 1136.00 EUR. Why: writing the file did not work.”</i> The reason is one of <i>report #42 is submitted</i>, <i>writing the file did not work</i>, <i>something went wrong on my side while saving it</i>, or the first line of the failed step's own answer. What to do next depends on it:
-          <br>• the report is already with accounting: <i>“Report #42 is submitted — it can't take new lines. Reopen it from /myreports, or start a new report with /newpack, then add this expense again.”</i>
-          <br>• you had sent a photo or PDF: <i>“Send the photo or PDF again and I'll read it from scratch. If the second try fails the same way, /feedback puts it in front of a person instead of another retry.”</i>
-          <br>• you had described it in words: <i>“Tell me about it again and I'll add it. If the second try fails the same way, /feedback puts it in front of a person instead of another retry.”</i>
-          <br>If a multi-page document was being collected, the next step is followed by <i>“📚 Your 3 page(s) are still here — this did not touch them. Send the next page, or tap Document complete.”</i>, with <b>✅ Document complete</b> · <b>🚫 Cancel</b> on top.
-          <br>Under it are the pack buttons and <b>💬 Leave feedback</b> — the second step is one tap, not a command to remember.<br><br>
-          A card still on screen when its report went to accounting is never saved: its <b>✅ Confirm</b> answers <b>Not saved</b> with the message above, and if you don't tap it, the bot's next answer says it once, the same way.<br><br>
-          When you asked the bot to attach a document to a line, or to file a Travel Request, and writing that file fails, the bot answers in its own words — and under that answer, always, comes <i>“Still holding your PDF.”</i> — <i>“…your photo.”</i> for a photo — with <b>🚫 Discard it</b>. The file is kept: tell the bot again what it is, or discard it. What you never get is a silent card with the receipt missing from the report.
-        </div>
+        <p style="font-size:12.5px; color:var(--text-light); margin:8px 0 0;">⚠️ A save that fails is never silent — slide “If a save ever fails”.</p>
       </div>
 
       <!-- SLIDE: A document that repeats a line already in the pack (O-81) -->
@@ -911,7 +909,7 @@
             <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">📎</div>
             <div class="step-content">
               <strong>Another page of that line</strong>
-              <span>The document goes onto line 2 as one more document. No line is added, and the amount is counted once: <i>“📎 Filed as another page of line 2 — Anthropic · 10.67 USD. The amount stays once.”</i> If line 2 had no document yet, this one becomes its document: <i>“📎 Filed as the document of line 2 — …”</i></span>
+              <span>The document goes onto line 2 as one more document. No line is added, and the amount is counted once: <i>“📎 Filed as another page of line 2 — Anthropic · 10.67 USD. The amount stays once.”</i> If line 2 has no file yet, the button reads <b>📎 Use it as line 2's document</b>, and the answer is <i>“📎 Filed as the document of line 2 — …”</i></span>
             </div>
           </div>
           <div class="step-item" style="padding:9px 14px;">
@@ -1036,6 +1034,44 @@
         </div>
       </div>
 
+      <!-- SLIDE: Tips are not reimbursed (O-3) -->
+      <div class="slide">
+        <div class="slide-tag">Step 2 · tips</div>
+        <h2>Tips are not reimbursed</h2>
+        <p class="subtitle" style="margin-bottom:12px;">Paid more than the bill's total? The line claims the bill — accounting reimburses the bill, not the tip.</p>
+        <div class="divider" style="margin-bottom:12px;"></div>
+        <div class="code-block" style="margin:0 0 6px; font-size:12.5px;">
+          <div><span class="prompt">Bot: </span><span class="resp">✅ Added:</span></div>
+          <div style="padding-left:32px"><span class="resp">Vendor: Ristorante Valentino</span></div>
+          <div style="padding-left:32px"><span class="resp">Amount: 67.50 EUR&nbsp;&nbsp;= 270.00 AED</span></div>
+          <div style="padding-left:32px"><span class="resp">Type:&nbsp;&nbsp; Business meetings</span></div>
+          <div style="padding-left:32px"><span class="resp">Date:&nbsp;&nbsp; 2026-10-05</span></div>
+          <div style="padding-left:32px"><span class="resp">Note:&nbsp;&nbsp; business dinner — with Sam Wilson, ABC Corp</span></div>
+          <div style="padding-left:32px; margin-top:4px;"><span class="resp">✂️ Tip of 7.50 EUR left out — you paid 75.00 EUR, the bill is 67.50 EUR: accounting reimburses the bill, not the tip.</span></div>
+        </div>
+        <div class="info-box" style="margin:8px 0 0;">
+          📋 In the list of a PDF or an album the same line reads <i>“✂️ 75.00 EUR paid, the bill is 67.50 EUR — tip 7.50 EUR left out”</i>, and a card still waiting for <b>✅ Confirm</b> or for names shows the ✂️ line too. Nothing to do on your side: the bill's own total is what goes into the report.
+        </div>
+      </div>
+
+      <!-- SLIDE: If a save fails (moved from "Add receipts" to keep that slide short) -->
+      <div class="slide">
+        <div class="slide-tag">Step 2 · if a save fails</div>
+        <h2>If a save ever fails</h2>
+        <p class="subtitle" style="margin-bottom:12px;">The bot says so — which line, and why — and what to do next.</p>
+        <div class="divider" style="margin-bottom:12px;"></div>
+        <div class="info-box" style="margin:0;">
+          <i>“⚠️ That receipt wasn't saved, and nothing half-saved was left behind. What: Hotel Adria · 1136.00 EUR. Why: writing the file did not work.”</i> The reason is one of <i>report #42 is submitted</i>, <i>writing the file did not work</i>, <i>something went wrong on my side while saving it</i>, or the first line of the failed step's own answer. What to do next depends on it:
+          <br>• the report is already with accounting: <i>“Report #42 is submitted — it can't take new lines. Reopen it from /myreports, or start a new report with /newpack, then add this expense again.”</i>
+          <br>• you had sent a photo or PDF: <i>“Send the photo or PDF again and I'll read it from scratch. If the second try fails the same way, /feedback puts it in front of a person instead of another retry.”</i>
+          <br>• you had described it in words: <i>“Tell me about it again and I'll add it. If the second try fails the same way, /feedback puts it in front of a person instead of another retry.”</i>
+          <br>If a multi-page document was being collected, the next step is followed by <i>“📚 Your 3 page(s) are still here — this did not touch them. Send the next page, or tap Document complete.”</i>, with <b>✅ Document complete</b> · <b>🚫 Cancel</b> on top.
+          <br>Under it are the pack buttons and <b>💬 Leave feedback</b> — the second step is one tap, not a command to remember.<br><br>
+          A card still on screen when its report went to accounting is never saved: its <b>✅ Confirm</b> answers <b>Not saved</b> with the message above, and if you don't tap it, the bot's next answer says it once, the same way.<br><br>
+          When you asked the bot to attach a document to a line, or to file a Travel Request, and writing that file fails, the bot answers in its own words — and under that answer, always, comes <i>“Still holding your PDF.”</i> — <i>“…your photo.”</i> for a photo — with <b>🚫 Discard it</b>. The file is kept: tell the bot again what it is, or discard it. What you never get is a silent card with the receipt missing from the report.
+        </div>
+      </div>
+
       <!-- SLIDE 6: Documents with several pages -->
       <div class="slide">
         <div class="slide-tag">Step 2 · continued</div>
@@ -1078,7 +1114,7 @@
         <div class="info-box" style="margin:8px 0 0;">
           This card waits for <b>✅ Confirm</b> before saving (the only other card that waits is a business meeting's, for the names): the total is assembled across pages, so it shows what it read — including the page count — and waits. Remembered a page you missed? <b>Add another page</b> keeps everything already photographed. Already have a PDF? Just send the file.
           <br><br><b>It waits for your tap, and nothing else saves it.</b> Write about something else in the meantime and the card stays as it is; under the bot's answer one line reminds you: <i>“⏳ The card for Hotel Adria · 1136.00 EUR is still waiting — tap ✅ Confirm or 🚫 Cancel on it.”</i>
-          <br><br><b>✏️ Change</b> fixes <b>Type</b>, <b>Vendor</b>, <b>Amount</b>, <b>Currency</b>, <b>Date</b> or <b>Note</b> before you confirm. A new currency is shown on the card with its AED value at today's rate — <i>“Amount: 367.25 USD = 1348.70 AED”</i>; if the rate can't be fetched, nothing changes: <i>“I couldn't get today's exchange rate, so nothing was changed. Try again in a minute.”</i> Corrected it in words instead (<i>“the date is 30 September”</i>)? The same card comes back updated — <i>“✏️ Updated — check it again.”</i> — still waiting for Confirm.
+          <br><br><b>✏️ Change</b> fixes <b>Type</b>, <b>Vendor</b>, <b>Amount</b>, <b>Currency</b>, <b>Date</b> or <b>Note</b> before you confirm. A new currency is shown on the card with its AED value at today's rate — <i>“Amount: 367.25 USD = 1348.70 AED”</i>; if the rate can't be fetched, nothing changes: <i>“I couldn't get today's exchange rate, so nothing was changed. Try again in a minute.”</i> Corrected it in words instead (<i>“the date is 30 September”</i>)? The same card comes back updated — <i>“✏️ Updated — check it again.”</i> — still waiting for Confirm, and the old message says what it was (slide “Correcting a card in words”).
           <br><br>A document can make <b>two cards</b> — a hotel folio and a separate restaurant bill on it, say. Each card's buttons act on that card only, but the <b>document goes to one line</b>: confirm first the card whose document it is. Confirm the restaurant first and the bot asks <i>“📎 I'm still holding the PDF I read as Hotel Adria · 1136.00 EUR. Is it the document for Adria Restaurant · 85.00 EUR?”</i> — <b>Yes</b> gives the document to the restaurant and withdraws the hotel card <b>together with its expense</b>: <i>“🚫 The card for Hotel Adria · 1136.00 EUR is withdrawn — its document is now on Adria Restaurant · 85.00 EUR.”</i> The 1136 EUR is not saved, and that card's Confirm then answers <i>“This draft is no longer active.”</i> <b>No</b> saves the restaurant without a document, and the hotel keeps the PDF when you confirm it. Typed <code style="font-family:var(--mono); color:var(--accent);">yes</code> with two cards waiting? The bot asks <i>“2 cards are waiting — which one should I add?”</i> with a <b>✅ Confirm …</b> button per card; typed <code style="font-family:var(--mono); color:var(--accent);">no</code> — <i>“2 cards are waiting — which one should I cancel?”</i> with a <b>🚫 Cancel …</b> button per card. Corrected the total in words and the bot made a new line from it? It asks whether the document belongs to the new line; answer <b>Yes</b> and the old card is withdrawn: <i>“🚫 The card for Hotel Adria · 130.98 EUR is withdrawn — its document is now on Hotel Adria · 350.00 EUR.”</i>
           <br><br><b>The bot never deletes, on its own, a document you sent that is not saved yet.</b> If it drops a card it made — it can, when it misreads what you said — or you tell it <i>“actually, never mind”</i> about a photo it was asking about, the document stays with the bot and is named under its answer: <i>“📎 Still holding the photo you sent — tell me what it is and I'll file it.”</i> with <b>🚫 Discard it</b>. That button, <b>🚫 Cancel</b> on a card, your own typed <i>no</i> to a card, or <code style="font-family:var(--mono); color:var(--accent);">/cancel</code> are what delete such a document — and the slide <b>“What happens to a file the bot is holding”</b> lists where one can still go: the next upload replacing it, and <code style="font-family:var(--mono); color:var(--accent);">/cancel</code> while pages are being collected. A line that is <b>already saved</b> is different: <b>🗑 Remove</b>, or asking in words — <code style="font-family:var(--mono); color:var(--accent);">delete #2</code>, “delete this pack” — removes the line or the whole open pack, with their documents; asked in words, the bot first asks with buttons — such as <b>Delete it</b> · <b>Keep it</b>.
         </div>
@@ -1175,7 +1211,43 @@
           Like a receipt, a proof document is <b>filed and shown</b> — you see what went in. Filed the wrong thing? <b>🗑 Remove</b> takes it back out. Not clear whether a file is a paid receipt or proof? The bot asks, with buttons — for example <i>“Is this a paid receipt with an amount, or a supporting document (proof, no amount)?”</i> with <b>Paid receipt</b> · <b>Supporting document</b>.
         </p>
         <div class="info-box" style="margin:8px 0 0;">
-          Supporting documents carry <b>no amount</b>, so they never move the total. One sent for the whole report — the Travel Request, general paperwork — gets its own section at the end of the PDF. One sent <b>for a particular line</b> is printed right under that line instead, marked <b>payment confirmation</b>, so the document and the slip that paid for it are read together.
+          Supporting documents carry <b>no amount</b>, so they never move the total. One sent for the whole report — the Travel Request, general paperwork — gets its own section at the end of the PDF. One sent <b>for a particular line</b> is printed right under that line instead, so the document and the slip that paid for it are read together — the real document first, whatever order they came in. Each caption says what the document is: a payment slip — <i>“payment confirmation for #1 · IBIS ZURICH CITY WEST”</i>; an invoice, receipt or ticket filed later to a line that had only the slip is printed first, as the line's own — <i>“invoice — IBIS ZURICH CITY WEST”</i> (or <i>receipt — …</i>, <i>ticket — …</i>); a booking voucher does not close the line: it is printed under it as <i>“booking confirmation for #1 · IBIS ZURICH CITY WEST”</i>, and the line keeps waiting for the invoice; anything else filed under the line — <i>“further document — …”</i>.
+        </div>
+      </div>
+
+      <!-- SLIDE: Only a payment slip — the line waits for the invoice (O-3) -->
+      <div class="slide">
+        <div class="slide-tag">Step 2 · a document to come</div>
+        <h2>Only the payment slip? The line waits</h2>
+        <p class="subtitle" style="margin-bottom:12px;">A bank payment slip proves money moved, not what was bought; a booking voucher proves the booking, not the payment. Neither closes a line on its own, in any category.</p>
+        <div class="divider" style="margin-bottom:12px;"></div>
+        <div class="code-block" style="margin:0 0 6px; font-size:12.5px;">
+          <div><span class="prompt">You: </span><span class="resp">(sends the bank's payment slip for the hotel)</span></div>
+          <div style="margin-top:4px"><span class="prompt">Bot: </span><span class="resp">✅ Added:</span></div>
+          <div style="padding-left:32px"><span class="resp">Vendor: IBIS ZURICH CITY WEST</span></div>
+          <div style="padding-left:32px"><span class="resp">Amount: 843.66 EUR&nbsp;&nbsp;= 3374.64 AED</span></div>
+          <div style="padding-left:32px"><span class="resp">Type:&nbsp;&nbsp; Hotel</span></div>
+          <div style="padding-left:32px"><span class="resp">Date:&nbsp;&nbsp; 2026-09-28</span></div>
+          <div style="padding-left:32px"><span class="resp">Doc:&nbsp;&nbsp;&nbsp; ⏳ awaiting the invoice</span></div>
+          <div style="padding-left:32px; margin-top:4px;"><span class="resp">📄 Accounting will need the itemized invoice for this line — send it when you have it, and I'll file it here.</span></div>
+        </div>
+        <p style="font-size:12.5px; color:var(--text-light); margin:4px 0 6px;">The hotel's invoice comes later — 850.00 EUR, from the company that runs the hotel. The bot asks:</p>
+        <div class="code-block" style="margin:0 0 6px; font-size:12.5px;">
+          <div><span class="prompt">Bot: </span><span class="resp">I read this document as Schiffbau Hotelbetriebs AG · 850.00 EUR. Is this the document for one of these lines?</span></div>
+          <div style="padding-left:32px"><span class="resp">• line 1 — IBIS ZURICH CITY WEST · 843.66 EUR (payment slip only)</span></div>
+          <div style="padding-left:32px"><span class="resp">Filed to a line, its amount is not counted again.</span></div>
+        </div>
+        <div class="tg-keys" style="margin:4px 0 8px;">
+          <div class="tg-row"><div class="tg-btn primary">📎 Line 1 — IBIS ZURICH CITY WEST · 843.66 EUR (payment slip only)</div></div>
+          <div class="tg-row"><div class="tg-btn">➕ No — a new expense</div></div>
+          <div class="tg-row"><div class="tg-btn danger">🚫 Discard</div></div>
+        </div>
+        <p class="tg-say" style="margin:0 0 8px;">
+          <b>📎 Line 1</b> — <i>“📎 Filed under line 1 — IBIS ZURICH CITY WEST · 843.66 EUR, as its document. No new line; the amount stays once. ✅ That line is no longer waiting for its document.”</i> The totals differ, so one more question: <i>“💱 Line 1 says 843.66 EUR; the invoice says 850.00 EUR. Which amount should the line claim?”</i> — <b>Set the line to 850.00 EUR (invoice total)</b> → <i>“✏️ Line 1 now claims 850.00 EUR = 3400.00 AED.”</i>, or <b>Keep 843.66 EUR</b>. <b>➕ No — a new expense</b> adds it as a line of its own; <b>🚫 Discard</b> deletes the file.
+        </p>
+        <div class="info-box" style="margin:0;">
+          🔁 <b>When it asks:</b> when the invoice is close to the line but not the same — another amount, another currency, or no word of the vendor in common. If the invoice reads exactly like the line (same amount, same vendor), the bot asks instead whether it is the same document — slide 6, “Already in the pack?”. The other way round works too: invoice first, slip later — even an invoice of 1265.20 JOD and a slip of 6770.33 AED — and the slip is filed under the invoice <i>“as its payment confirmation”</i>.<br><br>
+          📄 <b>One expense, one line</b> — the invoice and its slip, or a ticket and the bank slip, are one line with two files; the PDF prints the real document first. Two lines after all? The submit offers to join them (slide “A line without its document”). In a list from a PDF or an album such a document is marked <i>“→ for line 1 (awaiting the invoice)? — I'll ask after ✅ Add all”</i>.
         </div>
       </div>
 
@@ -1313,6 +1385,11 @@
             <div class="cat-examples">Restaurant, café, conference, client lunch</div>
           </div>
           <div class="cat-card">
+            <div class="cat-icon">🎁</div>
+            <div class="cat-name">Gifts</div>
+            <div class="cat-examples">A gift for someone outside the company, or a donation — not Business meetings. Say who pre-approved it (next slide)</div>
+          </div>
+          <div class="cat-card" style="grid-column:1 / -1;">
             <div class="cat-icon">📦</div>
             <div class="cat-name">Other</div>
             <div class="cat-examples">Everything that doesn't fit the above categories</div>
@@ -1338,10 +1415,58 @@
           <b>Just type the names and company</b> under the card — <i>Sam Wilson, ABC Corp</i> — and the line is saved with them in its note, <i>“Note: business lunch — with Sam Wilson, ABC Corp”</i>, shown as <b>✅ Added</b> with <b>✏️ Fix</b> · <b>🗑 Remove</b>. <b>✍️ Names &amp; company</b> does the same: the card says <i>“Type the names and company.”</i>, and you type them. <b>➕ Add without names</b> — or typing <code style="font-family:var(--mono); color:var(--accent);">add</code> or <code style="font-family:var(--mono); color:var(--accent);">skip</code> — saves it as it was read; <b>🚫 Cancel</b> or <code style="font-family:var(--mono); color:var(--accent);">no</code> drops it. Named them when you sent it — <i>“add business lunch with Sam Wilson, ABC Corp — 300 AED”</i>? Then the bot doesn't ask: the line is saved straight away, with the names.
         </p>
         <div class="info-box" style="margin:0;">
-          💬 <b>Whatever you type next is taken as the names — with these exceptions.</b> An amount is not names: a number on its own (<i>“500”</i>) or an amount with its currency (<i>“actually it was 500 AED”</i>, <i>“€480”</i>) goes to the bot as an ordinary message, and the card keeps waiting. A number inside names, with no currency beside it (<i>“Room 101 team, ABC Corp”</i>), is part of the names. A command is a command. With <b>two</b> meeting cards waiting, typed names go onto neither: <i>“2 cards are waiting for names — which one are these for? Tap it, then type the names again.”</i>, with a <b>✍️ Names for Zuma · 300.00 AED</b> button for each card. While a card waits, the bot's answers to your ordinary messages end with a line saying which card is waiting and for what — for one meeting card, <i>“⏳ The card for Zuma · 300.00 AED is still waiting — type who you met, or tap ➕ Add without names or 🚫 Cancel on it.”</i> After a command the bot knows (like <code style="font-family:var(--mono); color:var(--accent);">/showpack</code>) there is no such line; a mistyped one (<code style="font-family:var(--mono); color:var(--accent);">/sumbit</code>) is read as an ordinary message, and the line comes. Names wrong later? <b>✏️ Fix → Note</b> (Step 4).
+          💬 <b>What you type under the card is the names</b> — <i>“Sam Wilson, ABC Corp”</i>, <i>“with John and Anna from Acme”</i>. <b>A correction is not names:</b> <i>“no, the amount is 350”</i>, <i>“it was yesterday”</i>, an amount (<i>“500”</i>, <i>“€480”</i>) — text with a figure in it is never written in as names. The bot corrects the card instead, and it comes back updated, still asking who was there (slide “Correcting a card in words”). A bare <code style="font-family:var(--mono); color:var(--accent);">no</code> or <code style="font-family:var(--mono); color:var(--accent);">cancel</code> cancels the card. <i>“also a lunch at Nobu, 200 AED”</i> is a new expense — a second card. A command is a command. With <b>two</b> meeting cards waiting, typed names go onto neither: <i>“2 cards are waiting for names — which one are these for? Tap it, then type the names again.”</i>, with a <b>✍️ Names for Zuma · 300.00 AED</b> button for each card. While a card waits, the bot's answers to your ordinary messages end with a line saying which card is waiting and for what — for one meeting card, <i>“⏳ The card for Zuma · 300.00 AED is still waiting — type who you met, or tap ➕ Add without names or 🚫 Cancel on it.”</i> After a command the bot knows (like <code style="font-family:var(--mono); color:var(--accent);">/showpack</code>) there is no such line; a mistyped one (<code style="font-family:var(--mono); color:var(--accent);">/sumbit</code>) is read as an ordinary message, and the line comes. Names wrong later? <b>✏️ Fix → Note</b> (Step 4).
         </div>
         <div class="info-box" style="margin-top:10px">
           You can always <b>override</b> a category later — see Step 4 (Fix mistakes).
+        </div>
+      </div>
+
+      <!-- SLIDE: Gifts — who pre-approved it (O-3) -->
+      <div class="slide">
+        <div class="slide-tag">Auto-detection · gifts</div>
+        <h2>Gifts — say who pre-approved it</h2>
+        <p class="subtitle" style="margin-bottom:12px;">A present for someone outside the company, or a donation, is a <b>Gift</b> — not a business meeting. Accounting needs to see who agreed to it in advance.</p>
+        <div class="divider" style="margin-bottom:12px;"></div>
+        <div class="code-block" style="margin:0 0 6px; font-size:12.5px;">
+          <div><span class="prompt">You: </span><span class="resp">(sends the shop receipt for a client's gift)</span></div>
+          <div style="margin-top:4px"><span class="prompt">Bot: </span><span class="resp">✅ Added:</span></div>
+          <div style="padding-left:32px"><span class="resp">Vendor: Bateel</span></div>
+          <div style="padding-left:32px"><span class="resp">Amount: 450.00 AED</span></div>
+          <div style="padding-left:32px"><span class="resp">Type:&nbsp;&nbsp; Gifts</span></div>
+          <div style="padding-left:32px"><span class="resp">Date:&nbsp;&nbsp; 2026-10-05</span></div>
+          <div style="padding-left:32px"><span class="resp">Note:&nbsp;&nbsp; dates gift box for the ABC Corp CEO</span></div>
+          <div style="padding-left:32px; margin-top:4px;"><span class="resp">🎁 A gift goes to accounting with who pre-approved it, in its note (e.g. “discussed with Vadim”). I'll ask again when you submit.</span></div>
+        </div>
+        <div class="tg-keys" style="margin:4px 0 8px;">
+          <div class="tg-row"><div class="tg-btn primary">✍️ Who pre-approved it</div></div>
+          <div class="tg-row"><div class="tg-btn">✏️ Fix</div><div class="tg-btn danger">🗑 Remove</div></div>
+        </div>
+        <div class="step-list" style="margin-top:0; gap:7px;">
+          <div class="step-item" style="padding:9px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">✍️</div>
+            <div class="step-content">
+              <strong>Tap “Who pre-approved it” and type the name</strong>
+              <span>The bot asks <i>“Type who pre-approved this gift — e.g. Vadim, or “discussed with Vadim”.”</i> Type <code style="font-family:var(--mono); color:var(--accent);">Vadim</code> and the note gets <i>“pre-approved by Vadim”</i>; words that already say it — <i>discussed with Vadim</i> — go in as you typed them. The bot shows the new note.</span>
+            </div>
+          </div>
+          <div class="step-item" style="padding:9px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">💬</div>
+            <div class="step-content">
+              <strong>Or say it when you send it</strong>
+              <span><i>“gift for the ABC Corp CEO, pre-approved by Vadim”</i> — the note already says who, so nothing is asked.</span>
+            </div>
+          </div>
+          <div class="step-item" style="padding:9px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">📤</div>
+            <div class="step-content">
+              <strong>Forgot? The submit stops and asks</strong>
+              <span><i>“🎁 Before I submit pack #68 «Zurich May 2026»: line 3 — … is a gift. Accounting needs who pre-approved it in its note.”</i> — then type who it was, and the submit goes on; <b>👀 Let me check</b> stops to look at the pack first.</span>
+            </div>
+          </div>
+        </div>
+        <div class="info-box" style="margin:10px 0 0;">
+          📋 <b>Gifts in a list from a PDF or an album.</b> After <b>✅ Add all</b> the summary carries the same 🎁 line, with a <b>✍️ Who pre-approved it — line 3</b> button for each gift.
         </div>
       </div>
 
@@ -1418,7 +1543,7 @@
           📸 <b>Changed your mind mid-correction?</b> Tapped <b>Amount</b> and then sent the next receipt instead of typing a number? The photo or PDF is read as a new receipt, the bot stops waiting, tells you that <b>nothing on the old one changed</b>, and leaves the field one tap away. Whatever you type after that is read as a normal message — not filed into the receipt.<br><br>
           📝 <b>Note</b> is the line's description — where the names of the people at a business meeting are. Tap it: <i>“Send the new note (a single - clears it).”</i> What you type replaces the whole note — <code style="font-family:var(--mono); color:var(--accent);">business lunch — with Sam Wilson, Julia Chen, ABC Corp</code> — and a single <code style="font-family:var(--mono); color:var(--accent);">-</code> clears it. The amount is not touched.<br><br>
           🔗 One case still needs words: if <b>/preview</b> says <i>“Scan not saved”</i>, re-send the photo or PDF and say <code style="font-family:var(--mono); color:var(--accent);">attach it to receipt #3</code>.<br><br>
-          📎 <b>Two documents for one line?</b> A payment slip and the ticket it paid for, for instance — send the second one the same way. The first scan is <b>never replaced</b>: the line keeps it, and the new file is printed in the report <b>directly under that line</b>, marked <b>payment confirmation</b> — no leafing to the end of the report and back. If a line was backed only by a payment slip, that also answers the missing-document warning on it.<br><br>
+          📎 <b>Two documents for one line?</b> A payment slip and the ticket it paid for, for instance — send the second one the same way. The first scan is <b>never replaced</b>: the line keeps both files, printed <b>together under that line</b> — the real document (invoice, ticket) first, whatever order you sent them in, and the payment slip under it; the captions are on slide “Supporting documents”. No leafing to the end of the report and back. If a line was backed only by a payment slip, the document answers the <i>“⏳ awaiting the invoice”</i> on it (slide “Only the payment slip? The line waits”).<br><br>
           🔎 <b>Two different warnings, two different answers.</b> <i>“Scan not saved”</i> means that line never got its document — send it and the line is complete. <i>“Scan … cannot be found”</i> means the line's record points at a file that is no longer there: send the document and it is printed under that line as a further document, but the line keeps its record, so that warning stays until an admin repairs the line. Either way nothing you send is lost.
         </div>
       </div>
@@ -1453,6 +1578,51 @@
         </div>
         <div class="info-box" style="margin:0;">
           💱 <b>The AED total follows.</b> Change the amount or the currency and the line's AED value is worked out again at <b>today's rate</b> — the report total moves with it. If the rate cannot be fetched and the line is switching to a currency other than AED, the bot changes <b>nothing</b>: <i>“I couldn't get today's exchange rate, so nothing was changed. Try again in a minute.”</i> A new amount in the line's own currency does not wait for it — the rate the line was booked at is used.
+        </div>
+      </div>
+
+      <!-- SLIDE: A waiting card corrected in words (prompt package) -->
+      <div class="slide">
+        <div class="slide-tag">Step 4 · a card still waiting</div>
+        <h2>Correcting a card in words</h2>
+        <p class="subtitle" style="margin-bottom:12px;">A card that waits for your answer — a business meeting's names, a multi-page document's <b>✅ Confirm</b> — is corrected, not duplicated.</p>
+        <div class="divider" style="margin-bottom:12px;"></div>
+        <div class="code-block" style="margin:0 0 6px; font-size:12.5px;">
+          <div><span class="prompt">Bot: </span><span class="resp">🧾 Check this and confirm:</span></div>
+          <div style="padding-left:32px"><span class="resp">Vendor: Zuma</span></div>
+          <div style="padding-left:32px"><span class="resp">Amount: 480.00 AED</span></div>
+          <div style="padding-left:32px"><span class="resp">Type:&nbsp;&nbsp; Business meetings</span></div>
+          <div style="padding-left:32px"><span class="resp">Date:&nbsp;&nbsp; 2026-10-05</span></div>
+          <div style="padding-left:32px; margin-top:4px;"><span class="resp">Who were you meeting with? …</span></div>
+          <div style="margin-top:6px"><span class="prompt">You: </span><span class="cmd">no, it was Nobu, not Zuma</span></div>
+          <div style="margin-top:6px"><span class="comment">(the first card's message is rewritten to:)</span></div>
+          <div style="padding-left:32px"><span class="resp">↓ corrected below — was: Zuma · 480.00 AED</span></div>
+          <div style="margin-top:6px"><span class="prompt">Bot: </span><span class="resp">🧾 Check this and confirm:</span></div>
+          <div style="padding-left:32px"><span class="resp">Vendor: Nobu</span></div>
+          <div style="padding-left:32px"><span class="resp">Amount: 480.00 AED</span></div>
+          <div style="padding-left:32px"><span class="resp">Type:&nbsp;&nbsp; Business meetings</span></div>
+          <div style="padding-left:32px"><span class="resp">Date:&nbsp;&nbsp; 2026-10-05</span></div>
+          <div style="padding-left:32px; margin-top:4px;"><span class="resp">✏️ Updated — check it again.</span></div>
+          <div style="padding-left:32px"><span class="resp">Who were you meeting with? …</span></div>
+        </div>
+        <div class="step-list" style="margin-top:6px; gap:7px;">
+          <div class="step-item" style="padding:9px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">✏️</div>
+            <div class="step-content">
+              <strong>Say what is wrong</strong>
+              <span><i>“no, make it 500 AED”</i>, <i>“no, it was yesterday”</i>, <i>“no, it was Nobu, not Zuma”</i> — the same card is drawn again at the bottom with <i>“✏️ Updated — check it again.”</i>, and the old message, without its buttons, shows what it was: the name and amount, plus the old value of any other field you changed — after <i>“no, it was yesterday”</i>: <i>“↓ corrected below — was: Zuma · 480.00 AED · 2026-10-05”</i>. Whatever you did not mention stays: the type, the date, the names, the pages.</span>
+            </div>
+          </div>
+          <div class="step-item" style="padding:9px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">🍽</div>
+            <div class="step-content">
+              <strong>Under a meeting card</strong>
+              <span>Names are names — <i>“Sam Wilson, ABC Corp”</i>, <i>“with John and Anna from Acme”</i>; a correction — <i>“no, the amount is 350”</i>, <i>“it was yesterday”</i> — is read as a correction. A bare <code style="font-family:var(--mono); color:var(--accent);">no</code> or <code style="font-family:var(--mono); color:var(--accent);">cancel</code> cancels the card. <i>“also a lunch at Nobu, 200 AED”</i> is a new expense: a second card.</span>
+            </div>
+          </div>
+        </div>
+        <div class="info-box" style="margin:10px 0 0;">
+          💬 <b>The bot itself says what happened to the line.</b> The assistant's own words next to a card appear only when you asked something — <i>“business lunch at Zuma 480 AED - can I claim the wine?”</i> gets an answer.
         </div>
       </div>
 
@@ -1518,19 +1688,19 @@
           </div>
         </div>
         <div class="info-box" style="margin-top:14px">
-          ✅ <b>Completeness check.</b> On <code style="font-family:var(--mono); color:var(--accent);">/compile</code> the bot flags any line backed only by a payment slip (missing hotel invoice / flight ticket). Send the missing file and say which line it is for — the warning on that line goes out, and the slip you already sent stays in the report. Then <code style="font-family:var(--mono); color:var(--accent);">/compile</code> again — or reply <code style="font-family:var(--mono); color:var(--accent);">submit anyway</code> to send it as-is.
+          ✅ <b>Completeness check.</b> A line with only a payment slip (<i>“⏳ awaiting the invoice”</i>) or with no file at all (<i>“⏳ no document yet — awaiting the …”</i>) goes only with its document or a reason — the submit asks (slide “A line without its document”); <code style="font-family:var(--mono); color:var(--accent);">submit anyway</code> does not skip it.
         </div>
         <div class="info-box" style="margin-top:14px">
-          🧾 <b>Every file counted.</b> <code style="font-family:var(--mono); color:var(--accent);">/compile</code> also compares what you sent to this pack with what is actually in the report — “<i>29 files were sent to this pack, 18 are in the report</i>” — and names the ones that are not. Nothing is deleted; a file left over from a line you removed is not counted as missing.
+          🧾 <b>Every file counted.</b> <code style="font-family:var(--mono); color:var(--accent);">/compile</code> compares what you sent with what is in the report — “<i>29 files were sent to this pack, 18 are in the report</i>” — and names the ones that are not. A file left over from a line you removed is not counted as missing.
         </div>
         <div class="info-box" style="margin-top:14px">
-          ⚠️ <b>Same amount twice?</b> Before the report goes, the bot looks for lines with the same amount and currency, to the cent — one expense entered twice, or two real ones, like two taxi rides at the flat fare. Only you can tell, so it asks: <i>“⚠️ Same amount twice in pack #68 «Zurich May 2026»: line 2 Careem · 45.00 AED · 2026-05-12 and line 5 Careem · 45.00 AED · 2026-05-14. Both real?”</i> with <b>📤 Submit as is</b> · <b>👀 Let me check</b>. The line numbers are those of <code style="font-family:var(--mono); color:var(--accent);">/showpack</code>. Lines with no amount and supporting documents are not counted.
-          <br>• <b>📤 Submit as is</b> — <i>“📤 Submitting as is — the lines with the same amount stay in the report.”</i>, and the report goes. The answer is kept for those lines at that amount. Another line at the same amount — added, or changed to match — brings the whole group back into the question, the lines you already confirmed included.
+          ⚠️ <b>Same amount twice?</b> One expense entered twice, or two taxi rides at the flat fare? Before the report goes, the bot asks about lines with the same amount and currency, to the cent: <i>“⚠️ Same amount twice in pack #68 «Zurich May 2026»: line 2 Careem · 45.00 AED · 2026-05-12 and line 5 Careem · 45.00 AED · 2026-05-14. Both real?”</i> with <b>📤 Submit as is</b> · <b>👀 Let me check</b>. Lines with no amount and supporting documents are not counted.
+          <br>• <b>📤 Submit as is</b> — <i>“📤 Submitting as is — the lines with the same amount stay in the report.”</i>, and the report goes. The answer is kept; another line at that amount — added, or changed to match — brings the whole group back into the question.
           <br>• <b>👀 Let me check</b> — nothing is sent: <i>“👀 Report #68 is not submitted. Here are its lines — tap a number to fix or remove one, then 📤 Submit for review when it is right.”</i>, and the list follows.
-          <br>Three or more lines at one amount, or more than one group: <i>“⚠️ Same amount more than once in …”</i>, one bullet per group — <i>“• line 2 …, line 5 … and line 8 …”</i> — then <i>“All real?”</i>. If the lines with the same amount change after the question was shown — a new pair, or another line joining a group — its <b>Submit as is</b> sends nothing: <i>“The lines changed since — see the question below.”</i>, and the question is asked again about what is there now. Any other change — a line with a different amount added, one line of the pair removed — and it submits as usual. The missing-document check above comes first.
+          <br>Three or more lines at one amount, or more than one group: <i>“⚠️ Same amount more than once in …”</i>, one bullet per group — <i>“• line 2 …, line 5 … and line 8 …”</i> — then <i>“All real?”</i>. If the lines with the same amount change after the question was shown — a new pair, or another line joining a group — its <b>Submit as is</b> sends nothing: <i>“The lines changed since — see the question below.”</i>, and the question is asked again about what is there now. Any other change — a line with a different amount added, one line of the pair removed — and it submits as usual. This question comes first; a line without its document is asked about after it.
         </div>
         <div class="info-box" style="margin-top:14px">
-          🗂 <b>Subtotals by category.</b> Under the summary table the cover page lists what the money went on — <b>Transportation</b>, <b>Hotel</b>, <b>Business meetings</b>, <b>Other</b> — with the number of receipts on each line. It adds up to the <b>receipts subtotal</b>; per-diem is not a receipt and stays on its own line above.
+          🗂 <b>Subtotals by category</b> under the summary — <b>Transportation</b>, <b>Hotel</b>, <b>Business meetings</b>, <b>Gifts</b>, <b>Other</b>, with the number of receipts — add up to the <b>receipts subtotal</b>; per-diem stays on its own line above.
         </div>
       </div>
 
@@ -1566,6 +1736,61 @@
         </div>
       </div>
 
+      <!-- SLIDE: Submitting a line without its document — only with a reason (O-3) -->
+      <div class="slide">
+        <div class="slide-tag">Step 5 · a line without its document</div>
+        <h2>A line without its document</h2>
+        <p class="subtitle" style="margin-bottom:12px;">Accounting takes a line with no document behind it only with a reason. The submit stops and asks — one line at a time.</p>
+        <div class="divider" style="margin-bottom:12px;"></div>
+        <div class="code-block" style="margin:0 0 6px; font-size:12.5px;">
+          <div><span class="prompt">Bot: </span><span class="resp">📄 Before I submit pack #68 «Zurich May 2026»: line 1 — IBIS ZURICH CITY WEST · 843.66 EUR · 2026-09-28 has no document behind it (⏳ awaiting the invoice).</span></div>
+          <div style="padding-left:32px; margin-top:4px;"><span class="resp">Accounting takes a line without its document only with a reason, and checks it separately as unsupported. Send the invoice, or pick why it is missing:</span></div>
+        </div>
+        <div class="tg-keys" style="margin:4px 0 8px;">
+          <div class="tg-row"><div class="tg-btn">Document requested from the supplier, will send it</div></div>
+          <div class="tg-row"><div class="tg-btn">Receipt lost</div></div>
+          <div class="tg-row"><div class="tg-btn">Other — describe</div></div>
+          <div class="tg-row"><div class="tg-btn primary">📄 I'll send the invoice</div></div>
+        </div>
+        <p style="font-size:12.5px; color:var(--text-light); margin:0 0 6px;">For <b>transport up to 50 EUR</b> two more come first: <b>Vending machine gave no receipt</b> and <b>Parking — no receipt available</b>. And when another line of the pack <b>is</b> this line's document — the bank slip and the ticket saved as two lines — the top button joins them: <b>📎 Line 4 — … is its document</b> (or <b>… is its payment confirmation</b>).</p>
+        <div class="step-list" style="margin-top:0; gap:7px;">
+          <div class="step-item" style="padding:9px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">👆</div>
+            <div class="step-content">
+              <strong>A reason</strong>
+              <span>One tap. The line goes to accounting marked unsupported, with the reason next to it, and the submit goes on — to the next such line, or off to accounting.</span>
+            </div>
+          </div>
+          <div class="step-item" style="padding:9px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">✍️</div>
+            <div class="step-content">
+              <strong>Other — describe</strong>
+              <span>Type a sentence: at least 3 words and 20 characters. A shorter one is turned down — <i>“That's too short for accounting — write at least 3 words and 20 characters saying why there is no document, e.g. “Taxi driver had no receipt printer, paid cash”.”</i> — and the bot waits for a longer one.</span>
+            </div>
+          </div>
+          <div class="step-item" style="padding:9px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">📄</div>
+            <div class="step-content">
+              <strong>I'll send the invoice</strong>
+              <span>Nothing is sent. Send the document when you have it; the bot asks which line it is for, then tap <b>📤 Submit for review</b>.</span>
+            </div>
+          </div>
+          <div class="step-item" style="padding:9px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">📎</div>
+            <div class="step-content">
+              <strong>Line 4 — … is its document</strong>
+              <span>The two lines become one: <i>“📎 Filed under line 1 — …, as its document. The separate line is gone; the amount stays once.”</i></span>
+            </div>
+          </div>
+        </div>
+        <div class="info-box" style="margin:10px 0 0;">
+          🚫 <b><code style="font-family:var(--mono); color:var(--accent);">submit anyway</code> does not skip this.</b> Only a tap — or the sentence after <b>Other — describe</b> — answers it.<br><br>
+          📑 <b>In the report.</b> The PDF prints next to the line <i>“UNSUPPORTED — awaiting the invoice. Reason: Receipt lost”</i>, and under the summary a table of its own with the unsupported subtotal. The accountant's notification says <i>“⚠️ Unsupported: 2 lines · 2040.00 AED — no document, the reason is next to each line”</i>.<br><br>
+          ⏳ <b>Changed the line after giving a reason?</b> If its amount or type changed so the reason no longer fits — a parking line now over 50 EUR, say — <code style="font-family:var(--mono); color:var(--accent);">/showpack</code> shows <i>“⏳ reason needed again”</i> and the next submit asks again.<br><br>
+          🎁 A <b>gift</b> without who pre-approved it stops the submit too — slide “Gifts — say who pre-approved it”.
+        </div>
+      </div>
+
       <!-- SLIDE 18: Accountant review -->
       <div class="slide">
         <div class="slide-tag">After submit</div>
@@ -1581,7 +1806,7 @@
           <div class="rt-card" style="padding:12px;">
             <div class="rt-icon" style="font-size:22px; margin-bottom:5px;">↩️</div>
             <div class="rt-label">Returned</div>
-            <div class="rt-note">Pack reopens with a note — fix what was asked, submit again.</div>
+            <div class="rt-note">Pack reopens with a note — fix what was asked, submit again. Asked for documents? Next slide.</div>
           </div>
         </div>
         <div class="code-block" style="margin:0 0 10px; font-size:13px;">
@@ -1599,6 +1824,57 @@
         </div>
         <div class="info-box">
           🔒 <b>While a report is with the accountant it stops changing.</b> Amounts, lines, documents, the per-diem, the name — none of them can be edited on a submitted or approved report, by you or by anyone else, because that is the version accounting is working from. The bot says so and points at <b>↩️ Reopen</b> — next slide. Reports belong to one person: no other employee can read, rebuild or edit yours. Accountants can read and rebuild any report (<code style="font-family:var(--mono); color:var(--accent);">/report 54</code>), but not edit it.
+        </div>
+      </div>
+
+      <!-- SLIDE: A report returned for documents (O-3) -->
+      <div class="slide">
+        <div class="slide-tag">After submit · returned for documents</div>
+        <h2>Returned for documents</h2>
+        <p class="subtitle" style="margin-bottom:12px;">Accounting sent the report back for invoices? Send them into the returned pack. The bot asks about <b>every</b> document which line it is for — nothing is added as a new line unless you say so, and no amount is counted twice.</p>
+        <div class="divider" style="margin-bottom:12px;"></div>
+        <div class="code-block" style="margin:0 0 6px; font-size:12.5px;">
+          <div><span class="prompt">Bot: </span><span class="resp">I read this document as Park Plaza Westminster Bridge London · 274.18 EUR. Pack #39 was returned for documents — is this one for a line already in it?</span></div>
+        </div>
+        <div class="tg-keys" style="margin:4px 0 8px;">
+          <div class="tg-row"><div class="tg-btn primary">📎 Line 1 — Hotels.com · 274.18 EUR</div></div>
+          <div class="tg-row"><div class="tg-btn">📋 Another line…</div></div>
+          <div class="tg-row"><div class="tg-btn">➕ No — a new expense</div></div>
+          <div class="tg-row"><div class="tg-btn danger">🚫 Discard</div></div>
+        </div>
+        <div class="step-list" style="margin-top:0; gap:7px;">
+          <div class="step-item" style="padding:9px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">📎</div>
+            <div class="step-content">
+              <strong>Line …</strong>
+              <span>The three most likely lines. Tap one and the document is filed under it — the pack keeps its lines and its total.</span>
+            </div>
+          </div>
+          <div class="step-item" style="padding:9px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">📋</div>
+            <div class="step-content">
+              <strong>Another line…</strong>
+              <span>Every line of the pack, by its number — for when the right line is not among the three.</span>
+            </div>
+          </div>
+          <div class="step-item" style="padding:9px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">➕</div>
+            <div class="step-content">
+              <strong>No — a new expense</strong>
+              <span>A line of its own after all. <b>🚫 Discard</b> deletes the file and adds nothing.</span>
+            </div>
+          </div>
+        </div>
+        <p style="font-size:12.5px; color:var(--text-light); margin:10px 0 6px;">An <b>album</b>, or a <b>PDF of several documents</b>, sent into a returned pack is not added all at once:</p>
+        <div class="code-block" style="margin:0 0 6px; font-size:12.5px;">
+          <div><span class="prompt">Bot: </span><span class="resp">📥 Got 3 photos — 3 documents. Pack #39 was returned for documents, so I'll ask about each one in turn.</span></div>
+        </div>
+        <div class="tg-keys" style="margin:4px 0 8px;">
+          <div class="tg-row"><div class="tg-btn primary">▶️ Go through them one by one</div></div>
+          <div class="tg-row"><div class="tg-btn danger">🚫 Discard</div></div>
+        </div>
+        <div class="info-box" style="margin:0;">
+          ▶️ Each document then comes on its own — <i>“📄 Document 1 of 3 — reading it…”</i> — with the question above, one per document.
         </div>
       </div>
 
@@ -1667,7 +1943,7 @@
         <div class="tips-list">
           <div class="tip-item">
             <div class="tip-icon">✅</div>
-            <div>Single receipts save on their own — except a <b>business meeting</b> with nobody named, which asks who was there, and a document that looks like a line already in the pack, which asks what it is. Those two, the list of a <b>PDF with several documents</b> (<b>✅ Add all</b> or <b>🚫 Discard</b>), and a <b>multi-page document</b> waiting for <b>✅ Confirm</b> or <b>🚫 Cancel</b>, need an answer before you send the next receipt.</div>
+            <div>Single receipts save on their own — except a <b>business meeting</b> with nobody named, which asks who was there, and a document that looks like a line already in the pack, or like the invoice a line is waiting for, which asks what it is. Those two, the list of a <b>PDF with several documents</b> (<b>✅ Add all</b> or <b>🚫 Discard</b>), and a <b>multi-page document</b> waiting for <b>✅ Confirm</b> or <b>🚫 Cancel</b>, need an answer before you send the next receipt.</div>
           </div>
           <div class="tip-item">
             <div class="tip-icon">🔘</div>
@@ -1709,7 +1985,7 @@
           <tr><td class="cmd-cell">/pending</td><td class="desc-cell">List all reports awaiting review</td></tr>
           <tr><td class="cmd-cell">/report 54</td><td class="desc-cell">See report #54 — status + PDF</td></tr>
           <tr><td class="cmd-cell">/approve 54</td><td class="desc-cell">Approve at the <b>full submitted total</b></td></tr>
-          <tr><td class="cmd-cell">/approve 54 1200</td><td class="desc-cell">Approve a <b>custom</b> AED amount (e.g. after cutting items). <code style="font-family:var(--mono); color:var(--accent);">6117,37</code> is read as 6117.37. <code style="font-family:var(--mono); color:var(--accent);">1,200</code> is not guessed: the report is <b>not approved</b>, the bot names both readings, and you send the command again — <code style="font-family:var(--mono); color:var(--accent);">/approve 54 1200</code>. A number typed on its own is not taken as the answer; only <b>✏️ Other amount</b> waits for one. Another currency — <code style="font-family:var(--mono); color:var(--accent);">/approve 54 2563.20 eur</code> — is refused, not converted: the approved amount is in AED</td></tr>
+          <tr><td class="cmd-cell">/approve 54 1200</td><td class="desc-cell">Approve a <b>custom</b> AED amount (e.g. after cutting items). <code style="font-family:var(--mono); color:var(--accent);">1,200</code> or another currency is not guessed — the report is <b>not approved</b> and the bot says why; how an amount is read: slide “Wrong amount or currency”</td></tr>
           <tr><td class="cmd-cell">/return 54 …</td><td class="desc-cell">Send back for fixes with a note</td></tr>
           <tr><td class="cmd-cell">/reply 54 …</td><td class="desc-cell">Message the employee</td></tr>
           <tr><td class="cmd-cell">/status 54</td><td class="desc-cell">Quick status — who reviewed it, the note</td></tr>
@@ -1720,11 +1996,19 @@
           <tr><td class="cmd-cell">/users</td><td class="desc-cell">Admins: everyone on the list, each with <i>manager: …</i> or <i>no manager</i>. Managers set for admins and accountants, who are not on the list, are shown under it</td></tr>
         </table>
         <div class="info-box" style="margin-top:14px">
-          ⚠ <b>Gap flags.</b> <code style="font-family:var(--mono); color:var(--accent);">/pending</code> and <code style="font-family:var(--mono); color:var(--accent);">/report</code> mark lines backed only by a payment slip (e.g. a hotel charge with no invoice, a flight with no ticket) — so you can ask for the missing document before approving.
+          ⚠ <b>Gap flags.</b> <code style="font-family:var(--mono); color:var(--accent);">/pending</code> and <code style="font-family:var(--mono); color:var(--accent);">/report</code> mark lines backed only by a payment slip (e.g. a hotel charge with no invoice, a flight with no ticket) — so you can ask for the missing document before approving. Lines submitted without their document are marked <b>UNSUPPORTED</b> with the employee's reason (slide “A line without its document”); a returned report asks the employee, for each document sent, which line it is for (slide “Returned for documents”).
         </div>
         <div class="info-box" style="margin-top:10px">
-          ⚠️ <b>Same amounts.</b> The notification of a submitted report names lines with the same amount and currency: <i>“⚠️ Same amounts: lines 3 and 6 — 45.00 AED (confirmed by the employee)”</i>. The numbers are the PDF's, and they are the same numbers the employee sees in the bot: lines go by receipt date, and lines of the same date in the order they were added.
+          ⚠️ <b>Same amounts.</b> The notification of a submitted report names lines with the same amount and currency: <i>“⚠️ Same amounts: lines 3 and 6 — 45.00 AED (confirmed by the employee)”</i>, numbered as in the PDF (slide “Accountant review”).
         </div>
+      </div>
+
+      <!-- SLIDE: For accountants, continued (split for length on phones) -->
+      <div class="slide">
+        <div class="slide-tag">For accountants · continued</div>
+        <h2>Reviewing reports — buttons and new people</h2>
+        <p class="subtitle">The buttons under every report, and the question after someone is added.</p>
+        <div class="divider"></div>
         <div class="info-box" style="margin-top:10px">
           👔 <b>Asked when someone is added.</b> After <code style="font-family:var(--mono); color:var(--accent);">/adduser</code>, or <b>Approve</b> on an access request, the admin who did it is asked: <i>“👔 Who is Lena's manager? They will get a copy of every approved report. Send Name &lt;email&gt; (or just the email), or tap No manager.”</i> Type <code style="font-family:var(--mono); color:var(--accent);">Ivan Petrov &lt;ivan@company.com&gt;</code> or just the address, or tap <b>🚫 No manager</b>. A command typed meanwhile is a command, not an answer. Someone who already has a manager is not asked — <i>“👔 Lena's manager stays …”</i>.
         </div>
@@ -1791,6 +2075,9 @@
     const next = cur + dir;
     if (next >= 0 && next < TOTAL) goTo(next);
   }
+
+  // The first slide's state — progress at 1/N, not a hardcoded width.
+  goTo(0);
 
   // Keyboard navigation
   document.addEventListener('keydown', e => {
