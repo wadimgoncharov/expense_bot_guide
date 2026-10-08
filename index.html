@@ -1219,7 +1219,7 @@
       <div class="slide">
         <div class="slide-tag">Step 2 · a document to come</div>
         <h2>Only the payment slip? The line waits</h2>
-        <p class="subtitle" style="margin-bottom:12px;">A bank payment slip proves money moved, not what was bought; a booking voucher proves the booking, not the payment. Neither closes a line on its own, in any category.</p>
+        <p class="subtitle" style="margin-bottom:12px;">A bank payment slip proves money moved, not what was bought; a booking voucher proves the booking, not the payment. Neither closes a line on its own — except for a <b>donation</b>, whose document <i>is</i> the bank transfer confirmation (slide “Gifts and donations”).</p>
         <div class="divider" style="margin-bottom:12px;"></div>
         <div class="code-block" style="margin:0 0 6px; font-size:12.5px;">
           <div><span class="prompt">You: </span><span class="resp">(sends the bank's payment slip for the hotel)</span></div>
@@ -1366,7 +1366,7 @@
       <div class="slide">
         <div class="slide-tag">Auto-detection</div>
         <h2>Expense categories</h2>
-        <p class="subtitle">The bot reads each document and assigns a category automatically.</p>
+        <p class="subtitle">The bot reads each document and assigns a category automatically; you can <b>override</b> it later (Step 4, Fix mistakes).</p>
         <div class="divider"></div>
         <div class="cat-grid">
           <div class="cat-card">
@@ -1387,9 +1387,14 @@
           <div class="cat-card">
             <div class="cat-icon">🎁</div>
             <div class="cat-name">Gifts</div>
-            <div class="cat-examples">A gift for someone outside the company, or a donation — not Business meetings. Say who pre-approved it (next slide)</div>
+            <div class="cat-examples">A gift for someone outside the company — not Business meetings. Say who pre-approved it</div>
           </div>
-          <div class="cat-card" style="grid-column:1 / -1;">
+          <div class="cat-card">
+            <div class="cat-icon">🤲</div>
+            <div class="cat-name">Donations</div>
+            <div class="cat-examples">Charity, foundation, appeal. Document: the bank transfer confirmation. Say who pre-approved it</div>
+          </div>
+          <div class="cat-card">
             <div class="cat-icon">📦</div>
             <div class="cat-name">Other</div>
             <div class="cat-examples">Everything that doesn't fit the above categories</div>
@@ -1417,16 +1422,13 @@
         <div class="info-box" style="margin:0;">
           💬 <b>What you type under the card is the names</b> — <i>“Sam Wilson, ABC Corp”</i>, <i>“with John and Anna from Acme”</i>. <b>A correction is not names:</b> <i>“no, the amount is 350”</i>, <i>“it was yesterday”</i>, an amount (<i>“500”</i>, <i>“€480”</i>) — text with a figure in it is never written in as names. The bot corrects the card instead, and it comes back updated, still asking who was there (slide “Correcting a card in words”). A bare <code style="font-family:var(--mono); color:var(--accent);">no</code> or <code style="font-family:var(--mono); color:var(--accent);">cancel</code> cancels the card. <i>“also a lunch at Nobu, 200 AED”</i> is a new expense — a second card. A command is a command. With <b>two</b> meeting cards waiting, typed names go onto neither: <i>“2 cards are waiting for names — which one are these for? Tap it, then type the names again.”</i>, with a <b>✍️ Names for Zuma · 300.00 AED</b> button for each card. While a card waits, the bot's answers to your ordinary messages end with a line saying which card is waiting and for what — for one meeting card, <i>“⏳ The card for Zuma · 300.00 AED is still waiting — type who you met, or tap ➕ Add without names or 🚫 Cancel on it.”</i> After a command the bot knows (like <code style="font-family:var(--mono); color:var(--accent);">/showpack</code>) there is no such line; a mistyped one (<code style="font-family:var(--mono); color:var(--accent);">/sumbit</code>) is read as an ordinary message, and the line comes. Names wrong later? <b>✏️ Fix → Note</b> (Step 4).
         </div>
-        <div class="info-box" style="margin-top:10px">
-          You can always <b>override</b> a category later — see Step 4 (Fix mistakes).
-        </div>
       </div>
 
-      <!-- SLIDE: Gifts — who pre-approved it (O-3) -->
+      <!-- SLIDE: Gifts and donations — who pre-approved it (O-3, O-92) -->
       <div class="slide">
-        <div class="slide-tag">Auto-detection · gifts</div>
-        <h2>Gifts — say who pre-approved it</h2>
-        <p class="subtitle" style="margin-bottom:12px;">A present for someone outside the company, or a donation, is a <b>Gift</b> — not a business meeting. Accounting needs to see who agreed to it in advance.</p>
+        <div class="slide-tag">Auto-detection · gifts and donations</div>
+        <h2>Gifts and donations — say who pre-approved it</h2>
+        <p class="subtitle" style="margin-bottom:12px;">A present for someone outside the company is a <b>Gift</b>, not a business meeting; money given to a charity or an appeal is a <b>Donation</b>. Accounting needs to know who agreed to either in advance.</p>
         <div class="divider" style="margin-bottom:12px;"></div>
         <div class="code-block" style="margin:0 0 6px; font-size:12.5px;">
           <div><span class="prompt">You: </span><span class="resp">(sends the shop receipt for a client's gift)</span></div>
@@ -1447,7 +1449,7 @@
             <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">✍️</div>
             <div class="step-content">
               <strong>Tap “Who pre-approved it” and type the name</strong>
-              <span>The bot asks <i>“Type who pre-approved this gift — e.g. Vadim, or “discussed with Vadim”.”</i> Type <code style="font-family:var(--mono); color:var(--accent);">Vadim</code> and the note gets <i>“pre-approved by Vadim”</i>; words that already say it — <i>discussed with Vadim</i> — go in as you typed them. The bot shows the new note.</span>
+              <span>The bot asks <i>“Type who pre-approved this gift — e.g. Vadim, or “discussed with Vadim”.”</i> Type <code style="font-family:var(--mono); color:var(--accent);">Vadim</code> and the note gets <i>“pre-approved by Vadim”</i>; words that already say it — <i>discussed with Vadim</i> — go in as you typed them.</span>
             </div>
           </div>
           <div class="step-item" style="padding:9px 14px;">
@@ -1461,12 +1463,17 @@
             <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">📤</div>
             <div class="step-content">
               <strong>Forgot? The submit stops and asks</strong>
-              <span><i>“🎁 Before I submit pack #68 «Zurich May 2026»: line 3 — … is a gift. Accounting needs who pre-approved it in its note.”</i> — then type who it was, and the submit goes on; <b>👀 Let me check</b> stops to look at the pack first.</span>
+              <span><i>“🎁 Before I submit pack #68 «Zurich May 2026»: line 3 — … is a gift. Accounting needs who pre-approved it in its note.”</i> — type who it was and the submit goes on; <b>👀 Let me check</b> stops it to look at the pack.</span>
             </div>
           </div>
         </div>
         <div class="info-box" style="margin:10px 0 0;">
-          📋 <b>Gifts in a list from a PDF or an album.</b> After <b>✅ Add all</b> the summary carries the same 🎁 line, with a <b>✍️ Who pre-approved it — line 3</b> button for each gift.
+          📋 <b>A list from a PDF or an album:</b> after <b>✅ Add all</b>, a <b>✍️ Who pre-approved it — line 3</b> button for each gift or donation.
+        </div>
+        <div class="info-box" style="margin:10px 0 0;">
+          🤲 <b>A donation: the transfer is the document.</b> Send the bank transfer to a charity and the line is saved as <b>Donations</b>, with no ⏳ and with <i>“🤲 A donation goes to accounting with who pre-approved it, in its note (e.g. “discussed with Vadim”). I'll ask again when you submit.”</i> The question then says <i>“Type who pre-approved this donation — e.g. Vadim, or “discussed with Vadim”.”</i> In the PDF the transfer is captioned <i>“transfer confirmation — Red Cross UAE”</i>.<br><br>
+          ✍️ <b>A donation typed in words</b> waits: <i>“⏳ no document yet — awaiting the transfer confirmation”</i>. Send the transfer and tap that line: the bot files it <i>“as its transfer confirmation, its document”</i>. If the transfer shows a different sum, the bot asks which one the line should claim — <b>Set the line to 480.00 AED (transfer confirmation total)</b> or <b>Keep 500.00 AED</b>.<br><br>
+          📨 <b>The recipient's letter or invitation</b>: send it for that line — it is printed under the transfer.
         </div>
       </div>
 
@@ -1700,7 +1707,7 @@
           <br>Three or more lines at one amount, or more than one group: <i>“⚠️ Same amount more than once in …”</i>, one bullet per group — <i>“• line 2 …, line 5 … and line 8 …”</i> — then <i>“All real?”</i>. If the lines with the same amount change after the question was shown — a new pair, or another line joining a group — its <b>Submit as is</b> sends nothing: <i>“The lines changed since — see the question below.”</i>, and the question is asked again about what is there now. Any other change — a line with a different amount added, one line of the pair removed — and it submits as usual. This question comes first; a line without its document is asked about after it.
         </div>
         <div class="info-box" style="margin-top:14px">
-          🗂 <b>Subtotals by category</b> under the summary — <b>Transportation</b>, <b>Hotel</b>, <b>Business meetings</b>, <b>Gifts</b>, <b>Other</b>, with the number of receipts — add up to the <b>receipts subtotal</b>; per-diem stays on its own line above.
+          🗂 <b>Subtotals by category</b> under the summary — <b>Transportation</b>, <b>Hotel</b>, <b>Business meetings</b>, <b>Gifts</b>, <b>Donations</b>, <b>Other</b>, each with its count — add up to the <b>receipts subtotal</b>; per-diem has its own line above.
         </div>
       </div>
 
@@ -1787,7 +1794,7 @@
           🚫 <b><code style="font-family:var(--mono); color:var(--accent);">submit anyway</code> does not skip this.</b> Only a tap — or the sentence after <b>Other — describe</b> — answers it.<br><br>
           📑 <b>In the report.</b> The PDF prints next to the line <i>“UNSUPPORTED — awaiting the invoice. Reason: Receipt lost”</i>, and under the summary a table of its own with the unsupported subtotal. The accountant's notification says <i>“⚠️ Unsupported: 2 lines · 2040.00 AED — no document, the reason is next to each line”</i>.<br><br>
           ⏳ <b>Changed the line after giving a reason?</b> If its amount or type changed so the reason no longer fits — a parking line now over 50 EUR, say — <code style="font-family:var(--mono); color:var(--accent);">/showpack</code> shows <i>“⏳ reason needed again”</i> and the next submit asks again.<br><br>
-          🎁 A <b>gift</b> without who pre-approved it stops the submit too — slide “Gifts — say who pre-approved it”.
+          🎁 A <b>gift</b> or a <b>donation</b> without who pre-approved it stops the submit too — slide “Gifts and donations”. A donation with its transfer confirmation is never asked about here, nor marked UNSUPPORTED.
         </div>
       </div>
 
@@ -1823,7 +1830,10 @@
           Type <code style="font-family:var(--mono); color:var(--accent); background:var(--accent-dim); padding:2px 6px; border-radius:4px;">/myreports</code> to see the status of your reports from the last 12 months.
         </div>
         <div class="info-box">
-          🔒 <b>While a report is with the accountant it stops changing.</b> Amounts, lines, documents, the per-diem, the name — none of them can be edited on a submitted or approved report, by you or by anyone else, because that is the version accounting is working from. The bot says so and points at <b>↩️ Reopen</b> — next slide. Reports belong to one person: no other employee can read, rebuild or edit yours. Accountants can read and rebuild any report (<code style="font-family:var(--mono); color:var(--accent);">/report 54</code>), but not edit it.
+          🔒 <b>While a report is with the accountant it stops changing.</b> Amounts, lines, documents, the per-diem, the name — none of them can be edited on a submitted or approved report, by you or by any other employee, because that is the version accounting is working from. The bot says so and points at <b>↩️ Reopen</b> — next slide. Reports belong to one person: no other employee can read, rebuild or edit yours. Accountants can read and rebuild any report (<code style="font-family:var(--mono); color:var(--accent);">/report 54</code>); the one thing they can change is a line's amount, with a reason.
+        </div>
+        <div class="info-box">
+          ✂️ <b>Accounting changed an amount?</b> You get both amounts and why: <i>“✂️ Accounting changed an amount in your report #54 «Berlin trip»: line 3 — Nobu, 75.00 EUR → 67.50 EUR (306.00 → 275.40 AED). Reason: tip is not reimbursed. The report stays with accounting.”</i> The report total changes with it. The PDF marks the line, and so does <code style="font-family:var(--mono); color:var(--accent);">/showpack</code> once the report is back with you: <i>“✂️ amount changed by accounting: …”</i>. Take the report back with <b>↩️ Reopen</b> and type a new amount for that line — the mark disappears; editing only its note keeps it.
         </div>
       </div>
 
@@ -1984,8 +1994,9 @@
         <table class="cmd-table">
           <tr><td class="cmd-cell">/pending</td><td class="desc-cell">List all reports awaiting review</td></tr>
           <tr><td class="cmd-cell">/report 54</td><td class="desc-cell">See report #54 — status + PDF</td></tr>
-          <tr><td class="cmd-cell">/approve 54</td><td class="desc-cell">Approve at the <b>full submitted total</b></td></tr>
+          <tr><td class="cmd-cell">/approve 54</td><td class="desc-cell">Approve at the <b>full submitted total</b> — after <code style="font-family:var(--mono); color:var(--accent);">/amount</code>, the current total</td></tr>
           <tr><td class="cmd-cell">/approve 54 1200</td><td class="desc-cell">Approve a <b>custom</b> AED amount (e.g. after cutting items). <code style="font-family:var(--mono); color:var(--accent);">1,200</code> or another currency is not guessed — the report is <b>not approved</b> and the bot says why; how an amount is read: slide “Wrong amount or currency”</td></tr>
+          <tr><td class="cmd-cell">/amount 54 3 67.50 …</td><td class="desc-cell">Change <b>line 3</b> of report #54 to 67.50, with the reason — next slide</td></tr>
           <tr><td class="cmd-cell">/return 54 …</td><td class="desc-cell">Send back for fixes with a note</td></tr>
           <tr><td class="cmd-cell">/reply 54 …</td><td class="desc-cell">Message the employee</td></tr>
           <tr><td class="cmd-cell">/status 54</td><td class="desc-cell">Quick status — who reviewed it, the note</td></tr>
@@ -1996,7 +2007,7 @@
           <tr><td class="cmd-cell">/users</td><td class="desc-cell">Admins: everyone on the list, each with <i>manager: …</i> or <i>no manager</i>. Managers set for admins and accountants, who are not on the list, are shown under it</td></tr>
         </table>
         <div class="info-box" style="margin-top:14px">
-          ⚠ <b>Gap flags.</b> <code style="font-family:var(--mono); color:var(--accent);">/pending</code> and <code style="font-family:var(--mono); color:var(--accent);">/report</code> mark lines backed only by a payment slip (e.g. a hotel charge with no invoice, a flight with no ticket) — so you can ask for the missing document before approving. Lines submitted without their document are marked <b>UNSUPPORTED</b> with the employee's reason (slide “A line without its document”); a returned report asks the employee, for each document sent, which line it is for (slide “Returned for documents”).
+          ⚠ <b>Gap flags.</b> <code style="font-family:var(--mono); color:var(--accent);">/pending</code> and <code style="font-family:var(--mono); color:var(--accent);">/report</code> mark lines backed only by a payment slip (e.g. a hotel charge with no invoice, a flight with no ticket) — so you can ask for the missing document before approving. Lines submitted without their document are marked <b>UNSUPPORTED</b> with the employee's reason (slide “A line without its document”); for a donation the bank transfer confirmation is the document; a returned report asks the employee, for each document sent, which line it is for (slide “Returned for documents”).
         </div>
         <div class="info-box" style="margin-top:10px">
           ⚠️ <b>Same amounts.</b> The notification of a submitted report names lines with the same amount and currency: <i>“⚠️ Same amounts: lines 3 and 6 — 45.00 AED (confirmed by the employee)”</i>, numbered as in the PDF (slide “Accountant review”).
@@ -2006,14 +2017,17 @@
       <!-- SLIDE: For accountants, continued (split for length on phones) -->
       <div class="slide">
         <div class="slide-tag">For accountants · continued</div>
-        <h2>Reviewing reports — buttons and new people</h2>
-        <p class="subtitle">The buttons under every report, and the question after someone is added.</p>
+        <h2>Reviewing reports — amounts, buttons, new people</h2>
+        <p class="subtitle">Changing one line's amount, the buttons under every report, and the question after someone is added.</p>
         <div class="divider"></div>
+        <div class="info-box" style="margin-top:10px">
+          ✂️ <b>One line's amount.</b> <code style="font-family:var(--mono); color:var(--accent);">/amount 54 3 67.50 tip is not reimbursed</code> — line 3 of report #54 now claims 67.50 in the line's own currency; its AED value follows at the line's own rate. The line number is the one in the PDF (<code style="font-family:var(--mono); color:var(--accent);">/report 54</code>); the reason is required. Only while the report is <b>submitted</b> to you: on an open or returned one nothing changes and the bot suggests <code style="font-family:var(--mono); color:var(--accent);">/reply</code>; an approved one — only after the employee takes it back with ↩️ Reopen and submits again. The employee gets both amounts and the reason, the other accountants are told who changed what, and the PDF marks the line <i>“amount changed by accounting: 75.00 → 67.50 EUR — tip is not reimbursed”</i>. You get the new total; <code style="font-family:var(--mono); color:var(--accent);">/approve 54</code> without an amount approves it.
+        </div>
         <div class="info-box" style="margin-top:10px">
           👔 <b>Asked when someone is added.</b> After <code style="font-family:var(--mono); color:var(--accent);">/adduser</code>, or <b>Approve</b> on an access request, the admin who did it is asked: <i>“👔 Who is Lena's manager? They will get a copy of every approved report. Send Name &lt;email&gt; (or just the email), or tap No manager.”</i> Type <code style="font-family:var(--mono); color:var(--accent);">Ivan Petrov &lt;ivan@company.com&gt;</code> or just the address, or tap <b>🚫 No manager</b>. A command typed meanwhile is a command, not an answer. Someone who already has a manager is not asked — <i>“👔 Lena's manager stays …”</i>.
         </div>
         <div class="info-box" style="margin-top:10px">
-          🔘 <b>Buttons, not only commands.</b> Every report arrives with <b>✅ Approve</b> (showing the total, e.g. <b>✅ Approve 1,240.00</b>), <b>✏️ Other amount</b> and <b>↩️ Return</b> under it. The last two wait for you to type — an amount, or the note the employee receives. Send a photo or a PDF instead (your own receipt, say) and the bot stops waiting and tells you what did <b>not</b> happen: the report was not returned, nothing was sent to the employee, the approved amount is unchanged. Whatever you type next is read normally, and the buttons are still there.
+          🔘 <b>Buttons, not only commands.</b> Every report arrives with <b>✅ Approve</b> (showing the total when the buttons were drawn — usually at submission, e.g. <b>✅ Approve 1,240.00</b>), <b>✏️ Other amount</b> and <b>↩️ Return</b> under it. If the total has changed since (after <code style="font-family:var(--mono); color:var(--accent);">/amount</code>), <b>✅ Approve</b> approves nothing and asks in a new message — <i>“The total has changed since this report arrived: 2,676.60 → 2,692.80 AED (line amounts changed by accounting). Report #54 is not approved yet.”</i> — with <b>✅ Approve 2,692.80</b> (the new total) and <b>✖ Cancel</b>. <b>✏️ Other amount</b> and <b>↩️ Return</b> wait for you to type — an amount, or the note the employee receives. A photo or a PDF sent instead (your own receipt, say) stops the wait, and the bot says what did <b>not</b> happen: the report was not returned, nothing went to the employee, the amount is unchanged. The buttons stay.
         </div>
         <div class="info-box" style="margin-top:10px">
           💡 The number is the report id from <code style="font-family:var(--mono); color:var(--accent);">/pending</code>. <code style="font-family:var(--mono); color:var(--accent);">#54</code>, <code style="font-family:var(--mono); color:var(--accent);">54</code> or <code style="font-family:var(--mono); color:var(--accent);">report 54</code> all work. The employee is notified automatically on approve/return. Type <code style="font-family:var(--mono); color:var(--accent);">/review</code> in the bot for this list anytime.
