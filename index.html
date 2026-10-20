@@ -1211,7 +1211,8 @@
           Like a receipt, a proof document is <b>filed and shown</b> — you see what went in. Filed the wrong thing? <b>🗑 Remove</b> takes it back out. Not clear whether a file is a paid receipt or proof? The bot asks, with buttons — for example <i>“Is this a paid receipt with an amount, or a supporting document (proof, no amount)?”</i> with <b>Paid receipt</b> · <b>Supporting document</b>.
         </p>
         <div class="info-box" style="margin:8px 0 0;">
-          Supporting documents carry <b>no amount</b>, so they never move the total. One sent for the whole report — the Travel Request, general paperwork — gets its own section at the end of the PDF. One sent <b>for a particular line</b> is printed right under that line instead, so the document and the slip that paid for it are read together — the real document first, whatever order they came in. Each caption says what the document is: a payment slip — <i>“payment confirmation for #1 · IBIS ZURICH CITY WEST”</i>; an invoice, receipt or ticket filed later to a line that had only the slip is printed first, as the line's own — <i>“invoice — IBIS ZURICH CITY WEST”</i> (or <i>receipt — …</i>, <i>ticket — …</i>); a booking voucher does not close the line: it is printed under it as <i>“booking confirmation for #1 · IBIS ZURICH CITY WEST”</i>, and the line keeps waiting for the invoice; anything else filed under the line — <i>“further document — …”</i>.
+          Supporting documents carry <b>no amount</b>, so they never move the total. One sent for the whole report — the Travel Request, general paperwork — gets its own section at the end of the PDF. One sent <b>for a particular line</b> is printed right under that line instead, so the document and the slip that paid for it are read together — the real document first, whatever order they came in. Each caption says what the document is: a payment slip — <i>“payment confirmation for #1 · IBIS ZURICH CITY WEST”</i>; an invoice, receipt or ticket filed later to a line that had only the slip is printed first, as the line's own — <i>“invoice — IBIS ZURICH CITY WEST”</i> (or <i>receipt — …</i>, <i>ticket — …</i>); a booking voucher does not close the line: it is printed under it as <i>“booking confirmation for #1 · IBIS ZURICH CITY WEST”</i>, and the line keeps waiting for the invoice; anything else filed under the line — <i>“further document — …”</i>.<br><br>
+          📎 <b>Saved as an expense line, but only backs others up?</b> <b>✏️ Fix → 📎 as Supporting doc</b> (slide “Fix mistakes”) keeps the file and takes its amount out of the total — for the whole report, or under a line you pick.
         </div>
       </div>
 
@@ -1525,7 +1526,7 @@
             <div class="tg-btn danger">🗑 Remove</div>
           </div>
         </div>
-        <p style="font-size:12.5px; color:var(--text-light); margin:0 0 5px;">For anything added earlier, run <code style="font-family:var(--mono); color:var(--accent); font-size:13px;">/showpack</code> and tap the item's number: the line's correction menu opens below the list, and the list keeps all its numbers — tap the next number for the next line.</p>
+        <p style="font-size:12.5px; color:var(--text-light); margin:0 0 5px;">Added earlier? Run <code style="font-family:var(--mono); color:var(--accent); font-size:13px;">/showpack</code> and tap the line's number: its menu opens below the list, which keeps its numbers for the next line.</p>
         <div class="tg-keys" style="margin:0 0 10px;">
           <div class="tg-row">
             <div class="tg-btn">1</div><div class="tg-btn primary">2</div><div class="tg-btn">3</div>
@@ -1538,20 +1539,40 @@
             <div class="tg-btn">Amount</div><div class="tg-btn">Currency</div><div class="tg-btn">Date</div>
           </div>
           <div class="tg-row">
+            <div class="tg-btn">📎 as Supporting doc</div>
+          </div>
+          <div class="tg-row">
             <div class="tg-btn danger">🗑 Remove it</div>
             <div class="tg-btn primary">✅ Done</div>
           </div>
         </div>
         <p class="tg-say" style="margin:0 0 10px;">
-          Wrong in <b>two</b> places? Correct one and the menu comes straight back, so the second is one more tap. <b>Done</b> when you're finished. Each corrected card comes as a <b>new message at the bottom</b>; the one before it reads <i>↓ see the updated card below</i> and has no buttons. If Telegram would not let the bot edit the older message, that one keeps its buttons; tap there and the newer card below is the one that turns into <i>↑ see the card above</i>.
+          Wrong in <b>two</b> places? The menu comes back after each fix; <b>Done</b> when finished. The new card comes <b>at the bottom</b>, the old one reads <i>↓ see the updated card below</i> (if Telegram won't let it change, a tap on its buttons turns the newer card into <i>↑ see the card above</i>).
+        </p>
+        <p style="font-size:12.5px; color:var(--text-light); margin:0 0 5px;">📎 <b>In the report, not in the total</b> — a statement, a usage report, an invoice another line covers: on a line with its own file, tap <b>📎 as Supporting doc</b>.</p>
+        <div class="code-block" style="margin:0 0 4px; font-size:12px;">
+          <div><span class="prompt">Bot: </span><span class="resp">📎 Line 3 — Anthropic · 104.63 USD = 384.25 AED will stop counting as an expense: the amount leaves the total, the file stays in the report as a supporting document. Where should it go?</span></div>
+        </div>
+        <div class="tg-keys" style="margin:0 0 6px;">
+          <div class="tg-row"><div class="tg-btn primary">📁 To the report (general)</div></div>
+          <div class="tg-row"><div class="tg-btn">📋 Under a line…</div></div>
+          <div class="tg-row"><div class="tg-btn">✖ Cancel</div></div>
+        </div>
+        <div class="code-block" style="margin:0 0 4px; font-size:12px;">
+          <div><span class="prompt">Bot: </span><span class="resp">📎 Filed as a supporting document — Anthropic · Claude API usage report — shows 104.63 USD, not claimed · to the report</span></div>
+        </div>
+        <div class="tg-keys" style="margin:0 0 6px;">
+          <div class="tg-row"><div class="tg-btn danger">🗑 Remove</div></div>
+        </div>
+        <p class="tg-say" style="margin:0 0 10px;">
+          The file stays, noted <i>not claimed</i>; the amount and any wait for a document go, and lines after it move up a number. <b>📋 Under a line…</b> (if there are others) prints it under the line you pick by its PDF number. Documents filed under it go along. <b>No way back:</b> to claim it, <b>🗑 Remove</b> and resend the file.
         </p>
         <div class="info-box" style="margin:0;">
-          ⌨️ <b>Typing still works</b> if you prefer it — <code style="font-family:var(--mono); color:var(--accent);">fix amount for #2 — 150</code>, <code style="font-family:var(--mono); color:var(--accent);">change type for #3 to Hotel</code>, <code style="font-family:var(--mono); color:var(--accent);">delete #2</code>. Asked in words, the bot first says what it will change or delete and asks with buttons — such as <b>Change it</b> · <b>Leave it</b>, or <b>Delete it</b> · <b>Keep it</b>.<br><br>
-          📸 <b>Changed your mind mid-correction?</b> Tapped <b>Amount</b> and then sent the next receipt instead of typing a number? The photo or PDF is read as a new receipt, the bot stops waiting, tells you that <b>nothing on the old one changed</b>, and leaves the field one tap away. Whatever you type after that is read as a normal message — not filed into the receipt.<br><br>
-          📝 <b>Note</b> is the line's description — where the names of the people at a business meeting are. Tap it: <i>“Send the new note (a single - clears it).”</i> What you type replaces the whole note — <code style="font-family:var(--mono); color:var(--accent);">business lunch — with Sam Wilson, Julia Chen, ABC Corp</code> — and a single <code style="font-family:var(--mono); color:var(--accent);">-</code> clears it. The amount is not touched.<br><br>
-          🔗 One case still needs words: if <b>/preview</b> says <i>“Scan not saved”</i>, re-send the photo or PDF and say <code style="font-family:var(--mono); color:var(--accent);">attach it to receipt #3</code>.<br><br>
-          📎 <b>Two documents for one line?</b> A payment slip and the ticket it paid for, for instance — send the second one the same way. The first scan is <b>never replaced</b>: the line keeps both files, printed <b>together under that line</b> — the real document (invoice, ticket) first, whatever order you sent them in, and the payment slip under it; the captions are on slide “Supporting documents”. No leafing to the end of the report and back. If a line was backed only by a payment slip, the document answers the <i>“⏳ awaiting the invoice”</i> on it (slide “Only the payment slip? The line waits”).<br><br>
-          🔎 <b>Two different warnings, two different answers.</b> <i>“Scan not saved”</i> means that line never got its document — send it and the line is complete. <i>“Scan … cannot be found”</i> means the line's record points at a file that is no longer there: send the document and it is printed under that line as a further document, but the line keeps its record, so that warning stays until an admin repairs the line. Either way nothing you send is lost.
+          ⌨️ <b>Typing works too</b> — <code style="font-family:var(--mono); color:var(--accent);">fix amount for #2 — 150</code>, <code style="font-family:var(--mono); color:var(--accent);">delete #2</code>: the bot says what it will do and asks first — <b>Change it</b> · <b>Leave it</b>, <b>Delete it</b> · <b>Keep it</b>.<br><br>
+          📸 <b>Sent a receipt instead of the amount?</b> It is read as a new one; <b>the old line is unchanged</b>, the field one tap away. What you type next is an ordinary message.<br><br>
+          📝 <b>Note</b> is the line's description — for a business meeting, who was there: <i>“Send the new note (a single - clears it).”</i> What you type replaces it; the amount stays.<br><br>
+          🗂 <b>The invoice for a hotel line that has only the payment slip?</b> Send it and say <code style="font-family:var(--mono); color:var(--accent);">attach it to receipt #3</code>: the slip is <b>never replaced</b>, both print under the line (slide “Supporting documents”), and the line stops <i>“⏳ awaiting the invoice”</i>.<br><br>
+          🔎 <b>/preview</b> says <i>“Scan not saved”</i>? Re-send the file and say <code style="font-family:var(--mono); color:var(--accent);">attach it to receipt #3</code>. <i>“Scan … cannot be found”</i> — its file is gone: what you send prints under the line, but the warning stays till an admin fixes it.
         </div>
       </div>
 
@@ -1580,6 +1601,7 @@
           <br>• <code style="font-family:var(--mono); color:var(--accent);">6117,37</code> is <b>6117.37</b> — a comma before one or two digits is the decimal point;
           <br>• <code style="font-family:var(--mono); color:var(--accent);">6,117.37</code>, <code style="font-family:var(--mono); color:var(--accent);">6.117,37</code> and <code style="font-family:var(--mono); color:var(--accent);">6 117,37</code> are all <b>6117.37</b> — with both marks, the last one is the decimal point;
           <br>• <code style="font-family:var(--mono); color:var(--accent);">1,200</code> or <code style="font-family:var(--mono); color:var(--accent);">1.200</code> could be either (some currencies use three decimals), so the bot asks instead of guessing: <i>“1,200” could be 1200 or 1.2 — I didn't guess. Send it again as 1200 or 1.2.</i>
+          <br>• <b>below zero — refused in Amount here and in ✏️ Change → Amount on a card</b>, nothing changed. On a 104.63 USD line, <code style="font-family:var(--mono); color:var(--accent);">-500</code> → <i>“-500” is below zero — a line's amount can't be negative, and nothing was changed. Type it as the document shows it, e.g. 104.63. If this document should not count at all, tap ← Leave it above, then 📎 as Supporting doc.</i> The example is the line's or card's own amount (none at 0.00); the last sentence comes only on a saved line with its own file. <code style="font-family:var(--mono); color:var(--accent);">-1,200</code> is refused the same, not asked about;
           <br>• not a number at all: <i>That doesn't look like a number. Send the amount again, e.g. 1250.50.</i> (<code style="font-family:var(--mono); color:var(--accent);">/approve</code> answers differently: <i>I couldn't read the amount “…”.</i> and shows how to write the command.)
           <br>• <b>a different currency next to the number is not converted, and nothing is changed.</b> On an AED line, <b>Amount</b> → <code style="font-family:var(--mono); color:var(--accent);">150 USD</code>: <i>“150 USD” is in USD, but this line is in AED. I didn't convert it, and nothing was changed. Send the amount in AED. If AED itself is wrong, tap ← Leave it above, then Currency.</i> The line's own currency is fine — <code style="font-family:var(--mono); color:var(--accent);">150 AED</code>, <code style="font-family:var(--mono); color:var(--accent);">150 dirhams</code>. The currency is checked first, so <code style="font-family:var(--mono); color:var(--accent);">1,200 eur</code> is refused for the currency, not asked about. On a multi-page card the words are <i>“… but this receipt is in …”</i>; for the accountant <i>“… but the approved amount is in AED …”</i> — after <i>Report #54 was not approved.</i> on <code style="font-family:var(--mono); color:var(--accent);">/approve</code>, and followed by <i>Or 'cancel'.</i> on <b>Other amount</b>.
         </div>
