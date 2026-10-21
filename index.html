@@ -909,11 +909,19 @@
           <div><span class="prompt">Bot: </span><span class="resp">Looks like line 2 — Anthropic · 10.67 USD · 2026-10-03 — is already in the pack. This document:</span></div>
         </div>
         <div class="tg-keys" style="margin:4px 0 8px;">
+          <div class="tg-row"><div class="tg-btn danger">🗑 Discard this copy — line 2 · Anthropic · 10.67 USD</div></div>
           <div class="tg-row"><div class="tg-btn">📎 Add it as another page of line 2</div></div>
           <div class="tg-row"><div class="tg-btn">➕ Separate expense — add as a new line</div></div>
           <div class="tg-row"><div class="tg-btn danger">🚫 Discard</div></div>
         </div>
         <div class="step-list" style="margin-top:0; gap:7px;">
+          <div class="step-item" style="padding:9px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">🗑</div>
+            <div class="step-content">
+              <strong>The same file again</strong>
+              <span>If line 2 already has this very file — byte for byte, or a photo that reads as line 2 and is not dated another day — <b>🗑 Discard this copy</b> comes first, as an offer — the other buttons stay: <i>“🗑 Discarded this copy of the PDF — line 2 — Anthropic · 10.67 USD keeps its own. Nothing in the pack changed.”</i> A line described in words that was waiting for the file is saved without it, with its own <b>✅ Added</b>.</span>
+            </div>
+          </div>
           <div class="step-item" style="padding:9px 14px;">
             <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">📎</div>
             <div class="step-content">
@@ -998,7 +1006,7 @@
         <p class="subtitle" style="margin-bottom:12px;">What the list of the previous slide does while it waits, and how a long PDF is listed.</p>
         <div class="divider" style="margin-bottom:12px;"></div>
         <div class="info-box" style="margin:0;">
-          👆 <b>Only its buttons settle the list.</b> Typing <code style="font-family:var(--mono); color:var(--accent);">yes</code> or <code style="font-family:var(--mono); color:var(--accent);">no</code> adds nothing and drops nothing; the answer ends with <i>“⏳ The PDF with 3 separate documents is still waiting — tap ✅ Add all or 🚫 Discard on its list.”</i> A photo or file sent meanwhile is held behind the list — the bot says so, as on slide “Add receipts” — and read once the list is settled. A business meeting on the list is asked about after <b>✅ Add all</b> (slide “Business meetings — who was there”). <code style="font-family:var(--mono); color:var(--accent);">/submit</code> stops at it — <i>“… I'm still holding the PDF you sent with 3 separate documents, still waiting for your answer on its list above: ✅ Add all or 🚫 Discard.”</i> — with <b>✅ Add all 3</b> (and <b>➕ Add all as new lines</b> when a document is marked), <b>🗑 Discard it</b> and <b>📤 Submit without it</b>; after Add all the submit is offered again. <code style="font-family:var(--mono); color:var(--accent);">/cancel</code> drops the list with its PDF: <i>“🚫 Dropped the PDF with 3 separate documents. Nothing was saved.”</i>
+          👆 <b>Only its buttons settle the list.</b> Typing <code style="font-family:var(--mono); color:var(--accent);">yes</code> or <code style="font-family:var(--mono); color:var(--accent);">no</code> adds nothing and drops nothing; the answer ends with <i>“⏳ The PDF with 3 separate documents is still waiting — tap ✅ Add all or 🚫 Discard on its list.”</i> A photo or file sent meanwhile is held behind the list — the bot says so, as on slide “Add receipts” — and read once the list is settled. A business meeting on the list is asked about after <b>✅ Add all</b> (slide “Business meetings — who was there”). <code style="font-family:var(--mono); color:var(--accent);">/submit</code> stops at it — <i>“… I'm still holding the PDF you sent with 3 separate documents, still waiting for your answer on its list above: ✅ Add all or 🚫 Discard.”</i> — with <b>✅ Add all 3</b> (and <b>➕ Add all as new lines</b> when a document is marked), <b>🗑 Discard it</b> and <b>📤 Submit without it</b>; after Add all the submit is offered again. <code style="font-family:var(--mono); color:var(--accent);">/cancel</code> drops the list with its PDF: <i>“🚫 Dropped the PDF with 3 separate documents. Nothing was saved.”</i> Discarded, the list says so and loses its buttons: <i>“🚫 Discarded — nothing from this PDF was added.”</i>; after <code style="font-family:var(--mono); color:var(--accent);">/cancel</code> <i>“🚫 Dropped with /cancel — nothing from this PDF was added.”</i>; an album's: <i>“🚫 Discarded the 2 photos you sent — nothing from them was added.”</i> or <i>“🚫 Dropped with /cancel — nothing from these photos was added.”</i> A button of it tapped later adds nothing: <i>— that file is no longer held —</i>. If an album's photos became the pages of a document instead, its list's button answers the same, and the list then reads <i>— those photos are no longer held —</i>.
         </div>
         <div class="info-box" style="margin:8px 0 0;">
           📄 <b>Pages and long lists.</b> Pages in none of the documents are named: <i>“Not in any of them: p. 7 — those pages are not kept.”</i> A long list shows its first documents — at most 30 — and then <i>“… and 60 more documents”</i>; <b>✅ Add all</b> still adds every one, and its summary is cut the same way: the first 30 lines, then <i>“… and 60 more — /showpack lists every line.”</i>, with number buttons for 24 lines at most. A PDF that is <b>one</b> document, however many pages, stays one line with the whole PDF as its document. And an expense that comes in alongside the PDF but not as its pages — a taxi you describe in words, say — is asked about the PDF like any held file (<i>“Is it the document for …?”</i>): <b>Yes</b> puts the whole PDF on that line and withdraws the list, saying so; <b>No</b> saves the line without it, and the list comes back.
@@ -1111,7 +1119,7 @@
             <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">🤖</div>
             <div class="step-content">
               <strong>Let the bot notice</strong>
-              <span>Send page 1; when the bot sees it continues, it says so and asks <i>“How should I treat it?”</i> — <b>📚 Multi-page — I'll send the rest</b>, <b>✅ Just this page</b> or <b>🚫 Discard it</b>.</span>
+              <span>Send page 1; when the bot sees it continues, it says so and asks <i>“How should I treat it?”</i> — <b>📚 Multi-page — I'll send the rest</b>, <b>✅ Just this page</b> or <b>🚫 Discard it</b>. On files sent at once with a PDF among them that button refuses: <i>“… — they are PDFs, and a PDF can't be a page, …”</i>, with <b>🗑 Discard them and start</b>.</span>
             </div>
           </div>
           <div class="step-item" style="padding:9px 14px;">
@@ -1150,14 +1158,14 @@
             <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">📄</div>
             <div class="step-content">
               <strong>A PDF in the middle</strong>
-              <span><i>“📄 A PDF can't be a page of the document you're collecting, so I'm holding it separately.”</i> — then the <b>Document complete</b> screen for a held file (slide “What happens to a file the bot is holding”). A PDF sent right after tapping <b>📚 Multi-page document</b>, before any page, is simply read as a document of its own.</span>
+              <span><i>“📄 A PDF can't be a page of the document you're collecting, so I'm holding it separately.”</i> — then the <b>Document complete</b> screen for a held file (slide “What happens to a file the bot is holding”). A PDF sent right after tapping <b>📚 Multi-page document</b>, before any page, is simply read as a document of its own. If the bot is already holding a file, the new PDF is not kept: <i>“📎 I'm already holding the PDF you sent, so I didn't keep this PDF — tap Document complete to settle it, then send the PDF again. Your 2 page(s) are kept.”</i></span>
             </div>
           </div>
           <div class="step-item" style="padding:9px 14px;">
             <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">🖼</div>
             <div class="step-content">
               <strong>An album</strong>
-              <span>Several photos sent at once can't be pages of a document being collected: <i>“📚 Those came as an album, and an album can't be pages of a document — send the pages one by one. None of the album was added; your 3 page(s) sent before it are kept.”</i> Outside a document an album is read as one list (slide “Several photos at once”). (A file sent while a document is being collected is held — see “A PDF in the middle” above.)</span>
+              <span>Several photos sent at once can't be pages of a document being collected: <i>“📚 Those came as an album, and an album can't be pages of a document — send the pages one by one. None of the album was added; your 3 page(s) sent before it are kept.”</i> Outside a document an album is read as one list (slide “Several photos at once”). (A PDF sent while a document is being collected is held — or, while the bot holds another file, not kept: see “A PDF in the middle” above.)</span>
             </div>
           </div>
           <div class="step-item" style="padding:9px 14px;">
@@ -1176,6 +1184,7 @@
           </div>
         </div>
         <div class="info-box" style="margin:10px 0 0;">
+          📤 <b>Submitting meanwhile</b>: <i>“📚 Before I submit pack #68 «…»: 3 page(s) of a document are still being collected. They are not in the report. What should I do with them?”</i> — <b>✅ Document complete</b>, <b>🚫 Cancel the document</b> or <b>📤 Submit without it (the pages stay held)</b>; then <i>“📚 Your 3 page(s) are still here, not in report #68 — send the next page, or tap Document complete / Cancel.”</i><br><br>
           The collection's own buttons — <b>✅ Document complete</b>, <b>🚫 Cancel</b> — belong to it: on an older message from an earlier document they answer <i>— that document is no longer being collected —</i> and touch nothing.
         </div>
       </div>
@@ -1188,7 +1197,7 @@
         <div class="divider" style="margin-bottom:12px;"></div>
         <p style="font-size:12.5px; color:var(--text-light); margin:0 0 6px;">📚 Send another file before you confirm or cancel its card and the new one waits behind it:</p>
         <div class="code-block" style="margin:0 0 4px; font-size:13px;">
-          <div><span class="prompt">Bot: </span><span class="resp">📚 Your 3-page document is waiting — Hotel Adria · 1136.00 EUR. Confirm or cancel its card first.</span></div>
+          <div><span class="prompt">Bot: </span><span class="resp">📚 Your 3-page document is waiting — Hotel Adria · 1136.00 EUR. Tap ✅ Confirm or 🚫 Cancel on its card first.</span></div>
           <div style="padding-left:32px; margin-top:4px;"><span class="resp">📎 I'm holding the photo you just sent — nothing is lost. It's next once the document is settled.</span></div>
         </div>
         <div class="tg-keys" style="margin:4px 0 8px;">
@@ -1200,7 +1209,7 @@
           <b>➕ Add it as page 4</b> appears only for a photo. If the bot answered the document with a question instead of a card: <i>“📚 Your 3-page document is still waiting — it isn't saved yet. Tell me about it, or discard it.”</i> with <b>🗑 Discard the 3-page document</b>. Once the document is settled, the waiting file is read: <i>“📎 Now the photo you sent while your document was waiting — reading it…”</i> With a document's card on screen, <code style="font-family:var(--mono); color:var(--accent);">/cancel</code> drops the card and keeps the waiting file, as with any card (slide “What happens to a file the bot is holding”).
         </div>
         <div class="info-box" style="margin:8px 0 0;">
-          🧾 <b>One document, two cards.</b> A document can make <b>two cards</b> — a hotel folio and a separate restaurant bill on it, say. Each card's buttons act on that card only, but the <b>document goes to one line</b>: confirm first the card whose document it is. Confirm the restaurant first and the bot asks <i>“📎 I'm still holding the PDF I read as Hotel Adria · 1136.00 EUR. Is it the document for Adria Restaurant · 85.00 EUR?”</i> — <b>Yes</b> gives the document to the restaurant and withdraws the hotel card <b>together with its expense</b>: <i>“🚫 The card for Hotel Adria · 1136.00 EUR is withdrawn — its document is now on Adria Restaurant · 85.00 EUR.”</i> The 1136 EUR is not saved, and that card's Confirm then answers <i>“This draft is no longer active.”</i> <b>No</b> saves the restaurant without a document, and the hotel keeps the PDF when you confirm it. Typed <code style="font-family:var(--mono); color:var(--accent);">yes</code> with two cards waiting? The bot asks <i>“2 cards are waiting — which one should I add?”</i> with a <b>✅ Confirm …</b> button per card; typed <code style="font-family:var(--mono); color:var(--accent);">no</code> — <i>“2 cards are waiting — which one should I cancel?”</i> with a <b>🚫 Cancel …</b> button per card. Corrected the total in words and the bot made a new line from it? It asks whether the document belongs to the new line; answer <b>Yes</b> and the old card is withdrawn: <i>“🚫 The card for Hotel Adria · 130.98 EUR is withdrawn — its document is now on Hotel Adria · 350.00 EUR.”</i>
+          🧾 <b>One document, two cards.</b> A document can make <b>two cards</b> — a hotel folio and a separate restaurant bill on it, say. Each card's buttons act on that card only, but the <b>document goes to one line</b>: confirm first the card whose document it is. Confirm the restaurant first and the bot asks <i>“📎 I'm still holding the 3-page document I read as Hotel Adria · 1136.00 EUR. Is it the document for Adria Restaurant · 85.00 EUR?”</i> — <b>Yes</b> gives the document to the restaurant and withdraws the hotel card <b>together with its expense</b>: <i>“🚫 The card for Hotel Adria · 1136.00 EUR is withdrawn — its document is now on Adria Restaurant · 85.00 EUR.”</i> The 1136 EUR is not saved, and that card's Confirm then answers <i>“This draft is no longer active.”</i> <b>No</b> saves the restaurant without a document, and the hotel keeps the PDF when you confirm it. Typed <code style="font-family:var(--mono); color:var(--accent);">yes</code> with two cards waiting? The bot asks <i>“2 cards are waiting — which one should I add?”</i> with a <b>✅ Confirm …</b> button per card; typed <code style="font-family:var(--mono); color:var(--accent);">no</code> — <i>“2 cards are waiting — which one should I cancel?”</i> with a <b>🚫 Cancel …</b> button per card. Corrected the total in words and the bot made a new line from it? It asks whether the document belongs to the new line; answer <b>Yes</b> and the old card is withdrawn: <i>“🚫 The card for Hotel Adria · 130.98 EUR is withdrawn — its document is now on Hotel Adria · 350.00 EUR.”</i>
         </div>
       </div>
 
@@ -1238,10 +1247,10 @@
           </div>
         </div>
         <p class="tg-say" style="margin:0 0 8px;">
-          Like a receipt, a proof document is <b>filed and shown</b> — you see what went in. Filed the wrong thing? <b>🗑 Remove</b> takes it back out. Not clear whether a file is a paid receipt or proof? The bot asks, with buttons — for example <i>“Is this a paid receipt with an amount, or a supporting document (proof, no amount)?”</i> with <b>Paid receipt</b> · <b>Supporting document</b>.
+          Like a receipt, a proof document is <b>filed and shown</b> — you see what went in. Filed the wrong thing? <b>🗑 Remove</b> takes it back out: <i>“🗑 Removed that document.”</i> Not clear whether a file is a paid receipt or proof? The bot asks, with buttons — for example <i>“Is this a paid receipt with an amount, or a supporting document (proof, no amount)?”</i> with <b>Paid receipt</b> · <b>Supporting document</b>.
         </p>
         <div class="info-box" style="margin:8px 0 0;">
-          Supporting documents carry <b>no amount</b>, so they never move the total. One sent for the whole report — the Travel Request, general paperwork — gets its own section at the end of the PDF. One sent <b>for a particular line</b> is printed right under that line instead, so the document and the slip that paid for it are read together — the real document first, whatever order they came in. Each caption says what the document is: a payment slip — <i>“payment confirmation for #1 · IBIS ZURICH CITY WEST”</i>; an invoice, receipt or ticket filed later to a line that had only the slip is printed first, as the line's own — <i>“invoice — IBIS ZURICH CITY WEST”</i> (or <i>receipt — …</i>, <i>ticket — …</i>); a booking voucher does not close the line: it is printed under it as <i>“booking confirmation for #1 · IBIS ZURICH CITY WEST”</i>, and the line keeps waiting for the invoice; anything else filed under the line — <i>“further document — …”</i>.<br><br>
+          Supporting documents carry <b>no amount</b>, so they never move the total. One sent for the whole report — the Travel Request, general paperwork — gets its own section at the end of the PDF. One sent <b>for a particular line</b> is printed right under that line instead, so the document and the slip that paid for it are read together — the real document first, whatever order they came in. Each caption says what the document is: a payment slip — <i>“payment confirmation for #1 · IBIS ZURICH CITY WEST”</i>; an invoice, receipt or ticket filed later to a line that had only the slip is printed first, as the line's own — <i>“invoice — IBIS ZURICH CITY WEST”</i> (or <i>receipt — …</i>, <i>ticket — …</i>); a booking voucher does not close the line: it is printed under it as <i>“booking confirmation for #1 · IBIS ZURICH CITY WEST”</i> — the chat calls it that too — and the line keeps waiting for the invoice; anything else filed under the line — <i>“further document — …”</i>.<br><br>
           📎 <b>Saved as an expense line, but only backs others up?</b> <b>✏️ Fix → 📎 as Supporting doc</b> (slide “Fix mistakes”) keeps the file and takes its amount out of the total — for the whole report, or under a line you pick.
         </div>
       </div>
@@ -1250,7 +1259,7 @@
       <div class="slide">
         <div class="slide-tag">Step 2 · a document to come</div>
         <h2>Only the payment slip? The line waits</h2>
-        <p class="subtitle" style="margin-bottom:12px;">A bank payment slip proves money moved, not what was bought; a booking voucher proves the booking, not the payment. Neither closes a line on its own — except for a <b>donation</b>, whose document <i>is</i> the bank transfer confirmation (slide “Gifts and donations”).</p>
+        <p class="subtitle" style="margin-bottom:12px;">A bank payment slip proves money moved, not what was bought; a booking voucher proves the booking, not the payment. Neither closes a line on its own — except for a <b>donation</b>, whose document <i>is</i> the bank transfer confirmation (slide “Gifts and donations — say who pre-approved it”).</p>
         <div class="divider" style="margin-bottom:12px;"></div>
         <div class="code-block" style="margin:0 0 6px; font-size:12.5px;">
           <div><span class="prompt">You: </span><span class="resp">(sends the bank's payment slip for the hotel)</span></div>
@@ -1277,7 +1286,7 @@
           <b>📎 Line 1</b> — <i>“📎 Filed under line 1 — IBIS ZURICH CITY WEST · 843.66 EUR, as its document. No new line; the amount stays once. ✅ That line is no longer waiting for its document.”</i> The totals differ, so one more question: <i>“💱 Line 1 says 843.66 EUR; the invoice says 850.00 EUR. Which amount should the line claim?”</i> — <b>Set the line to 850.00 EUR (invoice total)</b> → <i>“✏️ Line 1 now claims 850.00 EUR = 3400.00 AED.”</i>, or <b>Keep 843.66 EUR</b>. <b>➕ No — a new expense</b> adds it as a line of its own; <b>🚫 Discard</b> deletes the file.
         </p>
         <div class="info-box" style="margin:0;">
-          🔁 <b>When it asks:</b> when the invoice is close to the line but not the same — another amount, another currency, or no word of the vendor in common. If the invoice reads exactly like the line (same amount, same vendor), the bot asks instead whether it is the same document — slide 6, “Already in the pack?”. The other way round works too: invoice first, slip later — even an invoice of 1265.20 JOD and a slip of 6770.33 AED — and the slip is filed under the invoice <i>“as its payment confirmation”</i>.<br><br>
+          🔁 <b>When it asks:</b> when the invoice is close to the line but not the same — another amount, another currency, or no word of the vendor in common. If the invoice reads exactly like the line (same amount, same vendor), the bot asks instead whether it is the same document — slide 6, “Already in the pack?”. The other way round works too: invoice first, slip later — even an invoice of 1265.20 JOD and a slip of 6770.33 AED — and the slip is filed under the invoice <i>“as its payment confirmation”</i>. A booking voucher is filed <i>“as its booking confirmation”</i>, and the line still waits: <i>“Line 1 now has its booking confirmation and is ⏳ awaiting the invoice.”</i><br><br>
           📄 <b>One expense, one line</b> — the invoice and its slip, or a ticket and the bank slip, are one line with two files; the PDF prints the real document first. Two lines after all? The submit offers to join them (slide “A line without its document”). In a list from a PDF or an album such a document is marked <i>“→ for line 1 (awaiting the invoice)? — I'll ask after ✅ Add all”</i>.
         </div>
       </div>
@@ -1371,7 +1380,7 @@
             <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">🔁</div>
             <div class="step-content">
               <strong>It looks like a line already in the pack</strong>
-              <span>The file waits with the question — <b>📎 Add it as another page of line 2</b>, <b>➕ Separate expense — add as a new line</b> or <b>🚫 Discard</b> (slide “Already in the pack?”).</span>
+              <span>The file waits with the question — <b>📎 Add it as another page of line 2</b>, <b>➕ Separate expense — add as a new line</b> or <b>🚫 Discard</b>; for line 2's own file again, <b>🗑 Discard this copy</b> first (slide “Already in the pack?”).</span>
             </div>
           </div>
           <div class="step-item" style="padding:9px 14px;">
@@ -1398,7 +1407,7 @@
         </div>
         <div class="info-box" style="margin:8px 0 0;">
           ⚠️ <b>Where a held file can still disappear.</b>
-          <br>• <b>Sending the next photo or file</b> while one file is held, with no card or document waiting, replaces the held one: <i>“↻ Replaced your previous photo with this … — I only hold one at a time.”</i> It does not say which file went, and calls it a photo even when it was a PDF. (A finished multi-page document is never replaced this way — slide “A finished document waits for its card”.)
+          <br>• <b>Sending the next photo or file</b> while one file is held, with no card or document waiting, replaces the held one: <i>“↻ Replaced your previous photo with this … — I only hold one at a time.”</i> It does not say which file went, and calls it a photo even when it was a PDF. Several files sent at once replace it by name: <i>“↻ Replaced the PDF I read as Motel One Zurich · 1136.00 CHF with these 2 photos.”</i> (A finished multi-page document is never replaced this way — slide “A finished document waits for its card”.)
           <br>• <code style="font-family:var(--mono); color:var(--accent);">/cancel</code> while pages are being collected throws those pages away — and says so (slide “While a document is being collected”).
           <br>Submitting the pack no longer lets a held file go quietly — slide “Submitting with a file still on hold”; deleting it — below.
           <br>So: when the bot says it is still holding a document you need, tell it what the document is <b>before</b> you send the next one.
@@ -1663,7 +1672,7 @@
           <br>• <b>a different currency next to the number is not converted, and nothing is changed.</b> On an AED line, <b>Amount</b> → <code style="font-family:var(--mono); color:var(--accent);">150 USD</code>: <i>“150 USD” is in USD, but this line is in AED. I didn't convert it, and nothing was changed. Send the amount in AED. If AED itself is wrong, tap ← Leave it above, then Currency.</i> The line's own currency is fine — <code style="font-family:var(--mono); color:var(--accent);">150 AED</code>, <code style="font-family:var(--mono); color:var(--accent);">150 dirhams</code>. The currency is checked first, so <code style="font-family:var(--mono); color:var(--accent);">1,200 eur</code> is refused for the currency, not asked about. On a multi-page card the words are <i>“… but this receipt is in …”</i>; for the accountant <i>“… but the approved amount is in AED …”</i> — after <i>Report #54 was not approved.</i> on <code style="font-family:var(--mono); color:var(--accent);">/approve</code>, and followed by <i>Or 'cancel'.</i> on <b>Other amount</b>.
         </div>
         <div class="info-box" style="margin:0;">
-          💱 <b>The AED total follows.</b> Change the amount or the currency and the line's AED value is worked out again at <b>today's rate</b> — the report total moves with it. If the rate cannot be fetched and the line is switching to a currency other than AED, the bot changes <b>nothing</b>: <i>“I couldn't get today's exchange rate, so nothing was changed. Try again in a minute.”</i> A new amount in the line's own currency does not wait for it — the rate the line was booked at is used.
+          💱 <b>The AED total follows.</b> Change the amount or the currency and the line's AED value is worked out again at <b>today's rate</b> whenever it can be fetched (AED itself needs none) — the report total moves with it. If it can't be: a new amount in the line's own currency is taken at the rate the line was booked at, and a switch to another currency, not AED, changes <b>nothing</b>: <i>“I couldn't get today's exchange rate, so nothing was changed. Try again in a minute.”</i>
         </div>
       </div>
 
@@ -1807,15 +1816,17 @@
           <div class="tg-row"><div class="tg-btn primary">📤 Submit without it</div></div>
         </div>
         <p class="tg-say" style="margin:0 0 8px;">
-          <b>📎 Attach it to …</b> is there only when the file fits a line of the pack. After Attach, File or Discard the report is <b>not</b> sent by itself: <i>“Submit pack #68 «Zurich May 2026» now?”</i> with <b>📤 Submit now</b>. <b>📤 Submit without it</b> sends the report and keeps the file: <i>“📎 Still holding … — it is not in report #68. To file it, start your next pack and tell me what it is; sending another photo or file first replaces it. Or discard it.”</i> with <b>🗑 Discard it</b>.
+          <b>📎 Attach it to …</b> is there only when the file fits a line of the pack; two lines that read the same get <b>📎 Attach to line 2 — …</b> and <b>📎 Attach to line 3 — …</b>, numbered as in the PDF. After Attach, File or Discard the report is <b>not</b> sent by itself: <i>“Submit pack #68 «Zurich May 2026» now?”</i> with <b>📤 Submit now</b>. <b>📤 Submit without it</b> sends the report and keeps the file: <i>“📎 Still holding … — it is not in report #68. To file it, start your next pack and tell me what it is; sending another photo or file first replaces it. Or discard it.”</i> with <b>🗑 Discard it</b>.
         </p>
         <div class="info-box" style="margin:0 0 8px;">
-          🧾 <b>A card still waiting.</b> Its document is named by the card as it reads now — <i>“… I'm still holding the PDF of the card Hilton · 350.00 USD, still waiting for ✅ Confirm. …”</i>. <b>File it</b> works like that card's ✅ Confirm, with your corrections; <b>Discard</b> answers <i>“🗑 Discarded the PDF and its card Hilton · 350.00 USD.”</i> A card of <b>another</b> open pack: <i>“Its card is waiting in pack #61 «Berlin», not this one.”</i> with <b>➕ File it in this pack instead</b>, which puts the line into this pack and takes the card down there, saying so; <b>Submit without it</b> leaves that card alone — <i>“The card is still waiting in pack #61 «Berlin» — confirm it there.”</i>
-          <br>The screen names what the card waits for. A meeting card asking for names: <i>“… still waiting for the names, or ➕ Add without names.”</i> A document that looks like a line already in the pack: <i>“📎 Before I submit pack #68 «…»: I'm still holding the PDF of the card Anthropic · 10.67 USD, still waiting for your answer above: another page of line 2, a separate expense, or discard. It is not in the report. What should I do with it?”</i>
+          🗑 <b>Already in the pack?</b> If a line already has this very file — byte for byte, or a photo that reads as it and is not dated another day — <b>🗑 Discard this copy — line 3 · Motel One Zurich · 1136.00 CHF</b> comes first (<b>— in the pack · conference invitation</b> for a supporting document filed for the whole report), as an offer: <i>“🗑 Discarded this copy of the PDF — line 3 — Motel One Zurich · 1136.00 CHF keeps its own. Nothing in the pack changed.”</i> A line described in words that was waiting for the file is saved without it, with its own <b>✅ Added</b>.
+        </div>
+        <div class="info-box" style="margin:0 0 8px;">
+          🧾 <b>A card or a question still waiting.</b> A card's document is named by the card as it reads now — <i>“… I'm still holding the PDF of the card Hilton · 350.00 USD, still waiting for ✅ Confirm. …”</i>. <b>File it</b> works like that card's ✅ Confirm, with your corrections; <b>Discard</b> answers <i>“🗑 Discarded the PDF and its card Hilton · 350.00 USD.”</i> A card of <b>another</b> open pack: <i>“Its card is waiting in pack #61 «Berlin», not this one.”</i> with <b>➕ File it in this pack instead</b>, which puts the line into this pack and takes the card down there, saying so; <b>Submit without it</b> leaves that card alone — <i>“The card is still waiting in pack #61 «Berlin» — answer it there.”</i>
+          <br>The screen names what it waits for. A meeting card asking for names: <i>“… still waiting for the names, or ➕ Add without names.”</i> A question about a document that looks like a line already in the pack — its file named by its reading: <i>“📎 Before I submit pack #68 «…»: I'm still holding the PDF I read as Anthropic · 10.67 USD, still waiting for your answer above: another page of line 2, a separate expense, or discard. It is not in the report. What should I do with it?”</i>
         </div>
         <div class="info-box" style="margin:0;">
           📚 <b>A file waiting behind a document</b>: <i>“📎 Before I submit pack #68 «…»: I'm also holding the photo you sent — it waits behind your 3-page document. It is not in the report. What should I do with it?”</i> — only <b>🗑 Discard it</b> or <b>📤 Submit without it</b>. With several files kept after the submit, each is named, with its own <b>🗑 Discard …</b>.
-          <br><b>Pages still being collected</b>: <i>“📚 Before I submit pack #68 «…»: 3 page(s) of a document are still being collected. They are not in the report. What should I do with them?”</i> — <b>✅ Document complete</b>, <b>🚫 Cancel the document</b> or <b>📤 Submit without it (the pages stay held)</b>; then <i>“📚 Your 3 page(s) are still here, not in report #68 — send the next page, or tap Document complete / Cancel.”</i>
         </div>
       </div>
 
@@ -1835,7 +1846,7 @@
           <div class="tg-row"><div class="tg-btn">Other — describe</div></div>
           <div class="tg-row"><div class="tg-btn primary">📄 I'll send the invoice</div></div>
         </div>
-        <p style="font-size:12.5px; color:var(--text-light); margin:0 0 6px;">For <b>transport up to 50 EUR</b> two more come first: <b>Vending machine gave no receipt</b> and <b>Parking — no receipt available</b>. And when another line of the pack <b>is</b> this line's document — the bank slip and the ticket saved as two lines — the top button joins them: <b>📎 Line 4 — … is its document</b> (or <b>… is its payment confirmation</b>).</p>
+        <p style="font-size:12.5px; color:var(--text-light); margin:0 0 6px;">For <b>transport up to 50 EUR</b> two more come first: <b>Vending machine gave no receipt</b> and <b>Parking — no receipt available</b>. And when another line of the pack <b>is</b> this line's document — the bank slip and the ticket saved as two lines — the top button joins them: <b>📎 Line 4 — … is its document</b> (or <b>… is its payment confirmation</b>, <b>… is its booking confirmation</b>).</p>
         <div class="step-list" style="margin-top:0; gap:7px;">
           <div class="step-item" style="padding:9px 14px;">
             <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">👆</div>
@@ -1870,7 +1881,7 @@
           🚫 <b><code style="font-family:var(--mono); color:var(--accent);">submit anyway</code> does not skip this.</b> Only a tap — or the sentence after <b>Other — describe</b> — answers it.<br><br>
           📑 <b>In the report.</b> The PDF prints next to the line <i>“UNSUPPORTED — awaiting the invoice. Reason: Receipt lost”</i>, and under the summary a table of its own with the unsupported subtotal. The accountant's notification says <i>“⚠️ Unsupported: 2 lines · 2040.00 AED — no document, the reason is next to each line”</i>.<br><br>
           ⏳ <b>Changed the line after giving a reason?</b> If its amount or type changed so the reason no longer fits — a parking line now over 50 EUR, say — <code style="font-family:var(--mono); color:var(--accent);">/showpack</code> shows <i>“⏳ reason needed again”</i> and the next submit asks again.<br><br>
-          🎁 A <b>gift</b> or a <b>donation</b> without who pre-approved it stops the submit too — slide “Gifts and donations”. A donation with its transfer confirmation is never asked about here, nor marked UNSUPPORTED.
+          🎁 A <b>gift</b> or a <b>donation</b> without who pre-approved it stops the submit too — slide “Gifts and donations — say who pre-approved it”. A donation with its transfer confirmation is never asked about here, nor marked UNSUPPORTED.
         </div>
       </div>
 
