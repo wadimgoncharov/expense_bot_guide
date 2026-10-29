@@ -721,7 +721,7 @@
         <div class="brand-sub">Employee Onboarding</div>
       </div>
     </div>
-    <div class="slide-counter">Slide <span id="cur">1</span> / <span id="total">40</span></div>
+    <div class="slide-counter">Slide <span id="cur">1</span> / <span id="total">46</span></div>
   </header>
 
   <!-- Progress -->
@@ -947,7 +947,48 @@
         <div class="info-box" style="margin:10px 0 0;">
           📋 <b>Several lines look the same?</b> The question lists them — <i>“Looks like these lines are already in the pack:”</i>, one line each — with a <b>📎 Add it as another page of line …</b> button for each, up to three. The line numbers are the ones <code style="font-family:var(--mono); color:var(--accent);">/showpack</code> shows.<br><br>
           👆 <b>A tap answers it.</b> Typing <code style="font-family:var(--mono); color:var(--accent);">yes</code>, <code style="font-family:var(--mono); color:var(--accent);">ok</code> or <code style="font-family:var(--mono); color:var(--accent);">no</code> saves nothing and drops nothing — the question stays, with its buttons. Until it is answered, a submit stops at it (slide “Submitting with a file still on hold”).<br><br>
-          📄 <b>Only a document is asked about.</b> An expense you describe in words is saved as before; a supporting document is never asked about — it adds nothing to the total; and a line in another pack is not a repeat. A multi-page document that repeats a line is asked about when you tap <b>✅ Document complete</b>, before its card. The documents of one PDF are not asked about one by one — their list marks the ones already in the pack (next slide).
+          📄 <b>Only a document is asked about.</b> An expense you describe in words is saved as before; a supporting document is never asked about — it adds nothing to the total; and a line in another pack is not a repeat — a document already in another report is said after it is saved (next slide). A multi-page document that repeats a line is asked about when you tap <b>✅ Document complete</b>, before its card. The documents of one PDF are not asked about one by one — their list marks the ones already in the pack (next slide).
+        </div>
+      </div>
+
+      <!-- SLIDE: A document already filed in another report (O-106 B) -->
+      <div class="slide">
+        <div class="slide-tag">Step 2 · another report</div>
+        <h2>Already in another report?</h2>
+        <p class="subtitle" style="margin-bottom:12px;">Every line is matched against all other reports — yours and your colleagues'. The line is saved, and the bot tells you once; at the submit it asks you to explain the line or delete it.</p>
+        <div class="divider" style="margin-bottom:12px;"></div>
+        <p style="font-size:12.5px; color:var(--text-light); margin:0 0 6px;">Right after the line is saved, in a message of its own:</p>
+        <div class="code-block" style="margin:0 0 6px; font-size:13px;">
+          <div><span class="prompt">Bot: </span><span class="resp">ℹ Line 2 matches a document already filed in another employee's report #128 (approved 10 Oct): same vendor, amount and date. If it is the same expense, delete line 2. Accounting will see the match either way.</span></div>
+        </div>
+        <div class="tg-keys" style="margin:4px 0 8px;">
+          <div class="tg-row"><div class="tg-btn danger">🗑 Delete line 2</div></div>
+        </div>
+        <div class="step-list" style="margin-top:0; gap:7px;">
+          <div class="step-item" style="padding:9px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">🔍</div>
+            <div class="step-content">
+              <strong>What counts as a match</strong>
+              <span>The same file — <i>“…: the same file.”</i> — or the same vendor, the same amount and currency and the same date. A monthly subscription with another date is not a match, and supporting documents are never matched. A match in a report of your own says <i>“…already filed in your report #57 (approved 3 Sep)…”</i>. A colleague's report is never named by the colleague's name.</span>
+            </div>
+          </div>
+          <div class="step-item" style="padding:9px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">🗑</div>
+            <div class="step-content">
+              <strong>The same expense? Delete the line</strong>
+              <span><b>🗑 Delete line 2</b> takes the line out: <i>“🗑 Removed line 2 (Apex City of London Hotel, 1616.70 GBP).”</i> Not the same — two stays at one hotel on one day happen — leave it, and say why when you submit.</span>
+            </div>
+          </div>
+          <div class="step-item" style="padding:9px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">📤</div>
+            <div class="step-content">
+              <strong>At the submit: a sentence, or delete the line</strong>
+              <span>A report with such a line is not submitted until you say why both are claimed: <i>“⚠ Before I submit pack #64 «London Oct»: line 2 — Apex City of London Hotel, 1,616.70 GBP, 8 Oct — matches a document already filed in another employee's report #128 (approved 10 Oct): same vendor, amount and date. If it is the same expense, delete the line. If both are due, type in a sentence why — accounting reads it next to the match.”</i> Type it — at least 3 words and 20 characters, e.g. <i>“Two of us stayed there — each paid our own room”</i> — I show it back exactly as accounting will read it, and <b>✅ Submit with it</b> sends the report (<b>✖ Not that</b> asks again); or tap <b>🗑 Delete line 2</b>, or <b>✖ Cancel</b>. Asked once per match, whatever that report's status; a report sent back to you is not asked again about a line you already explained.</span>
+            </div>
+          </div>
+        </div>
+        <div class="info-box" style="margin:10px 0 0;">
+          📋 <b>Said once.</b> Each match is said once, when it appears. Up to three lines get a message each; more are named in one line. Lines saved before this check existed are matched when the report is submitted, and asked about then.
         </div>
       </div>
 
@@ -1786,8 +1827,8 @@
           <div class="step-item">
             <div class="step-num">2</div>
             <div class="step-content">
-              <strong>The bot extracts dates and computes the allowance</strong>
-              <span>Rate: <b>300 AED</b> for each of the first 2 days · <b>200 AED</b> for each remaining day.</span>
+              <strong>The bot reads the dates and where the trip goes, and computes the allowance</strong>
+              <span>Rate: <b>300 AED</b> for each of the first 2 days · <b>200 AED</b> for each remaining day. The receipts are then checked against the form — next two slides.</span>
             </div>
           </div>
           <div class="step-item highlight">
@@ -1802,6 +1843,93 @@
           💡 A pack with <b>only the Travel Request</b> and no other receipts can still be submitted — the per-diem on its own is a valid reimbursement.
         </div>
       </div>
+
+      <!-- SLIDE: The trip form in /showpack — replaced, removed (O-106 A1) -->
+      <div class="slide">
+        <div class="slide-tag">Business trip · the trip form</div>
+        <h2>See the trip form — and take it off</h2>
+        <p class="subtitle" style="margin-bottom:12px;">The form is part of the report: <code style="font-family:var(--mono); color:var(--accent);">/showpack</code> shows it, and one tap takes it off.</p>
+        <div class="divider" style="margin-bottom:12px;"></div>
+        <p style="font-size:12.5px; color:var(--text-light); margin:0 0 6px;">In <code style="font-family:var(--mono); color:var(--accent);">/showpack</code>, under the totals:</p>
+        <div class="code-block" style="margin:0 0 6px; font-size:13px;">
+          <div><span class="resp">🧳 Trip form: Muscat (Oman) · 12–14 Jul 2026 · per-diem 800.00 AED · BT_form.pdf</span></div>
+        </div>
+        <p class="tg-say" style="margin:0 0 8px;">No form — <i>“🧳 No trip form.”</i> With one, the bar under the list has <b>🗑 Remove the trip form</b>. It asks once:</p>
+        <div class="code-block" style="margin:0 0 6px; font-size:13px;">
+          <div><span class="prompt">Bot: </span><span class="resp">Remove the trip form (Oman, 12–14 Jul 2026)? Per-diem 800.00 AED will be dropped from the report.</span></div>
+        </div>
+        <div class="tg-keys" style="margin:4px 0 8px;">
+          <div class="tg-row"><div class="tg-btn danger">✅ Remove</div><div class="tg-btn">✖ Keep</div></div>
+        </div>
+        <p class="tg-say" style="margin:0 0 8px;"><b>✅ Remove</b> — <i>“🗑 Trip form removed. No per-diem in this report.”</i>: the per-diem leaves the total and the cover, the file is set aside, not deleted. <b>✖ Keep</b> — <i>“✖ Kept the trip form — nothing changed.”</i> Saying it works too — <i>“don't send the Oman trip”</i> — and the bot asks the same question; nothing goes until you tap.</p>
+        <div class="info-box" style="margin:0 0 8px;">
+          🔁 <b>Another form replaces the first, and the bot says so:</b> <i>“🧳 Trip form replaced: Oman, 12–14 Jul 2026 → Vietnam, 20–24 Oct 2026. Per-diem is now 1200.00 AED.”</i> The old file is set aside. The <b>same</b> trip — the same dates, the same destination or none given — sent again is not a replacement, whatever copy of the form it is: if the form's file had gone missing, the new copy becomes it — <i>“🧳 Trip form file restored.”</i>; another copy over a file that is there — <i>“🧳 Trip form file updated — same trip (Oman, 12–14 Jul 2026).”</i>; a trip first written down in words gets its file — <i>“🧳 Trip form file attached.”</i> Nothing else changes, transit confirmations stay.
+        </div>
+        <div class="info-box" style="margin:0;">
+          📍 <b>Where the trip goes.</b> The bot reads the destination from the form — the places and their countries — and prints it on the cover next to the dates: <i>“Trip: 2026-07-12 → 2026-07-14 (3 days) · Muscat (Oman)”</i>. It also reads, from each receipt, the country it is from and the dates of a stay or a ride; the <b>✅ Added</b> card shows them — <i>“Country: Vietnam”</i>, <i>“Stay: 20–24 Oct 2026”</i> — and you can correct them in words: <i>“it's Muscat, not Berlin”</i>.
+        </div>
+      </div>
+
+      <!-- SLIDE: The trip form against the report — claimed once, other trip (O-106 A4, A5) -->
+      <div class="slide">
+        <div class="slide-tag">Business trip · the bot checks</div>
+        <h2>The form against the report</h2>
+        <p class="subtitle" style="margin-bottom:12px;">A trip is claimed once, and the documents have to be from that trip. The bot says it as soon as something does not fit — and stops the submit until it is sorted out.</p>
+        <div class="divider" style="margin-bottom:12px;"></div>
+        <div class="step-list" style="margin-top:0; gap:7px;">
+          <div class="step-item" style="padding:9px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">🧳</div>
+            <div class="step-content">
+              <strong>A form already used in another report</strong>
+              <span>The same file in anyone's report, or your own form with the same dates: <i>“⚠ This trip form (Muscat, 12–14 Jul 2026) was already used in report #55 (approved 22 Jul). A trip is claimed once. Remove the form or attach the right one. This report cannot be submitted with it.”</i> A colleague's own form for the same trip is not a repeat.</span>
+            </div>
+          </div>
+          <div class="step-item" style="padding:9px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">🌍</div>
+            <div class="step-content">
+              <strong>Documents from another trip</strong>
+              <span>A hotel, a ride or a meeting in a country the form does not name, or a stay or a ride more than 2 days outside its dates — said right after the line's <b>✅ Added</b>: <i>“⚠ Line 1 (Sheraton Saigon, 4548.00 AED) is in Vietnam, stay 20–24 Oct — the trip form says Oman (Muscat, 12–14 Jul 2026). The report cannot be submitted like this.”</i> with <b>🗑 Delete line 1</b> · <b>🗑 Remove the trip form</b>. A ticket is judged by the day of travel, not the day it was bought; gifts, donations and other purchases are not judged by date; your home country (the UAE) never — the taxi to the airport is fine. Lines saved before this check are not judged.</span>
+            </div>
+          </div>
+        </div>
+        <p style="font-size:12.5px; color:var(--text-light); margin:10px 0 6px;">At <code style="font-family:var(--mono); color:var(--accent);">/submit</code>, <b>📤 Submit for review</b> or when you ask in words — every way in:</p>
+        <div class="code-block" style="margin:0 0 6px; font-size:12.5px;">
+          <div><span class="prompt">Bot: </span><span class="resp">⚠ Before I submit pack #64 «Saigon»: the trip form — Oman (Muscat, 12–14 Jul 2026) — does not fit this report.</span></div>
+          <div style="padding-left:32px; margin-top:4px;"><span class="resp">• Line 1 (Sheraton Saigon, 4548.00 AED) is in Vietnam — the form says Oman<br>• Line 1 (Sheraton Saigon, 4548.00 AED): stay 20–24 Oct — the form says 12–14 Jul 2026</span></div>
+          <div style="padding-left:32px; margin-top:4px;"><span class="resp">Remove the form if it is not this report's, or delete the lines that are not from this trip.</span></div>
+        </div>
+        <div class="tg-keys" style="margin:4px 0 8px;">
+          <div class="tg-row"><div class="tg-btn danger">🗑 Delete line 1</div></div>
+          <div class="tg-row"><div class="tg-btn danger">🗑 Remove the trip form</div></div>
+          <div class="tg-row"><div class="tg-btn">✖ Cancel</div></div>
+        </div>
+        <div class="info-box" style="margin:0;">
+          🚫 <b>There is no “submit as is” here.</b> The places come first, then the dates — up to five lines of each, the rest as <i>“• …and 25 more — see /showpack”</i>; up to three <b>🗑 Delete line N</b>. Under the message that lists lines after a save, each tap answers in place and the list goes on with the lines still left, with their buttons. After each tap the submit runs again by itself — and goes, once nothing is left. This question comes before every other one at submit.
+        </div>
+      </div>
+
+      <!-- SLIDE: Spent on the way — transit (O-106 A5) -->
+      <div class="slide">
+        <div class="slide-tag">Business trip · on the way</div>
+        <h2>Spent on the way there? Transit</h2>
+        <p class="subtitle" style="margin-bottom:12px;">A coffee at the transit airport is in another country — and still the trip's. Only a purchase can be on the way; a hotel, a ride or a meeting cannot.</p>
+        <div class="divider" style="margin-bottom:12px;"></div>
+        <div class="code-block" style="margin:0 0 6px; font-size:13px;">
+          <div><span class="prompt">Bot: </span><span class="resp">✈ Line 3 (Doha airport café, 42.00 QAR) is in Qatar — the trip form says Oman. On the way there?</span></div>
+        </div>
+        <div class="tg-keys" style="margin:4px 0 8px;">
+          <div class="tg-row"><div class="tg-btn primary">✈ On the way (transit)</div><div class="tg-btn danger">🗑 Delete line 3</div></div>
+        </div>
+        <p class="tg-say" style="margin:0 0 8px;"><b>✈ On the way (transit)</b> — <i>“✈ Line 3 marked as a transit expense. Accounting will see the note.”</i> The line no longer stops the submit. At submit, several such lines get one <b>✈ All 2 on the way</b>.</p>
+        <div class="info-box" style="margin:0 0 8px;">
+          🧾 <b>What accounting sees.</b> The PDF marks the line <i>“transit expense — confirmed by the employee”</i>; the notice of the submitted report and <code style="font-family:var(--mono); color:var(--accent);">/report</code> say <i>“✈ Transit: line 3 (Doha airport café, 42.00 QAR) — confirmed by the employee”</i> — the notice names three and then <i>“✈ …and 9 more transit lines — /report 64”</i>. The same Travel Request sent again is the same form: nothing is replaced and the confirmations stay.
+        </div>
+        <div class="info-box" style="margin:0;">
+          🔁 <b>Asked again when things change.</b> A new country on the line, or a trip form with other countries (or none), takes the confirmation off — the line is asked about again. Other dates or another copy of the form leave it: a transit is about the place.
+        </div>
+      </div>
+
+
 
       <!-- SLIDE 16: Step 5 — Generate report -->
       <div class="slide">
@@ -1840,7 +1968,7 @@
           ⚠️ <b>Same amount twice?</b> Before the report goes, the bot asks about lines with the same amount and currency, to the cent: <i>“⚠️ Same amount twice in pack #68 «Zurich May 2026»: line 2 Careem · 45.00 AED · 2026-05-12 and line 5 Careem · 45.00 AED · 2026-05-14. Both real?”</i> with <b>📤 Submit as is</b> · <b>👀 Let me check</b>. Lines with no amount and supporting documents are not counted.
           <br>• <b>📤 Submit as is</b> — <i>“📤 Submitting as is — the lines with the same amount stay in the report.”</i>, and the report goes. The answer is kept; another line at that amount — added, or changed to match — brings the whole group back into the question.
           <br>• <b>👀 Let me check</b> — nothing is sent: <i>“👀 Report #68 is not submitted. Here are its lines — tap a number to fix or remove one, then 📤 Submit for review when it is right.”</i>, and the list follows.
-          <br>Three or more lines at one amount, or more than one group: <i>“⚠️ Same amount more than once in …”</i>, one bullet per group — <i>“• line 2 …, line 5 … and line 8 …”</i> — then <i>“All real?”</i>. If the lines with the same amount change after the question was shown — a new pair, or another line joining a group — its <b>Submit as is</b> sends nothing: <i>“The lines changed since — see the question below.”</i>, and the question is asked again about what is there now. Any other change — a line with a different amount added, one line of the pair removed — and it submits as usual. This question comes first; a line without its document is asked about after it.
+          <br>Three or more lines at one amount, or more than one group: <i>“⚠️ Same amount more than once in …”</i>, one bullet per group — <i>“• line 2 …, line 5 … and line 8 …”</i> — then <i>“All real?”</i>. If the lines with the same amount change after the question was shown — a new pair, or another line joining a group — its <b>Submit as is</b> sends nothing: <i>“The lines changed since — see the question below.”</i>, and the question is asked again about what is there now. Any other change — a line with a different amount added, one line of the pair removed — and it submits as usual. This question comes right after the trip form's (slide “The form against the report”); a line without its document is asked about after it.
         </div>
         <div class="info-box" style="margin-top:14px">
           🗂 <b>Subtotals by category</b> under the summary — <b>Transportation</b>, <b>Hotel</b>, <b>Business meetings</b>, <b>Gifts</b>, <b>Donations</b>, <b>Other</b>, each with its count — add up to the <b>receipts subtotal</b>; per-diem has its own line above.
@@ -2115,7 +2243,7 @@
         <div class="divider"></div>
         <table class="cmd-table">
           <tr><td class="cmd-cell">/pending</td><td class="desc-cell">List all reports awaiting review</td></tr>
-          <tr><td class="cmd-cell">/report 54</td><td class="desc-cell">See report #54 — status + PDF</td></tr>
+          <tr><td class="cmd-cell">/report 54</td><td class="desc-cell">See report #54 — status, PDF and the review notes</td></tr>
           <tr><td class="cmd-cell">/approve 54</td><td class="desc-cell">Approve at the <b>full submitted total</b> — after <code style="font-family:var(--mono); color:var(--accent);">/amount</code>, the current total</td></tr>
           <tr><td class="cmd-cell">/approve 54 1200</td><td class="desc-cell">Approve a <b>custom</b> AED amount (e.g. after cutting items). <code style="font-family:var(--mono); color:var(--accent);">1,200</code> or another currency is not guessed — the report is <b>not approved</b> and the bot says why; how an amount is read: slide “Wrong amount or currency”</td></tr>
           <tr><td class="cmd-cell">/amount 54 3 67.50 …</td><td class="desc-cell">Change <b>line 3</b> of report #54 to 67.50, with the reason — next slide</td></tr>
@@ -2150,6 +2278,9 @@
         </div>
         <div class="info-box" style="margin-top:10px">
           🔘 <b>Buttons, not only commands.</b> Every report arrives with <b>✅ Approve</b> (showing the total when the buttons were drawn — usually at submission, e.g. <b>✅ Approve 1,240.00</b>), <b>✏️ Other amount</b> and <b>↩️ Return</b> under it. If the total has changed since (after <code style="font-family:var(--mono); color:var(--accent);">/amount</code>), <b>✅ Approve</b> approves nothing and asks in a new message — <i>“The total has changed since this report arrived: 2,676.60 → 2,692.80 AED (line amounts changed by accounting). Report #54 is not approved yet.”</i> — with <b>✅ Approve 2,692.80</b> (the new total) and <b>✖ Cancel</b>. <b>✏️ Other amount</b> and <b>↩️ Return</b> wait for you to type — an amount, or the note the employee receives. A photo or a PDF sent instead (your own receipt, say) stops the wait, and the bot says what did <b>not</b> happen: the report was not returned, nothing went to the employee, the amount is unchanged. The buttons stay.
+        </div>
+        <div class="info-box" style="margin-top:10px">
+          🧳 <b>The trip form is checked before you get the report.</b> A form already used in another report, and a hotel, a ride or a meeting in a country the form does not name or more than 2 days outside its dates, stop the submit — the employee removes the form or the line. The cover shows where the form says the trip goes. A purchase in another country the employee confirmed as made on the way is marked in the PDF <i>“transit expense — confirmed by the employee”</i>, and in <code style="font-family:var(--mono); color:var(--accent);">/report</code> and the submit notice: <i>“✈ Transit: line 3 (Doha airport café, 42.00 QAR) — confirmed by the employee”</i>.
         </div>
         <div class="info-box" style="margin-top:10px">
           💡 The number is the report id from <code style="font-family:var(--mono); color:var(--accent);">/pending</code>. <code style="font-family:var(--mono); color:var(--accent);">#54</code>, <code style="font-family:var(--mono); color:var(--accent);">54</code> or <code style="font-family:var(--mono); color:var(--accent);">report 54</code> all work. The employee is notified automatically on approve/return. Type <code style="font-family:var(--mono); color:var(--accent);">/review</code> in the bot for this list anytime.
@@ -2190,6 +2321,72 @@
         </div>
       </div>
 
+      <!-- SLIDE: For accountants — a document filed before (O-106 B) -->
+      <div class="slide">
+        <div class="slide-tag">For accountants · filed before</div>
+        <h2>Filed before — the report it is in, one tap away</h2>
+        <p class="subtitle" style="margin-bottom:12px;">Every line is matched against every other report, anyone's. A report with a match is not submitted without the employee's comment — you read it next to the match, and you decide.</p>
+        <div class="divider" style="margin-bottom:12px;"></div>
+        <p style="font-size:12.5px; color:var(--text-light); margin:0 0 6px;">In the notice of a submitted report, in <code style="font-family:var(--mono); color:var(--accent);">/report</code> and in the review notes (next slide):</p>
+        <div class="code-block" style="margin:0 0 6px; font-size:13px;">
+          <div><span class="resp">⚠️ Filed before: line 2 (Apex City of London Hotel, 1,616.70 GBP, 8 Oct) — same vendor, amount and date as report #128, line 1 (Clifford Annett, approved 10 Oct). Employee's comment: “Two of us stayed there — each paid our own room”</span></div>
+        </div>
+        <div class="tg-keys" style="margin:4px 0 8px;">
+          <div class="tg-row"><div class="tg-btn">📄 Report #128</div></div>
+        </div>
+        <div class="step-list" style="margin-top:0; gap:7px;">
+          <div class="step-item" style="padding:9px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">🔍</div>
+            <div class="step-content">
+              <strong>What a match is</strong>
+              <span><i>“same file”</i> — the very same file was sent before; <i>“same vendor, amount and date”</i> — another scan or a photo of what reads as the same document. A monthly subscription with another date is not a match; supporting documents are never matched; a deleted report is not counted. One match per line: the same file first, then the earliest report.</span>
+            </div>
+          </div>
+          <div class="step-item" style="padding:9px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">📄</div>
+            <div class="step-content">
+              <strong>📄 Report #128</strong>
+              <span>Under the notice and under <code style="font-family:var(--mono); color:var(--accent);">/report</code>: opens report #128 exactly as <code style="font-family:var(--mono); color:var(--accent);">/report 128</code> does — its status, its PDF and the review notes. In the PDF the same is a link, <i>t.me/…?start=report_128</i>. Only accountants and admins get the report this way; the report's owner sees where it stands, anyone else the usual welcome.</span>
+            </div>
+          </div>
+          <div class="step-item" style="padding:9px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">👤</div>
+            <div class="step-content">
+              <strong>The employee</strong>
+              <span>Is told when they save such a line — without the colleague's name — and may delete it; at the submit they are asked to say why both are claimed, or delete the line. Their words come to you in full in <code style="font-family:var(--mono); color:var(--accent);">/report</code>, the PDF and the review notes (where the Checks row says <i>“1 line matches other reports (commented)”</i>), and the first 120 characters in the submit notice. The report's PDF is one for everybody — the employee's, yours, the manager's: under the Unsupported block it prints the same line with <i>“another employee”</i> in place of the name. The name is only in your review notes.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE: For accountants — the review notes (O-106 C, Vadim 29.10) -->
+      <div class="slide">
+        <div class="slide-tag">For accountants · review notes</div>
+        <h2>Review notes — the second PDF, for accounting only</h2>
+        <p class="subtitle" style="margin-bottom:12px;">Every submitted report brings two PDFs: the report — the very file the employee got — and right after it the review notes, with all the bot knows about the report. The employee never gets them.</p>
+        <div class="divider" style="margin-bottom:12px;"></div>
+        <div class="code-block" style="margin:0 0 6px; font-size:13px;">
+          <div><span class="resp">📋 Review notes — Report #64 · 2 remarks</span></div>
+        </div>
+        <p style="font-size:12.5px; color:var(--text-light); margin:0 0 8px;">The caption counts what the notes flag; a report the checks found nothing in says <i>“· nothing to flag”</i>.</p>
+        <div class="step-list" style="margin-top:0; gap:7px;">
+          <div class="step-item" style="padding:9px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">📋</div>
+            <div class="step-content">
+              <strong>What is inside</strong>
+              <span>Who and where the report stands — employee, status, who reviewed it, the totals, the unsupported sum. <b>Checks</b> — seven rows, always: trip form, documents, saved files, vendors, same amounts, filed before, amounts changed by accounting, each with its result; a line saved before the document rules is said to be <i>“not checked”</i>, never counted as having its document. Then, only when there is something to say: <b>Trip form</b> (the file, dates, places, the per-diem and how it is counted, another report with the same form, transit lines), <b>Filed before</b> — with the colleague's name and the link to their report, <b>Unsupported lines</b> with the reason and the employee's note word for word, and the lines whose scan was not saved, in the report's words, <b>Documents from another vendor</b>, <b>Same amounts</b>, <b>Amounts changed by accounting</b>, <b>Employee's declarations</b> (the comment, who was at a meeting, who pre-approved a gift). Last, the <b>History</b>: submitted, returned by whom and why, approved by whom at what — <i>“No history recorded”</i> for older reports.</span>
+            </div>
+          </div>
+          <div class="step-item" style="padding:9px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">📨</div>
+            <div class="step-content">
+              <strong>Where it comes</strong>
+              <span>At the submit: the report with its caption, then the review notes, then the buttons. <code style="font-family:var(--mono); color:var(--accent);">/report 64</code> — and <b>📄 Report #N</b>, and the link in a PDF — sends them too, after the report. The approval email to you carries them as a second attachment, <b>review_notes_42.pdf</b>; the manager's copy carries the report only. If they cannot be built, you read <i>“⚠ Review notes could not be built — /report 64”</i>, and the report and the buttons come all the same.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- SLIDE: The approval email and /resend — moved from «What approval sends» (20.10) -->
       <div class="slide">
         <div class="slide-tag">For accountants · after approval</div>
@@ -2197,13 +2394,13 @@
         <p class="subtitle" style="margin-bottom:12px;">What an approval emails, to whom, and how to send it again.</p>
         <div class="divider" style="margin-bottom:12px;"></div>
         <div class="info-box" style="margin:0 0 8px;">
-          📧 <b>The email.</b> Sent to the address the approving accountant set with <code style="font-family:var(--mono); color:var(--accent);">/myemail</code>. Subject: <i>“Expense report #42 approved — 1,240.00 AED — Anna Smith”</i>. The body lists the report and its name, <b>Employee</b>, <b>On behalf</b> (only when filled in), <b>Submitted total</b>, <b>Approved amount</b>, a <b>Difference</b> line when the two are not the same, <b>Approved by</b> and <b>Approved at</b> — the time of approval on Berlin time, with its zone marked (<i>“2026-10-02 12:01 CEST”</i>, CET in winter), so it is not read as Dubai time. Attached: <b>expense_report_42.pdf</b> — the report rebuilt at that moment, with a green <b>APPROVED FOR REIMBURSEMENT: 1,240.00 AED</b> box on its cover. A report too big for mail goes without the PDF, and then the body does not claim it is attached: it says <i>“The PDF is not attached to this email: …”</i> and <i>“To get it, send /report 42 to the expense bot in Telegram.”</i>
+          📧 <b>The email.</b> Sent to the address the approving accountant set with <code style="font-family:var(--mono); color:var(--accent);">/myemail</code>. Subject: <i>“Expense report #42 approved — 1,240.00 AED — Anna Smith”</i>. The body lists the report and its name, <b>Employee</b>, <b>On behalf</b> (only when filled in), <b>Submitted total</b>, <b>Approved amount</b>, a <b>Difference</b> line when the two are not the same, <b>Approved by</b> and <b>Approved at</b> — the time of approval on Berlin time, with its zone marked (<i>“2026-10-02 12:01 CEST”</i>, CET in winter), so it is not read as Dubai time. Attached: <b>expense_report_42.pdf</b> — the report rebuilt at that moment, with a green <b>APPROVED FOR REIMBURSEMENT: 1,240.00 AED</b> box on its cover — and <b>review_notes_42.pdf</b>, the review notes (previous slide); the body says <i>“The review notes for accounting are attached as a second PDF.”</i> Each file is held to the mail's size limit on its own. A report too big for mail goes without the PDF, and then the body does not claim it is attached: it says <i>“The PDF is not attached to this email: …”</i> and <i>“To get it, send /report 42 to the expense bot in Telegram.”</i>
         </div>
         <div class="info-box" style="margin:0 0 8px;">
-          👔 <b>The manager's copy.</b> On approval the manager gets the same email with the PDF, beginning <i>“Copy for the manager of Anna Smith.”</i> It goes even when the approver has no address on file. If the PDF cannot go along, the manager's copy says <i>“Ask Lena …, who approved it, for the PDF.”</i> instead of pointing at the bot. The approver sees it under the approval: <i>“📧 Emailed to lena@… · copy to manager Ivan Petrov &lt;ivan@company.com&gt;.”</i> — one email when the two addresses are the same — or <i>“📧 Could not send the copy to manager …”</i> ending in <i>“Retry with /resend 42 to manager.”</i> <code style="font-family:var(--mono); color:var(--accent);">/resend 42</code> alone does not go to the manager; <code style="font-family:var(--mono); color:var(--accent);">/resend 42 to manager</code> sends the manager's copy only, stamped as approved, and with no manager on file answers <i>“📧 Not sent — Anna Smith, whose report #42 this is, has no manager on file. Set one with /setmanager …”</i>
+          👔 <b>The manager's copy.</b> On approval the manager gets the same email with the report's PDF only — never the review notes — beginning <i>“Copy for the manager of Anna Smith.”</i> It goes even when the approver has no address on file. If the PDF cannot go along, the manager's copy says <i>“Ask Lena …, who approved it, for the PDF.”</i> instead of pointing at the bot. The approver sees it under the approval: <i>“📧 Emailed to lena@… · copy to manager Ivan Petrov &lt;ivan@company.com&gt;.”</i> — one email when the two addresses are the same — or <i>“📧 Could not send the copy to manager …”</i> ending in <i>“Retry with /resend 42 to manager.”</i> <code style="font-family:var(--mono); color:var(--accent);">/resend 42</code> alone does not go to the manager; <code style="font-family:var(--mono); color:var(--accent);">/resend 42 to manager</code> sends the manager's copy only, stamped as approved, and with no manager on file answers <i>“📧 Not sent — Anna Smith, whose report #42 this is, has no manager on file. Set one with /setmanager …”</i>
         </div>
         <div class="info-box" style="margin:0;">
-          🔁 <b>/resend 42 — when the mail did not go.</b> The approver sees the outcome under the approval: <i>“📧 Emailed to …”</i>, or <i>“📧 Could not email it to …”</i> ending in <i>“Retry with /resend 42.”</i>, or <i>“📧 Not emailed — you have no address on file. Send /myemail you@company.com and then /resend 42.”</i> <code style="font-family:var(--mono); color:var(--accent);">/resend 42</code> mails the approved report again <b>exactly as it was approved</b>: to the accountant who approved it, with <b>Approved by</b> and <b>Approved at</b> of that approval — whoever types the command — and changes nothing about the report. The one who typed it gets the answer: <i>“📧 Report #42 emailed to lena@… Stamped as approved: 1,240.00 AED — approved by Lena …, 2026-10-02 12:01 CEST.”</i> A copy to yourself only when you ask: <code style="font-family:var(--mono); color:var(--accent);">/resend 42 to me</code> — if you have no address on file, it sends nothing and asks you to set one with <code style="font-family:var(--mono); color:var(--accent);">/myemail</code> first; <code style="font-family:var(--mono); color:var(--accent);">/resend 42 to name@company.com</code> works only for an address an accountant set with /myemail. If the approver has no address on file, nothing is sent and the answer says so. Reports approved before the bot recorded who approves (until 4 July 2026) have no recorded approver: /resend does not sign them with anyone's name — it says so, and <code style="font-family:var(--mono); color:var(--accent);">/resend 42 to me</code> sends them marked <i>“Approved by: not recorded”</i>. On a report that is not approved it answers that there is nothing to email yet.
+          🔁 <b>/resend 42 — when the mail did not go.</b> The approver sees the outcome under the approval: <i>“📧 Emailed to …”</i>, or <i>“📧 Could not email it to …”</i> ending in <i>“Retry with /resend 42.”</i>, or <i>“📧 Not emailed — you have no address on file. Send /myemail you@company.com and then /resend 42.”</i> <code style="font-family:var(--mono); color:var(--accent);">/resend 42</code> mails the approved report again, with its review notes, <b>exactly as it was approved</b>: to the accountant who approved it, with <b>Approved by</b> and <b>Approved at</b> of that approval — whoever types the command — and changes nothing about the report. The one who typed it gets the answer: <i>“📧 Report #42 emailed to lena@… Stamped as approved: 1,240.00 AED — approved by Lena …, 2026-10-02 12:01 CEST.”</i> A copy to yourself only when you ask: <code style="font-family:var(--mono); color:var(--accent);">/resend 42 to me</code> — if you have no address on file, it sends nothing and asks you to set one with <code style="font-family:var(--mono); color:var(--accent);">/myemail</code> first; <code style="font-family:var(--mono); color:var(--accent);">/resend 42 to name@company.com</code> works only for an address an accountant set with /myemail. If the approver has no address on file, nothing is sent and the answer says so. Reports approved before the bot recorded who approves (until 4 July 2026) have no recorded approver: /resend does not sign them with anyone's name — it says so, and <code style="font-family:var(--mono); color:var(--accent);">/resend 42 to me</code> sends them marked <i>“Approved by: not recorded”</i>. On a report that is not approved it answers that there is nothing to email yet.
         </div>
       </div>
 
