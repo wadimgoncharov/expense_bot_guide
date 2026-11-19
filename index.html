@@ -919,7 +919,7 @@
             <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">🗑</div>
             <div class="step-content">
               <strong>The same file again</strong>
-              <span>If line 2 already has this very file — byte for byte, or a photo that reads as line 2 and is not dated another day — <b>🗑 Discard this copy</b> comes first, as an offer — the other buttons stay: <i>“🗑 Discarded this copy of the PDF — line 2 — Anthropic · 10.67 USD keeps its own. Nothing in the pack changed.”</i> A line described in words that was waiting for the file is saved without it, with its own <b>✅ Added</b>.</span>
+              <span>The very file the pack already has — a photo or a PDF, sent alone or in an album, kept under a line or as a supporting document — is not read again and not added: <i>“📎 This PDF is the same file as line 2's document (Anthropic, 10.67 USD, 3 Oct) — I didn't add it again.”</i>, with one button, <b>➕ Add anyway</b>. In an album the copies are named in one message and the other files are read as usual. A new photo of the same document is another file: if it reads as line 2 and is not dated another day, <b>🗑 Discard this copy</b> comes first here, as an offer — the other buttons stay: <i>“🗑 Discarded this copy of the PDF — line 2 — Anthropic · 10.67 USD keeps its own. Nothing in the pack changed.”</i> A line described in words that was waiting for the file is saved without it, with its own <b>✅ Added</b>.</span>
             </div>
           </div>
           <div class="step-item" style="padding:9px 14px;">
@@ -1119,7 +1119,8 @@
           <div style="padding-left:32px; margin-top:4px;"><span class="resp">✂️ Tip of 7.50 EUR left out — you paid 75.00 EUR, the bill is 67.50 EUR: accounting reimburses the bill, not the tip.</span></div>
         </div>
         <div class="info-box" style="margin:8px 0 0;">
-          📋 In the list of a PDF or an album the same line reads <i>“✂️ 75.00 EUR paid, the bill is 67.50 EUR — tip 7.50 EUR left out”</i>, and a card still waiting for <b>✅ Confirm</b> or for names shows the ✂️ line too. Nothing to do on your side: the bill's own total is what goes into the report.
+          📋 In the list of a PDF or an album the same line reads <i>“✂️ 75.00 EUR paid, the bill is 67.50 EUR — tip 7.50 EUR left out”</i>, and a card still waiting for <b>✅ Confirm</b> or for names shows the ✂️ line too. Nothing to do on your side: the bill's own total is what goes into the report.<br><br>
+          💳 <b>The card slip first, the bill after?</b> When the bill is filed under the slip's line, the line goes down to the bill the same way — <i>“✂️ Line 1 — Ristorante Valentino: Tip of 7.50 EUR left out — you paid 75.00 EUR, the bill is 67.50 EUR …”</i> — and the PDF notes it next to the line: <i>“tip left out: 75.00 → 67.50 EUR”</i>.
         </div>
       </div>
 
@@ -1472,6 +1473,13 @@
             </div>
           </div>
           <div class="step-item" style="padding:9px 14px;">
+            <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">❓</div>
+            <div class="step-content">
+              <strong>The bot asked you something</strong>
+              <span>A file sent while its question is open waits for the answer — and the message under it says what it waits for: <i>“📎 I'm holding the PDF you just sent: I asked you something and I'm waiting for your answer — …”</i>, the question again with its answers, <b>⏭ Skip the question — read the file</b> and the file's Discard. A question older than 10 minutes, or about a report that was returned, submitted or reopened since, holds nothing: <i>“Your earlier question is dropped (the report was returned) — reading the file you sent.”</i></span>
+            </div>
+          </div>
+          <div class="step-item" style="padding:9px 14px;">
             <div class="step-num" style="font-size:15px; width:auto; height:auto; background:none; border:none; color:var(--navy);">🚫</div>
             <div class="step-content">
               <strong>Type /cancel</strong>
@@ -1712,6 +1720,14 @@
           <div class="tg-row"><div class="tg-btn">📋 Under a line…</div></div>
           <div class="tg-row"><div class="tg-btn">✖ Cancel</div></div>
         </div>
+        <p style="font-size:12.5px; color:var(--text-light); margin:0 0 5px;">The place is not the yes. A line with an amount asks once more, the amount in the button:</p>
+        <div class="tg-keys" style="margin:0 0 6px;">
+          <div class="tg-row"><div class="tg-btn danger">✅ Yes — drop 384.25 AED from the total</div></div>
+          <div class="tg-row"><div class="tg-btn">↩ Keep it as an expense</div></div>
+        </div>
+        <p class="tg-say" style="margin:0 0 8px;">
+          Nothing changes before that ✅. A line still <i>⏳ awaiting the invoice</i> is told the other way in the same message: keep the amount and send the invoice later — the bot asks which line it is for.
+        </p>
         <div class="code-block" style="margin:0 0 4px; font-size:12px;">
           <div><span class="prompt">Bot: </span><span class="resp">📎 Filed as a supporting document — Anthropic · Claude API usage report — shows 104.63 USD, not claimed · to the report</span></div>
         </div>
@@ -2093,7 +2109,7 @@
           Type <code style="font-family:var(--mono); color:var(--accent); background:var(--accent-dim); padding:2px 6px; border-radius:4px;">/myreports</code> to see the status of your reports from the last 12 months.
         </div>
         <div class="info-box">
-          🔒 <b>While a report is with the accountant it stops changing.</b> Amounts, lines, documents, the per-diem, the name — none of them can be edited on a submitted or approved report, by you or by any other employee, because that is the version accounting is working from. The bot says so and points at <b>↩️ Reopen</b> — slide “What approval sends — and how to take a report back”. Reports belong to one person: no other employee can read, rebuild or edit yours. Accountants can read and rebuild any report (<code style="font-family:var(--mono); color:var(--accent);">/report 54</code>); the one thing they can change is a line's amount, with a reason.
+          🔒 <b>While a report is with the accountant it stops changing.</b> Amounts, lines, documents, the per-diem, the name — none of them can be edited on a submitted or approved report, by you or by any other employee, because that is the version accounting is working from. The bot says so and points at <b>↩️ Reopen</b> — slide “What approval sends — and how to take a report back”. A document you send then is not added, and nothing waits for it: <i>“Report #42 is submitted — accounting is reviewing it, so I can't add this document to it. Take it back with ↩️ Reopen #42 and send the document again, or start a new report with /newpack.”</i> with <b>↩️ Reopen #42</b>. Reports belong to one person: no other employee can read, rebuild or edit yours. Accountants can read and rebuild any report (<code style="font-family:var(--mono); color:var(--accent);">/report 54</code>); the one thing they can change is a line's amount, with a reason.
         </div>
         <div class="info-box">
           ✂️ <b>Accounting changed an amount?</b> You get both amounts and why: <i>“✂️ Accounting changed an amount in your report #54 «Berlin trip»: line 3 — Nobu, 75.00 EUR → 67.50 EUR (306.00 → 275.40 AED). Reason: tip is not reimbursed. The report stays with accounting.”</i> The report total changes with it. The PDF marks the line, and so does <code style="font-family:var(--mono); color:var(--accent);">/showpack</code> once the report is back with you: <i>“✂️ amount changed by accounting: …”</i>. Take the report back with <b>↩️ Reopen</b> and type a new amount for that line — the mark disappears; editing only its note keeps it.
